@@ -1,4 +1,5 @@
 DVLD.bak
+images/
 DrivingLicense/.vs/
 DrivingLicense/bin/
 DrivingLicense/obj/
@@ -7,7 +8,8 @@ DrivingLicense/Resources/
 App.config
 DrivingLicenseBusinessLayer/bin/
 DrivingLicenseBusinessLayer/obj/
-DrivingLicenseBusinessLayer/Resources
+DrivingLicenseBusinessLayer/Properties/
+DrivingLicenseBusinessLayer/Resources/
 DrivingLicenseDataLayer/bin/
 DrivingLicenseDataLayer/obj/
 DrivingLicenseDataLayer/Properties/
