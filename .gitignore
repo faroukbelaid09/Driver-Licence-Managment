@@ -1,0 +1,14 @@
+DVLD.bak
+DrivingLicense/.vs/
+DrivingLicense/bin/
+DrivingLicense/obj/
+DrivingLicense/Properties/
+DrivingLicense/Resources/
+App.config
+DrivingLicenseBusinessLayer/bin/
+DrivingLicenseBusinessLayer/obj/
+DrivingLicenseBusinessLayer/Resources
+DrivingLicenseDataLayer/bin/
+DrivingLicenseDataLayer/obj/
+DrivingLicenseDataLayer/Properties/
+DrivingLicenseDataLayer/clsDataAccessSettings.cs
