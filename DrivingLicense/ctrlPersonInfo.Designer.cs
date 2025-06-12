@@ -95,11 +95,9 @@
             this.groupBox1.Controls.Add(this.NameLabel);
             this.groupBox1.Controls.Add(this.PersonIDLabel);
             this.groupBox1.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.groupBox1.Location = new System.Drawing.Point(31, 55);
-            this.groupBox1.Margin = new System.Windows.Forms.Padding(4);
+            this.groupBox1.Location = new System.Drawing.Point(23, 45);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Padding = new System.Windows.Forms.Padding(4);
-            this.groupBox1.Size = new System.Drawing.Size(971, 356);
+            this.groupBox1.Size = new System.Drawing.Size(728, 289);
             this.groupBox1.TabIndex = 0;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Person Information";
@@ -107,10 +105,9 @@
             // EditInfoLinkLabel
             // 
             this.EditInfoLinkLabel.AutoSize = true;
-            this.EditInfoLinkLabel.Location = new System.Drawing.Point(767, 76);
-            this.EditInfoLinkLabel.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.EditInfoLinkLabel.Location = new System.Drawing.Point(575, 62);
             this.EditInfoLinkLabel.Name = "EditInfoLinkLabel";
-            this.EditInfoLinkLabel.Size = new System.Drawing.Size(144, 20);
+            this.EditInfoLinkLabel.Size = new System.Drawing.Size(124, 17);
             this.EditInfoLinkLabel.TabIndex = 25;
             this.EditInfoLinkLabel.TabStop = true;
             this.EditInfoLinkLabel.Text = "Edit Person Info";
@@ -119,10 +116,9 @@
             // ProfilePB
             // 
             this.ProfilePB.Image = ((System.Drawing.Image)(resources.GetObject("ProfilePB.Image")));
-            this.ProfilePB.Location = new System.Drawing.Point(760, 110);
-            this.ProfilePB.Margin = new System.Windows.Forms.Padding(4);
+            this.ProfilePB.Location = new System.Drawing.Point(570, 89);
             this.ProfilePB.Name = "ProfilePB";
-            this.ProfilePB.Size = new System.Drawing.Size(180, 185);
+            this.ProfilePB.Size = new System.Drawing.Size(135, 150);
             this.ProfilePB.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.ProfilePB.TabIndex = 24;
             this.ProfilePB.TabStop = false;
@@ -130,110 +126,98 @@
             // CountryValue
             // 
             this.CountryValue.AutoSize = true;
-            this.CountryValue.Location = new System.Drawing.Point(593, 244);
-            this.CountryValue.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.CountryValue.Location = new System.Drawing.Point(445, 198);
             this.CountryValue.Name = "CountryValue";
-            this.CountryValue.Size = new System.Drawing.Size(79, 20);
+            this.CountryValue.Size = new System.Drawing.Size(71, 17);
             this.CountryValue.TabIndex = 23;
             this.CountryValue.Text = "???????";
             // 
             // PhoneValue
             // 
             this.PhoneValue.AutoSize = true;
-            this.PhoneValue.Location = new System.Drawing.Point(593, 201);
-            this.PhoneValue.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.PhoneValue.Location = new System.Drawing.Point(445, 163);
             this.PhoneValue.Name = "PhoneValue";
-            this.PhoneValue.Size = new System.Drawing.Size(79, 20);
+            this.PhoneValue.Size = new System.Drawing.Size(71, 17);
             this.PhoneValue.TabIndex = 22;
             this.PhoneValue.Text = "???????";
             // 
             // DateOFBirthValue
             // 
             this.DateOFBirthValue.AutoSize = true;
-            this.DateOFBirthValue.Location = new System.Drawing.Point(593, 158);
-            this.DateOFBirthValue.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.DateOFBirthValue.Location = new System.Drawing.Point(445, 128);
             this.DateOFBirthValue.Name = "DateOFBirthValue";
-            this.DateOFBirthValue.Size = new System.Drawing.Size(79, 20);
+            this.DateOFBirthValue.Size = new System.Drawing.Size(71, 17);
             this.DateOFBirthValue.TabIndex = 21;
             this.DateOFBirthValue.Text = "???????";
             // 
             // CountryLabel
             // 
             this.CountryLabel.AutoSize = true;
-            this.CountryLabel.Location = new System.Drawing.Point(441, 244);
-            this.CountryLabel.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.CountryLabel.Location = new System.Drawing.Point(331, 198);
             this.CountryLabel.Name = "CountryLabel";
-            this.CountryLabel.Size = new System.Drawing.Size(80, 20);
+            this.CountryLabel.Size = new System.Drawing.Size(69, 17);
             this.CountryLabel.TabIndex = 20;
             this.CountryLabel.Text = "Country:";
             // 
             // PhoneLabel
             // 
             this.PhoneLabel.AutoSize = true;
-            this.PhoneLabel.Location = new System.Drawing.Point(441, 201);
-            this.PhoneLabel.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.PhoneLabel.Location = new System.Drawing.Point(331, 163);
             this.PhoneLabel.Name = "PhoneLabel";
-            this.PhoneLabel.Size = new System.Drawing.Size(67, 20);
+            this.PhoneLabel.Size = new System.Drawing.Size(59, 17);
             this.PhoneLabel.TabIndex = 19;
             this.PhoneLabel.Text = "Phone:";
             // 
             // DateOfBirthLabel
             // 
             this.DateOfBirthLabel.AutoSize = true;
-            this.DateOfBirthLabel.Location = new System.Drawing.Point(441, 158);
-            this.DateOfBirthLabel.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.DateOfBirthLabel.Location = new System.Drawing.Point(331, 128);
             this.DateOfBirthLabel.Name = "DateOfBirthLabel";
-            this.DateOfBirthLabel.Size = new System.Drawing.Size(128, 20);
+            this.DateOfBirthLabel.Size = new System.Drawing.Size(108, 17);
             this.DateOfBirthLabel.TabIndex = 18;
             this.DateOfBirthLabel.Text = "Date Of Birth:";
             // 
             // AddressValue
             // 
             this.AddressValue.AutoSize = true;
-            this.AddressValue.Location = new System.Drawing.Point(219, 287);
-            this.AddressValue.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.AddressValue.Location = new System.Drawing.Point(164, 233);
             this.AddressValue.Name = "AddressValue";
-            this.AddressValue.Size = new System.Drawing.Size(79, 20);
+            this.AddressValue.Size = new System.Drawing.Size(71, 17);
             this.AddressValue.TabIndex = 17;
             this.AddressValue.Text = "???????";
             // 
             // EmailValue
             // 
             this.EmailValue.AutoSize = true;
-            this.EmailValue.Location = new System.Drawing.Point(219, 244);
-            this.EmailValue.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.EmailValue.Location = new System.Drawing.Point(164, 198);
             this.EmailValue.Name = "EmailValue";
-            this.EmailValue.Size = new System.Drawing.Size(79, 20);
+            this.EmailValue.Size = new System.Drawing.Size(71, 17);
             this.EmailValue.TabIndex = 16;
             this.EmailValue.Text = "???????";
             // 
             // GenderValue
             // 
             this.GenderValue.AutoSize = true;
-            this.GenderValue.Location = new System.Drawing.Point(219, 201);
-            this.GenderValue.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.GenderValue.Location = new System.Drawing.Point(164, 163);
             this.GenderValue.Name = "GenderValue";
-            this.GenderValue.Size = new System.Drawing.Size(79, 20);
+            this.GenderValue.Size = new System.Drawing.Size(71, 17);
             this.GenderValue.TabIndex = 15;
             this.GenderValue.Text = "???????";
             // 
             // NationalNoValue
             // 
             this.NationalNoValue.AutoSize = true;
-            this.NationalNoValue.Location = new System.Drawing.Point(219, 158);
-            this.NationalNoValue.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.NationalNoValue.Location = new System.Drawing.Point(164, 128);
             this.NationalNoValue.Name = "NationalNoValue";
-            this.NationalNoValue.Size = new System.Drawing.Size(79, 20);
+            this.NationalNoValue.Size = new System.Drawing.Size(71, 17);
             this.NationalNoValue.TabIndex = 14;
-            this.NationalNoValue.Text = "???????";
-            // 
+            this.NationalNoValue.Text = "???????";            // 
             // PersonIDValue
             // 
             this.PersonIDValue.AutoSize = true;
-            this.PersonIDValue.Location = new System.Drawing.Point(219, 71);
-            this.PersonIDValue.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.PersonIDValue.Location = new System.Drawing.Point(164, 58);
             this.PersonIDValue.Name = "PersonIDValue";
-            this.PersonIDValue.Size = new System.Drawing.Size(40, 20);
+            this.PersonIDValue.Size = new System.Drawing.Size(34, 17);
             this.PersonIDValue.TabIndex = 13;
             this.PersonIDValue.Text = "N/A";
             // 
@@ -241,20 +225,18 @@
             // 
             this.FullNameValue.AutoSize = true;
             this.FullNameValue.ForeColor = System.Drawing.Color.IndianRed;
-            this.FullNameValue.Location = new System.Drawing.Point(219, 122);
-            this.FullNameValue.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.FullNameValue.Location = new System.Drawing.Point(164, 99);
             this.FullNameValue.Name = "FullNameValue";
-            this.FullNameValue.Size = new System.Drawing.Size(94, 20);
+            this.FullNameValue.Size = new System.Drawing.Size(80, 17);
             this.FullNameValue.TabIndex = 12;
             this.FullNameValue.Text = "Full Name";
             // 
             // AddressPB
             // 
             this.AddressPB.Image = ((System.Drawing.Image)(resources.GetObject("AddressPB.Image")));
-            this.AddressPB.Location = new System.Drawing.Point(164, 282);
-            this.AddressPB.Margin = new System.Windows.Forms.Padding(4);
+            this.AddressPB.Location = new System.Drawing.Point(123, 229);
             this.AddressPB.Name = "AddressPB";
-            this.AddressPB.Size = new System.Drawing.Size(33, 31);
+            this.AddressPB.Size = new System.Drawing.Size(25, 25);
             this.AddressPB.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.AddressPB.TabIndex = 11;
             this.AddressPB.TabStop = false;
@@ -262,10 +244,9 @@
             // EmailPB
             // 
             this.EmailPB.Image = ((System.Drawing.Image)(resources.GetObject("EmailPB.Image")));
-            this.EmailPB.Location = new System.Drawing.Point(164, 239);
-            this.EmailPB.Margin = new System.Windows.Forms.Padding(4);
+            this.EmailPB.Location = new System.Drawing.Point(123, 194);
             this.EmailPB.Name = "EmailPB";
-            this.EmailPB.Size = new System.Drawing.Size(33, 31);
+            this.EmailPB.Size = new System.Drawing.Size(25, 25);
             this.EmailPB.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.EmailPB.TabIndex = 10;
             this.EmailPB.TabStop = false;
@@ -273,10 +254,9 @@
             // GenderPB
             // 
             this.GenderPB.Image = ((System.Drawing.Image)(resources.GetObject("GenderPB.Image")));
-            this.GenderPB.Location = new System.Drawing.Point(164, 196);
-            this.GenderPB.Margin = new System.Windows.Forms.Padding(4);
+            this.GenderPB.Location = new System.Drawing.Point(123, 159);
             this.GenderPB.Name = "GenderPB";
-            this.GenderPB.Size = new System.Drawing.Size(33, 31);
+            this.GenderPB.Size = new System.Drawing.Size(25, 25);
             this.GenderPB.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.GenderPB.TabIndex = 9;
             this.GenderPB.TabStop = false;
@@ -284,10 +264,9 @@
             // NationalNoPB
             // 
             this.NationalNoPB.Image = ((System.Drawing.Image)(resources.GetObject("NationalNoPB.Image")));
-            this.NationalNoPB.Location = new System.Drawing.Point(164, 153);
-            this.NationalNoPB.Margin = new System.Windows.Forms.Padding(4);
+            this.NationalNoPB.Location = new System.Drawing.Point(123, 124);
             this.NationalNoPB.Name = "NationalNoPB";
-            this.NationalNoPB.Size = new System.Drawing.Size(33, 31);
+            this.NationalNoPB.Size = new System.Drawing.Size(25, 25);
             this.NationalNoPB.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.NationalNoPB.TabIndex = 8;
             this.NationalNoPB.TabStop = false;
@@ -295,10 +274,9 @@
             // NamePB
             // 
             this.NamePB.Image = ((System.Drawing.Image)(resources.GetObject("NamePB.Image")));
-            this.NamePB.Location = new System.Drawing.Point(164, 112);
-            this.NamePB.Margin = new System.Windows.Forms.Padding(4);
+            this.NamePB.Location = new System.Drawing.Point(123, 91);
             this.NamePB.Name = "NamePB";
-            this.NamePB.Size = new System.Drawing.Size(33, 31);
+            this.NamePB.Size = new System.Drawing.Size(25, 25);
             this.NamePB.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.NamePB.TabIndex = 7;
             this.NamePB.TabStop = false;
@@ -306,10 +284,9 @@
             // PersonIDPB
             // 
             this.PersonIDPB.Image = ((System.Drawing.Image)(resources.GetObject("PersonIDPB.Image")));
-            this.PersonIDPB.Location = new System.Drawing.Point(164, 71);
-            this.PersonIDPB.Margin = new System.Windows.Forms.Padding(4);
+            this.PersonIDPB.Location = new System.Drawing.Point(123, 58);
             this.PersonIDPB.Name = "PersonIDPB";
-            this.PersonIDPB.Size = new System.Drawing.Size(33, 31);
+            this.PersonIDPB.Size = new System.Drawing.Size(25, 25);
             this.PersonIDPB.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.PersonIDPB.TabIndex = 6;
             this.PersonIDPB.TabStop = false;
@@ -317,71 +294,64 @@
             // AddressLabel
             // 
             this.AddressLabel.AutoSize = true;
-            this.AddressLabel.Location = new System.Drawing.Point(33, 287);
-            this.AddressLabel.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.AddressLabel.Location = new System.Drawing.Point(25, 233);
             this.AddressLabel.Name = "AddressLabel";
-            this.AddressLabel.Size = new System.Drawing.Size(84, 20);
+            this.AddressLabel.Size = new System.Drawing.Size(72, 17);
             this.AddressLabel.TabIndex = 5;
             this.AddressLabel.Text = "Address:";
             // 
             // EmailLabel
             // 
             this.EmailLabel.AutoSize = true;
-            this.EmailLabel.Location = new System.Drawing.Point(33, 244);
-            this.EmailLabel.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.EmailLabel.Location = new System.Drawing.Point(25, 198);
             this.EmailLabel.Name = "EmailLabel";
-            this.EmailLabel.Size = new System.Drawing.Size(62, 20);
+            this.EmailLabel.Size = new System.Drawing.Size(52, 17);
             this.EmailLabel.TabIndex = 4;
             this.EmailLabel.Text = "Email:";
             // 
             // GenderLabel
             // 
             this.GenderLabel.AutoSize = true;
-            this.GenderLabel.Location = new System.Drawing.Point(31, 201);
-            this.GenderLabel.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.GenderLabel.Location = new System.Drawing.Point(23, 163);
             this.GenderLabel.Name = "GenderLabel";
-            this.GenderLabel.Size = new System.Drawing.Size(76, 20);
+            this.GenderLabel.Size = new System.Drawing.Size(67, 17);
             this.GenderLabel.TabIndex = 3;
             this.GenderLabel.Text = "Gender:";
             // 
             // NationalNoLabel
             // 
             this.NationalNoLabel.AutoSize = true;
-            this.NationalNoLabel.Location = new System.Drawing.Point(31, 158);
-            this.NationalNoLabel.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.NationalNoLabel.Location = new System.Drawing.Point(23, 128);
             this.NationalNoLabel.Name = "NationalNoLabel";
-            this.NationalNoLabel.Size = new System.Drawing.Size(113, 20);
+            this.NationalNoLabel.Size = new System.Drawing.Size(98, 17);
             this.NationalNoLabel.TabIndex = 2;
             this.NationalNoLabel.Text = "National No:";
             // 
             // NameLabel
             // 
             this.NameLabel.AutoSize = true;
-            this.NameLabel.Location = new System.Drawing.Point(31, 114);
-            this.NameLabel.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.NameLabel.Location = new System.Drawing.Point(23, 93);
             this.NameLabel.Name = "NameLabel";
-            this.NameLabel.Size = new System.Drawing.Size(63, 20);
+            this.NameLabel.Size = new System.Drawing.Size(54, 17);
             this.NameLabel.TabIndex = 1;
             this.NameLabel.Text = "Name:";
             // 
             // PersonIDLabel
             // 
             this.PersonIDLabel.AutoSize = true;
-            this.PersonIDLabel.Location = new System.Drawing.Point(31, 71);
-            this.PersonIDLabel.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.PersonIDLabel.Location = new System.Drawing.Point(23, 58);
             this.PersonIDLabel.Name = "PersonIDLabel";
-            this.PersonIDLabel.Size = new System.Drawing.Size(99, 20);
+            this.PersonIDLabel.Size = new System.Drawing.Size(84, 17);
             this.PersonIDLabel.TabIndex = 0;
             this.PersonIDLabel.Text = "Person ID:";
             // 
             // ctrlPersonInfo
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.Controls.Add(this.groupBox1);
-            this.Margin = new System.Windows.Forms.Padding(4);
             this.Name = "ctrlPersonInfo";
-            this.Size = new System.Drawing.Size(1008, 417);
+            this.Size = new System.Drawing.Size(756, 339);
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.ProfilePB)).EndInit();

@@ -17,5 +17,11 @@ namespace DrivingLicense
             PeopleForm frm = new PeopleForm();
             frm.ShowDialog();
         }
+
+        private void usersToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            UserForm frm = new UserForm();
+            frm.ShowDialog();
+        }
     }
 }

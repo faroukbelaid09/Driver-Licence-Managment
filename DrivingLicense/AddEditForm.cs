@@ -6,7 +6,7 @@ namespace DrivingLicense
 {
     public partial class AddEditForm : Form
     {
-        public delegate void TriggerEventHandler(clsPerson person = null);
+        public delegate void TriggerEventHandler(clsPerson person);
         public event TriggerEventHandler EventTrigger;
 
         clsPerson _Person;
@@ -41,11 +41,12 @@ namespace DrivingLicense
 
             if (WasAdded)
             {
+                NewPerson.GenderTitle = NewPerson.GenderID == 1 ? "Male" : "Female";
                 DialogResult res =  MessageBox.Show("Person Added Successfully", "Added",
                     MessageBoxButtons.OK, MessageBoxIcon.Information);
                 if(res == DialogResult.OK)
                 {
-                    EventTrigger?.Invoke(_Person);
+                    EventTrigger?.Invoke(NewPerson);
                     this.Close();
                 }
             }
