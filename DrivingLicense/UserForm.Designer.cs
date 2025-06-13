@@ -31,11 +31,6 @@
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(UserForm));
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.UserGridView = new System.Windows.Forms.DataGridView();
-            this.UserID = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.PersonID = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.FullName = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.UserName = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.IsActive = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.ManageUsersLabel = new System.Windows.Forms.Label();
             this.FillterTB = new System.Windows.Forms.TextBox();
             this.AddPersonPB = new System.Windows.Forms.PictureBox();
@@ -44,6 +39,11 @@
             this.CloseFormBTN = new System.Windows.Forms.Button();
             this.RecordValue = new System.Windows.Forms.Label();
             this.RecordLabel = new System.Windows.Forms.Label();
+            this.UserID = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.PersonID = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.UserName = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.FullName = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.IsActive = new System.Windows.Forms.DataGridViewTextBoxColumn();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.UserGridView)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.AddPersonPB)).BeginInit();
@@ -61,43 +61,19 @@
             // 
             // UserGridView
             // 
+            this.UserGridView.AllowUserToAddRows = false;
             this.UserGridView.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.UserGridView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.UserGridView.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.UserID,
             this.PersonID,
-            this.FullName,
             this.UserName,
+            this.FullName,
             this.IsActive});
             this.UserGridView.Location = new System.Drawing.Point(47, 336);
             this.UserGridView.Name = "UserGridView";
             this.UserGridView.Size = new System.Drawing.Size(863, 150);
             this.UserGridView.TabIndex = 1;
-            // 
-            // UserID
-            // 
-            this.UserID.HeaderText = "User ID";
-            this.UserID.Name = "UserID";
-            // 
-            // PersonID
-            // 
-            this.PersonID.HeaderText = "Person ID";
-            this.PersonID.Name = "PersonID";
-            // 
-            // FullName
-            // 
-            this.FullName.HeaderText = "FullName";
-            this.FullName.Name = "FullName";
-            // 
-            // UserName
-            // 
-            this.UserName.HeaderText = "UserName";
-            this.UserName.Name = "UserName";
-            // 
-            // IsActive
-            // 
-            this.IsActive.HeaderText = "Is Active";
-            this.IsActive.Name = "IsActive";
             // 
             // ManageUsersLabel
             // 
@@ -118,7 +94,6 @@
             this.FillterTB.Name = "FillterTB";
             this.FillterTB.Size = new System.Drawing.Size(162, 24);
             this.FillterTB.TabIndex = 11;
-            this.FillterTB.TextChanged += new System.EventHandler(this.FillterTB_TextChanged);
             // 
             // AddPersonPB
             // 
@@ -149,7 +124,6 @@
             this.FillterCB.Name = "FillterCB";
             this.FillterCB.Size = new System.Drawing.Size(121, 24);
             this.FillterCB.TabIndex = 9;
-            this.FillterCB.SelectedIndexChanged += new System.EventHandler(this.FillterCB_SelectedIndexChanged);
             // 
             // FillterByLabel
             // 
@@ -160,7 +134,6 @@
             this.FillterByLabel.Size = new System.Drawing.Size(73, 17);
             this.FillterByLabel.TabIndex = 8;
             this.FillterByLabel.Text = "Filter By:";
-            this.FillterByLabel.Click += new System.EventHandler(this.FillterByLabel_Click);
             // 
             // CloseFormBTN
             // 
@@ -192,6 +165,37 @@
             this.RecordLabel.TabIndex = 12;
             this.RecordLabel.Text = "#Record:";
             // 
+            // UserID
+            // 
+            this.UserID.DataPropertyName = "UserID";
+            this.UserID.HeaderText = "User ID";
+            this.UserID.Name = "UserID";
+            // 
+            // PersonID
+            // 
+            this.PersonID.DataPropertyName = "PersonID";
+            this.PersonID.HeaderText = "Person ID";
+            this.PersonID.Name = "PersonID";
+            // 
+            // UserName
+            // 
+            this.UserName.DataPropertyName = "UserName";
+            this.UserName.HeaderText = "User Name";
+            this.UserName.Name = "UserName";
+            // 
+            // FullName
+            // 
+            this.FullName.DataPropertyName = "FullName";
+            this.FullName.HeaderText = "Full Name";
+            this.FullName.Name = "FullName";
+            // 
+            // IsActive
+            // 
+            this.IsActive.DataPropertyName = "IsActive";
+            this.IsActive.HeaderText = "Is Active";
+            this.IsActive.Name = "IsActive";
+            this.IsActive.ReadOnly = true;
+            // 
             // UserForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -221,11 +225,6 @@
 
         private System.Windows.Forms.PictureBox pictureBox1;
         private System.Windows.Forms.DataGridView UserGridView;
-        private System.Windows.Forms.DataGridViewTextBoxColumn UserID;
-        private System.Windows.Forms.DataGridViewTextBoxColumn PersonID;
-        private System.Windows.Forms.DataGridViewTextBoxColumn FullName;
-        private System.Windows.Forms.DataGridViewTextBoxColumn UserName;
-        private System.Windows.Forms.DataGridViewTextBoxColumn IsActive;
         private System.Windows.Forms.Label ManageUsersLabel;
         private System.Windows.Forms.TextBox FillterTB;
         private System.Windows.Forms.PictureBox AddPersonPB;
@@ -234,5 +233,10 @@
         private System.Windows.Forms.Button CloseFormBTN;
         private System.Windows.Forms.Label RecordValue;
         private System.Windows.Forms.Label RecordLabel;
+        private System.Windows.Forms.DataGridViewTextBoxColumn UserID;
+        private System.Windows.Forms.DataGridViewTextBoxColumn PersonID;
+        private System.Windows.Forms.DataGridViewTextBoxColumn UserName;
+        private System.Windows.Forms.DataGridViewTextBoxColumn FullName;
+        private System.Windows.Forms.DataGridViewTextBoxColumn IsActive;
     }
 }

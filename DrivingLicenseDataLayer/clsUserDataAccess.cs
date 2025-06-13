@@ -1,9 +1,6 @@
 ﻿using System;
-using System.Collections.Generic;
+using System.Data;
 using System.Data.SqlClient;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace DrivingLicenseDataLayer
 {
@@ -41,6 +38,45 @@ namespace DrivingLicenseDataLayer
 
             return found;
         }
+
+        public static DataTable GetUsers()
+        {
+            DataTable dt = new DataTable();
+            SqlConnection connection = new SqlConnection(clsDataAccessSettings.ConnectionString);
+
+
+            string query = "select Users.*, FullName = People.FirstName+People.LastName from Users inner join People on Users.PersonID = People.PersonID";
+
+            SqlCommand command = new SqlCommand(query, connection);
+
+            try
+            {
+                connection.Open();
+
+                SqlDataReader reader = command.ExecuteReader();
+
+                if (reader.HasRows)
+
+                {
+                    dt.Load(reader);
+                }
+
+                reader.Close();
+            }
+
+            catch (Exception ex)
+            {
+                Console.WriteLine("Error: " + ex.Message);
+            }
+            finally
+            {
+                connection?.Close();
+            }
+
+            return dt;
+
+        }
+
         public static int AddUser(int PersonID,string UserName,string Password,bool IsActive)
         {
             int UserID = -1;
@@ -77,5 +113,6 @@ namespace DrivingLicenseDataLayer
             }
             return UserID;
         }
+        
     }
 }

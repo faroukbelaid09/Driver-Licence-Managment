@@ -140,6 +140,7 @@
             this.PeopleDataGridView.DefaultCellStyle = dataGridViewCellStyle1;
             this.PeopleDataGridView.Location = new System.Drawing.Point(27, 305);
             this.PeopleDataGridView.Name = "PeopleDataGridView";
+            this.PeopleDataGridView.ReadOnly = true;
             this.PeopleDataGridView.RowHeadersWidth = 51;
             this.PeopleDataGridView.Size = new System.Drawing.Size(863, 171);
             this.PeopleDataGridView.TabIndex = 5;

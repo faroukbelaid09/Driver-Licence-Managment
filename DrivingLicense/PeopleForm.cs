@@ -39,7 +39,7 @@ namespace DrivingLicense
         {
             // Get All people
             _people = clsPerson.GetAllPeople();
-
+            
             if (_people != null && _people.Count > 0)
             {
                 PeopleDataGridView.DataSource = _people;
