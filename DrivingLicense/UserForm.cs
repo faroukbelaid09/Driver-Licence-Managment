@@ -78,10 +78,10 @@ namespace DrivingLicense
         }
 
         // RETURN THE SELECTED USER FROM THE MENU
-        private clsUser GetTheSelectedPerson()
+        private clsUser GetTheSelectedUser()
         {
             // Get the selected row index from the ContextMenuStrip's Tag
-            int rowIndex = (int)ContextMenuStrip.Tag;
+            int rowIndex = (int)contextMenuStrip1.Tag;
 
             // Access the data of the selected row
             var selectedRow = UserGridView.Rows[rowIndex];
@@ -224,7 +224,14 @@ namespace DrivingLicense
         // NAVIGATE TO THE SHOW DETAILS PAGE
         private void showDetailsToolStripMenuItem_Click(object sender, EventArgs e)
         {
+            clsUser selectedUser = GetTheSelectedUser();
 
+            if (selectedUser != null) 
+            { 
+                ShowUserDetails frm = new ShowUserDetails(selectedUser);
+                
+                frm.ShowDialog();
+            }
         }
 
         // NAVIGATE TO THE ADD NEW PERSON PAGE

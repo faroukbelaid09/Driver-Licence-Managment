@@ -91,6 +91,12 @@
     <Compile Include="ShowPersonDetailsForm.Designer.cs">
       <DependentUpon>ShowPersonDetailsForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="ShowUserDetails.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ShowUserDetails.Designer.cs">
+      <DependentUpon>ShowUserDetails.cs</DependentUpon>
+    </Compile>
     <Compile Include="UserForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -127,6 +133,9 @@
     </Compile>
     <EmbeddedResource Include="ShowPersonDetailsForm.resx">
       <DependentUpon>ShowPersonDetailsForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ShowUserDetails.resx">
+      <DependentUpon>ShowUserDetails.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="UserForm.resx">
       <DependentUpon>UserForm.cs</DependentUpon>
