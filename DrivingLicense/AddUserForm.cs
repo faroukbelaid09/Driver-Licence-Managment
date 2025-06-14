@@ -6,8 +6,13 @@ namespace DrivingLicense
 {
     public partial class AddUserForm : Form
     {
+
+        public delegate void TriggerEventHandler();
+        public event TriggerEventHandler EventTrigger;
+
         clsPerson _person;
         clsUser _newUser;
+
 
         private void ResetTabControll()
         {
@@ -40,14 +45,23 @@ namespace DrivingLicense
             if (person != null) 
             {
                 _person = person;
-                Console.WriteLine("GENDER:::: " + _person.GenderID.ToString());
                 ctrlPersonInfo1.HandleDataReceived(_person);
                 NextBTN.Enabled = true;
             }
             
         }
-
-        
+        private void _EmptyValidator(TextBox textBox)
+        {
+            if (string.IsNullOrEmpty(textBox.Text))
+            {
+                textBox.Focus();
+                errorProvider1.SetError(textBox, "Cannot be empty.");
+            }
+            else
+            {
+                errorProvider1.SetError(textBox, null);
+            }
+        }
         public AddUserForm()
         {
             InitializeComponent();
@@ -126,32 +140,64 @@ namespace DrivingLicense
 
         private void SaveBTN_Click(object sender, EventArgs e)
         {
-            string username = UserNameTB.Text;
-            string password = PasswordTB.Text;
-            bool isactive = IsActiveCB.Checked ? true : false;
-
-
-            if(_person != null && !checkIfUserExist(_person.PersonID))
+            if (ValidateChildren(ValidationConstraints.Enabled))
             {
-                int userid = _newUser.Add(_person.PersonID, username, password, isactive);
-                if (userid != -1) 
+                string username = UserNameTB.Text.Trim();
+                string password = PasswordTB.Text.Trim();
+                string confirmedPassword = ConfirmPasswordTB.Text.Trim();
+                bool isActive = IsActiveCB.Checked ? true : false;
+
+                if (password == confirmedPassword)
                 {
-                    MessageBox.Show("User ID: " + userid.ToString(), "Done", MessageBoxButtons.OK);
+                    if (_person != null && !checkIfUserExist(_person.PersonID))
+                    {
+                        int userID = _newUser.Add(_person.PersonID, username, password, isActive);
+                        if (userID != -1)
+                        {
+                            UserIDValue.Text = userID.ToString();
+                            DialogResult res = MessageBox.Show("User ID: " + userID.ToString(), "User Was added successfully!", MessageBoxButtons.OK);
+                            if (res == DialogResult.OK)
+                            {
+                                EventTrigger?.Invoke();
+                                this.Close();
+                            }
+                        }
+                        else
+                        {
+                            MessageBox.Show("An error occurred when adding this user. please try again.", "Failed", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        }
+                    }
+                    else
+                    {
+                        MessageBox.Show("An error occurred when adding this user. please try again.", "Failed", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    }
                 }
                 else
                 {
-                    MessageBox.Show("An error acurred when adding this user. please try again.", "Failed", MessageBoxButtons.OK,MessageBoxIcon.Error);
+                    MessageBox.Show("Please enter your password correctly!", "Incorrect Password!", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
-            }
-            else
-            {
-                MessageBox.Show("An error accurred when adding this user. please try again.", "Failed", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                
             }
         }
 
         private void CloseBTN_Click(object sender, EventArgs e)
         {
             this.Close();
+        }
+
+        private void UserNameTB_Validating(object sender, System.ComponentModel.CancelEventArgs e)
+        {
+            _EmptyValidator(UserNameTB);
+        }
+
+        private void PasswordTB_Validating(object sender, System.ComponentModel.CancelEventArgs e)
+        {
+            _EmptyValidator(PasswordTB);
+        }
+
+        private void ConfirmPasswordTB_Validating(object sender, System.ComponentModel.CancelEventArgs e)
+        {
+            _EmptyValidator(ConfirmPasswordTB);
         }
     }
 }

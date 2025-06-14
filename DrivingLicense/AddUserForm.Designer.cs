@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(AddUserForm));
             this.TabControlWindow = new System.Windows.Forms.TabControl();
             this.PersonalInfoTab = new System.Windows.Forms.TabPage();
@@ -56,6 +57,7 @@
             this.SaveBTN = new System.Windows.Forms.Button();
             this.CloseBTN = new System.Windows.Forms.Button();
             this.AddNewUserLabel = new System.Windows.Forms.Label();
+            this.errorProvider1 = new System.Windows.Forms.ErrorProvider(this.components);
             this.TabControlWindow.SuspendLayout();
             this.PersonalInfoTab.SuspendLayout();
             this.FillterGB.SuspendLayout();
@@ -66,6 +68,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.PersonIDPB)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.errorProvider1)).BeginInit();
             this.SuspendLayout();
             // 
             // TabControlWindow
@@ -220,6 +223,7 @@
             this.ConfirmPasswordTB.Name = "ConfirmPasswordTB";
             this.ConfirmPasswordTB.Size = new System.Drawing.Size(139, 20);
             this.ConfirmPasswordTB.TabIndex = 25;
+            this.ConfirmPasswordTB.Validating += new System.ComponentModel.CancelEventHandler(this.ConfirmPasswordTB_Validating);
             // 
             // pictureBox3
             // 
@@ -247,6 +251,7 @@
             this.PasswordTB.Name = "PasswordTB";
             this.PasswordTB.Size = new System.Drawing.Size(139, 20);
             this.PasswordTB.TabIndex = 22;
+            this.PasswordTB.Validating += new System.ComponentModel.CancelEventHandler(this.PasswordTB_Validating);
             // 
             // pictureBox2
             // 
@@ -274,6 +279,7 @@
             this.UserNameTB.Name = "UserNameTB";
             this.UserNameTB.Size = new System.Drawing.Size(139, 20);
             this.UserNameTB.TabIndex = 19;
+            this.UserNameTB.Validating += new System.ComponentModel.CancelEventHandler(this.UserNameTB_Validating);
             // 
             // pictureBox1
             // 
@@ -358,6 +364,10 @@
             this.AddNewUserLabel.TabIndex = 5;
             this.AddNewUserLabel.Text = "Add New User";
             // 
+            // errorProvider1
+            // 
+            this.errorProvider1.ContainerControl = this;
+            // 
             // AddUserForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -382,6 +392,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.PersonIDPB)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.errorProvider1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -416,5 +427,6 @@
         private System.Windows.Forms.PictureBox pictureBox2;
         private System.Windows.Forms.Label PasswordLabel;
         private System.Windows.Forms.CheckBox IsActiveCB;
+        private System.Windows.Forms.ErrorProvider errorProvider1;
     }
 }

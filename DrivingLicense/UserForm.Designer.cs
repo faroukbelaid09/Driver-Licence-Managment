@@ -31,6 +31,11 @@
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(UserForm));
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.UserGridView = new System.Windows.Forms.DataGridView();
+            this.UserID = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.PersonID = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.UserName = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.FullName = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.IsActive = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.ManageUsersLabel = new System.Windows.Forms.Label();
             this.FillterTB = new System.Windows.Forms.TextBox();
             this.AddPersonPB = new System.Windows.Forms.PictureBox();
@@ -39,11 +44,6 @@
             this.CloseFormBTN = new System.Windows.Forms.Button();
             this.RecordValue = new System.Windows.Forms.Label();
             this.RecordLabel = new System.Windows.Forms.Label();
-            this.UserID = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.PersonID = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.UserName = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.FullName = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.IsActive = new System.Windows.Forms.DataGridViewTextBoxColumn();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.UserGridView)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.AddPersonPB)).BeginInit();
@@ -63,6 +63,7 @@
             // 
             this.UserGridView.AllowUserToAddRows = false;
             this.UserGridView.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
+            this.UserGridView.BackgroundColor = System.Drawing.SystemColors.Window;
             this.UserGridView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.UserGridView.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.UserID,
@@ -72,8 +73,44 @@
             this.IsActive});
             this.UserGridView.Location = new System.Drawing.Point(47, 336);
             this.UserGridView.Name = "UserGridView";
+            this.UserGridView.ReadOnly = true;
             this.UserGridView.Size = new System.Drawing.Size(863, 150);
             this.UserGridView.TabIndex = 1;
+            // 
+            // UserID
+            // 
+            this.UserID.DataPropertyName = "UserID";
+            this.UserID.HeaderText = "User ID";
+            this.UserID.Name = "UserID";
+            this.UserID.ReadOnly = true;
+            // 
+            // PersonID
+            // 
+            this.PersonID.DataPropertyName = "PersonID";
+            this.PersonID.HeaderText = "Person ID";
+            this.PersonID.Name = "PersonID";
+            this.PersonID.ReadOnly = true;
+            // 
+            // UserName
+            // 
+            this.UserName.DataPropertyName = "UserName";
+            this.UserName.HeaderText = "User Name";
+            this.UserName.Name = "UserName";
+            this.UserName.ReadOnly = true;
+            // 
+            // FullName
+            // 
+            this.FullName.DataPropertyName = "FullName";
+            this.FullName.HeaderText = "Full Name";
+            this.FullName.Name = "FullName";
+            this.FullName.ReadOnly = true;
+            // 
+            // IsActive
+            // 
+            this.IsActive.DataPropertyName = "IsActive";
+            this.IsActive.HeaderText = "Is Active";
+            this.IsActive.Name = "IsActive";
+            this.IsActive.ReadOnly = true;
             // 
             // ManageUsersLabel
             // 
@@ -94,6 +131,7 @@
             this.FillterTB.Name = "FillterTB";
             this.FillterTB.Size = new System.Drawing.Size(162, 24);
             this.FillterTB.TabIndex = 11;
+            this.FillterTB.TextChanged += new System.EventHandler(this.FillterTB_TextChanged_1);
             // 
             // AddPersonPB
             // 
@@ -112,18 +150,16 @@
             this.FillterCB.FormattingEnabled = true;
             this.FillterCB.Items.AddRange(new object[] {
             "None",
+            "User ID",
             "Person ID",
-            "National No",
-            "First Name",
-            "Last Name",
-            "Nationality",
-            "Gender",
-            "Phone",
-            "Email"});
+            "Full Name",
+            "User Name",
+            "Active Users"});
             this.FillterCB.Location = new System.Drawing.Point(136, 289);
             this.FillterCB.Name = "FillterCB";
             this.FillterCB.Size = new System.Drawing.Size(121, 24);
             this.FillterCB.TabIndex = 9;
+            this.FillterCB.SelectedIndexChanged += new System.EventHandler(this.FillterCB_SelectedIndexChanged_1);
             // 
             // FillterByLabel
             // 
@@ -144,6 +180,7 @@
             this.CloseFormBTN.TabIndex = 14;
             this.CloseFormBTN.Text = "Close";
             this.CloseFormBTN.UseVisualStyleBackColor = true;
+            this.CloseFormBTN.Click += new System.EventHandler(this.CloseFormBTN_Click);
             // 
             // RecordValue
             // 
@@ -164,37 +201,6 @@
             this.RecordLabel.Size = new System.Drawing.Size(74, 17);
             this.RecordLabel.TabIndex = 12;
             this.RecordLabel.Text = "#Record:";
-            // 
-            // UserID
-            // 
-            this.UserID.DataPropertyName = "UserID";
-            this.UserID.HeaderText = "User ID";
-            this.UserID.Name = "UserID";
-            // 
-            // PersonID
-            // 
-            this.PersonID.DataPropertyName = "PersonID";
-            this.PersonID.HeaderText = "Person ID";
-            this.PersonID.Name = "PersonID";
-            // 
-            // UserName
-            // 
-            this.UserName.DataPropertyName = "UserName";
-            this.UserName.HeaderText = "User Name";
-            this.UserName.Name = "UserName";
-            // 
-            // FullName
-            // 
-            this.FullName.DataPropertyName = "FullName";
-            this.FullName.HeaderText = "Full Name";
-            this.FullName.Name = "FullName";
-            // 
-            // IsActive
-            // 
-            this.IsActive.DataPropertyName = "IsActive";
-            this.IsActive.HeaderText = "Is Active";
-            this.IsActive.Name = "IsActive";
-            this.IsActive.ReadOnly = true;
             // 
             // UserForm
             // 
