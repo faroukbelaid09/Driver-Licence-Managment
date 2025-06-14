@@ -77,6 +77,19 @@ namespace DrivingLicense
             }
         }
 
+        // RETURN THE SELECTED USER FROM THE MENU
+        private clsUser GetTheSelectedPerson()
+        {
+            // Get the selected row index from the ContextMenuStrip's Tag
+            int rowIndex = (int)ContextMenuStrip.Tag;
+
+            // Access the data of the selected row
+            var selectedRow = UserGridView.Rows[rowIndex];
+            clsUser user = selectedRow.DataBoundItem as clsUser;
+
+            return user;
+        }
+
         public UserForm()
         {
             InitializeComponent();
@@ -107,6 +120,7 @@ namespace DrivingLicense
                     break;
             }
         }
+        
         private void ApplyFillter(string filterText, FillterOptions FillterOption)
         {
             // Apply the filter
@@ -129,6 +143,25 @@ namespace DrivingLicense
             AddUserForm frm = new AddUserForm();
             frm.EventTrigger += _DisplayUsers;
             frm.ShowDialog();
+        }
+
+        private void contextMenuStrip1_Opening_1(object sender, System.ComponentModel.CancelEventArgs e)
+        {
+            // Get the mouse position relative to the DataGridView
+            var hitTest = UserGridView.HitTest(UserGridView.PointToClient(Cursor.Position).X,
+                UserGridView.PointToClient(Cursor.Position).Y);
+
+            // Check if the right-click was on a row
+            if (hitTest.RowIndex >= 0)
+            {
+                // Store the selected row index in the ContextMenuStrip's Tag
+                contextMenuStrip1.Tag = hitTest.RowIndex;
+            }
+            else
+            {
+                // Cancel the context menu if the right-click was not on a row
+                e.Cancel = true;
+            }
         }
 
         private void FillterCB_SelectedIndexChanged_1(object sender, EventArgs e)
@@ -186,6 +219,40 @@ namespace DrivingLicense
         private void CloseFormBTN_Click(object sender, EventArgs e)
         {
             this.Close();
+        }
+
+        // NAVIGATE TO THE SHOW DETAILS PAGE
+        private void showDetailsToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        // NAVIGATE TO THE ADD NEW PERSON PAGE
+        private void addNewUserToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        // NAVIGATE TO THE EDIT PERSON PAGE (WITH THE SELECTED PERSON INFO)
+        private void editToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        // DELETE THE SELECTED PERSON
+        private void deleteToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+
+        }
+        // SEND AN EMAIL TO THE SELECTED PERSON
+        private void emailToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+
+        }
+        // CALL THE SELECTED PERSON
+        private void callToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }
