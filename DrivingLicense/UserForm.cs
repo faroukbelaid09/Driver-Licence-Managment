@@ -237,7 +237,8 @@ namespace DrivingLicense
         // NAVIGATE TO THE ADD NEW PERSON PAGE
         private void addNewUserToolStripMenuItem_Click(object sender, EventArgs e)
         {
-
+            AddUserForm frm = new AddUserForm();
+            frm.ShowDialog();
         }
 
         // NAVIGATE TO THE EDIT PERSON PAGE (WITH THE SELECTED PERSON INFO)
