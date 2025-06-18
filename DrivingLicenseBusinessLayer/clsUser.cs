@@ -1,7 +1,4 @@
-﻿
-
-
-using DrivingLicenseDataLayer;
+﻿using DrivingLicenseDataLayer;
 using System.Collections.Generic;
 using System.Data;
 using System;
@@ -14,7 +11,7 @@ namespace DrivingLicenseBusinessLayer
         public int PersonID { get; set; }
         public string UserName { get; set; }
         public string FullName { get; set; }
-        private string Password { get; set; }
+        public string Password { get; set; }
         public bool IsActive { get; set; }
 
         public clsUser() { }
@@ -28,12 +25,15 @@ namespace DrivingLicenseBusinessLayer
         }
 
 
-        public int Add(int personID,string userName, string password, bool isActive) {
-            int userID = clsUserDataAccess.AddUser(personID,userName,password,isActive);
+        public int Add() {
+            int userID = clsUserDataAccess.AddUser(this.PersonID,this.UserName,this.Password,this.IsActive);
             return userID;
         }
 
-
+        public bool Update()
+        {
+            return clsUserDataAccess.UpdateUser(this.UserID,this.UserName,this.Password,this.IsActive);
+        }
         public static bool CheckIfUserExist(int personID)
         {
            return clsUserDataAccess.CheckIfUserExist(personID);

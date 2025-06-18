@@ -52,11 +52,11 @@
     <Compile Include="AddEditForm.Designer.cs">
       <DependentUpon>AddEditForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="AddUserForm.cs">
+    <Compile Include="AddEditUserForm.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="AddUserForm.Designer.cs">
-      <DependentUpon>AddUserForm.cs</DependentUpon>
+    <Compile Include="AddEditUserForm.Designer.cs">
+      <DependentUpon>AddEditUserForm.cs</DependentUpon>
     </Compile>
     <Compile Include="clsProfilePicture.cs" />
     <Compile Include="ctrlAddEdit.cs">
@@ -106,8 +106,8 @@
     <EmbeddedResource Include="AddEditForm.resx">
       <DependentUpon>AddEditForm.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="AddUserForm.resx">
-      <DependentUpon>AddUserForm.cs</DependentUpon>
+    <EmbeddedResource Include="AddEditUserForm.resx">
+      <DependentUpon>AddEditUserForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="ctrlAddEdit.resx">
       <DependentUpon>ctrlAddEdit.cs</DependentUpon>

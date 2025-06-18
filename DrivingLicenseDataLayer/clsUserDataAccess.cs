@@ -1,6 +1,8 @@
 ﻿using System;
 using System.Data;
 using System.Data.SqlClient;
+using System.Net;
+using System.Security.Policy;
 
 namespace DrivingLicenseDataLayer
 {
@@ -114,5 +116,43 @@ namespace DrivingLicenseDataLayer
             return UserID;
         }
         
+        public static bool UpdateUser(int UserID, string UserName, string Password,bool IsActive)
+        {
+            bool isUpdated = false;
+            SqlConnection connection = new SqlConnection(clsDataAccessSettings.ConnectionString);
+
+            string query = @"Update Users 
+                           Set UserName = @UserName, Password = @Password,IsActive = @IsActive
+                           Where UserID = @UserID";
+
+            SqlCommand command = new SqlCommand(query, connection);
+
+            command.Parameters.AddWithValue("@UserID", UserID);
+            command.Parameters.AddWithValue("@UserName", UserName);
+            command.Parameters.AddWithValue("@Password", Password);
+            command.Parameters.AddWithValue("@IsActive", IsActive);
+
+            try
+            {
+                connection.Open();
+                int rowAffected = command.ExecuteNonQuery();
+
+                if (rowAffected > 0)
+                {
+                    isUpdated = true;
+                }
+
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine("DB: Error when updating user." + ex.ToString());
+            }
+            finally
+            {
+                connection?.Close();
+            }
+
+            return isUpdated;
+        }
     }
 }

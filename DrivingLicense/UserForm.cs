@@ -140,7 +140,7 @@ namespace DrivingLicense
         
         private void AddPersonPB_Click(object sender, EventArgs e)
         {
-            AddUserForm frm = new AddUserForm();
+            AddEditUserForm frm = new AddEditUserForm();
             frm.EventTrigger += _DisplayUsers;
             frm.ShowDialog();
         }
@@ -237,14 +237,20 @@ namespace DrivingLicense
         // NAVIGATE TO THE ADD NEW PERSON PAGE
         private void addNewUserToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            AddUserForm frm = new AddUserForm();
+            AddEditUserForm frm = new AddEditUserForm();
             frm.ShowDialog();
         }
 
         // NAVIGATE TO THE EDIT PERSON PAGE (WITH THE SELECTED PERSON INFO)
         private void editToolStripMenuItem_Click(object sender, EventArgs e)
         {
-
+            clsUser selectedUser = GetTheSelectedUser();
+            if (selectedUser != null)
+            {
+                AddEditUserForm frm = new AddEditUserForm(selectedUser);
+                frm.EventTrigger += _DisplayUsers;
+                frm.ShowDialog();
+            }
         }
 
         // DELETE THE SELECTED PERSON
