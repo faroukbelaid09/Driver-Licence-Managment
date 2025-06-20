@@ -34,5 +34,10 @@ namespace DrivingLicense
         {
             ctrlPersonInfo1.HandleDataReceived(_person);
         }
+
+        private void ShowUserDetails_Load(object sender, System.EventArgs e)
+        {
+
+        }
     }
 }

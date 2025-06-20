@@ -292,5 +292,17 @@ namespace DrivingLicense
             MessageBox.Show("This feature is not available yet.", "Info",
                     MessageBoxButtons.OK, MessageBoxIcon.Information);
         }
+
+        private void changePasswordToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            clsUser selectedUser = GetTheSelectedUser();
+            if (selectedUser != null)
+            {
+                ChangePasswordForm frm = new ChangePasswordForm(selectedUser);
+                frm.EventTrigger += _DisplayUsers;
+                frm.ShowDialog();
+            }
+                
+        }
     }
 }

@@ -25,7 +25,6 @@ namespace DrivingLicenseBusinessLayer
             this.IsActive = isActive;
         }
 
-
         public int Add() {
             int userID = clsUserDataAccess.AddUser(this.PersonID,this.UserName,this.Password,this.IsActive);
             return userID;

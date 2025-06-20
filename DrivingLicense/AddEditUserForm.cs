@@ -84,8 +84,6 @@ namespace DrivingLicense
             UserNameTB.Text = oldUser.UserName;
             PasswordTB.Text = oldUser.Password;
             ConfirmPasswordTB.Text = oldUser.Password;
-            Console.WriteLine("PASSWORD:: " + oldUser.Password);
-            Console.WriteLine("CONFIRM PASSWORD:: " + oldUser.Password);
             IsActiveCB.Checked = oldUser.IsActive;
         }
 

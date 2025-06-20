@@ -235,10 +235,9 @@ namespace DrivingLicense
         // CALL THE SELECTED PERSON
         private void phoneCallToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            MessageBox.Show("This feature is not availabe yet.", "Info",
+            MessageBox.Show("This feature is not available yet.", "Info",
                     MessageBoxButtons.OK, MessageBoxIcon.Information);
         }
-        
         
         private void AddPersonPB_MouseHover(object sender, EventArgs e)
         {

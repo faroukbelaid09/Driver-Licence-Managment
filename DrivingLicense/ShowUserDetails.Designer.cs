@@ -126,6 +126,7 @@
             this.Controls.Add(this.ctrlPersonInfo1);
             this.Name = "ShowUserDetails";
             this.Text = "ShowUserDetails";
+            this.Load += new System.EventHandler(this.ShowUserDetails_Load);
             this.LoginInfoGB.ResumeLayout(false);
             this.LoginInfoGB.PerformLayout();
             this.ResumeLayout(false);
