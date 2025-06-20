@@ -154,5 +154,38 @@ namespace DrivingLicenseDataLayer
 
             return isUpdated;
         }
+
+        public static bool DeleteUser(int UserID)
+        {
+            bool isDeleted = false;
+            SqlConnection connection = new SqlConnection(clsDataAccessSettings.ConnectionString);
+
+            string query = "Delete from Users where UserID = @UserID";
+
+            SqlCommand command = new SqlCommand(query, connection);
+
+            command.Parameters.AddWithValue("@UserID", UserID);
+
+            try
+            {
+                connection.Open();
+                int rowAffected = command.ExecuteNonQuery();
+
+                if (rowAffected > 0)
+                {
+                    isDeleted = true;
+                }
+
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine("DB: Error when deleting this user.");
+            }
+            finally
+            {
+                connection?.Close();
+            }
+            return isDeleted;
+        }
     }
 }

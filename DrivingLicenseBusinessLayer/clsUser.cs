@@ -30,16 +30,18 @@ namespace DrivingLicenseBusinessLayer
             int userID = clsUserDataAccess.AddUser(this.PersonID,this.UserName,this.Password,this.IsActive);
             return userID;
         }
-
         public bool Update()
         {
             return clsUserDataAccess.UpdateUser(this.UserID,this.UserName,this.Password,this.IsActive);
+        }
+        public bool Delete()
+        {
+            return clsUserDataAccess.DeleteUser(this.UserID);
         }
         public static bool CheckIfUserExist(int personID)
         {
            return clsUserDataAccess.CheckIfUserExist(personID);
         }
-
         public static List<clsUser> GetAllUsers()
         {
 

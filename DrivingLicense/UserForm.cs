@@ -256,7 +256,29 @@ namespace DrivingLicense
         // DELETE THE SELECTED PERSON
         private void deleteToolStripMenuItem_Click(object sender, EventArgs e)
         {
+            clsUser user = GetTheSelectedUser();
+            bool isDeleted = false;
 
+            if (user != null)
+            {
+                if (MessageBox.Show("Are you sure you want to delete this user?", "Delete",
+                    MessageBoxButtons.OKCancel, MessageBoxIcon.Warning) == DialogResult.OK)
+                {
+                    isDeleted = user.Delete();
+                }
+
+                if (isDeleted)
+                {
+                    //ProfilePictureHelper.DeleteOldImage(person.ImagePath);
+                    MessageBox.Show("The user was deleted Successfully", "Delete",
+                        MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    _DisplayUsers();
+                }
+
+                return;
+            }
+            MessageBox.Show("An error occured when deleting this user.", "Delete",
+                  MessageBoxButtons.OK, MessageBoxIcon.Error);
         }
         // SEND AN EMAIL TO THE SELECTED PERSON
         private void emailToolStripMenuItem_Click(object sender, EventArgs e)
