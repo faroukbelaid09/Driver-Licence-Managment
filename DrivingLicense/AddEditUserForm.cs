@@ -1,12 +1,5 @@
 ﻿using DrivingLicenseBusinessLayer;
 using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace DrivingLicense
@@ -17,13 +10,11 @@ namespace DrivingLicense
         public event TriggerEventHandler EventTrigger;
         enum Mode {enAdd, enEdit}
         
-        clsPerson _person;
-        clsUser _newUser;
-        clsUser _oldUser;
-        
         Mode _mode;
+        clsPerson _person;
+        clsUser _user;
 
-        private void ResetTabControll()
+        private void ResetTabControl()
         {
 
             TabControlWindow.SelectedIndex = 0;
@@ -45,7 +36,7 @@ namespace DrivingLicense
             // disable next button
             NextBTN.Enabled = false;
         }
-        private void ResetFillterGB()
+        private void ResetFilterGB()
         {
             FillterGB.Enabled = false;
         }
@@ -53,7 +44,7 @@ namespace DrivingLicense
         {
             return clsUser.CheckIfUserExist(personID);
         }
-        private void loadNewPersonData(clsPerson person)
+        private void loadPersonData(clsPerson person)
         {
             if (person != null)
             {
@@ -75,7 +66,7 @@ namespace DrivingLicense
                 errorProvider1.SetError(textBox, null);
             }
         }
-        private void _UpdateFormLabel()
+        private void _UpdateFormTitle()
         {
             if (_mode == Mode.enEdit) {
                 AddEditUserLabel.Text = "Edit User";
@@ -85,6 +76,21 @@ namespace DrivingLicense
                 AddEditUserLabel.Text = "Add New User";
             }
         }
+        
+        
+        // IN edit mode load old user login data to the textboxes
+        private void loadOldLoginData(clsUser oldUser)
+        {
+            UserNameTB.Text = oldUser.UserName;
+            PasswordTB.Text = oldUser.Password;
+            ConfirmPasswordTB.Text = oldUser.Password;
+            Console.WriteLine("PASSWORD:: " + oldUser.Password);
+            Console.WriteLine("CONFIRM PASSWORD:: " + oldUser.Password);
+            IsActiveCB.Checked = oldUser.IsActive;
+        }
+
+
+        // ADDING A NEW USER
         private void AddNewUser()
         {
             if (ValidateChildren(ValidationConstraints.Enabled))
@@ -98,12 +104,12 @@ namespace DrivingLicense
                 {
                     if (_person != null && !checkIfUserExist(_person.PersonID))
                     {
-                        _newUser.PersonID = _person.PersonID;
-                        _newUser.Password = password;
-                        _newUser.UserName = username;
-                        _newUser.IsActive = isActive;
+                        _user.PersonID = _person.PersonID;
+                        _user.Password = password;
+                        _user.UserName = username;
+                        _user.IsActive = isActive;
 
-                        int userID = _newUser.Add();
+                        int userID = _user.Add();
                         if (userID != -1)
                         {
                             UserIDValue.Text = userID.ToString();
@@ -131,6 +137,8 @@ namespace DrivingLicense
 
             }
         }
+
+        // UPDATING OLD USER
         private void UpdateUser()
         {
             if (ValidateChildren(ValidationConstraints.Enabled))
@@ -142,11 +150,11 @@ namespace DrivingLicense
 
                 if (password == confirmedPassword)
                 {
-                    _oldUser.UserName = username;
-                    _oldUser.IsActive = isActive;
-                    _oldUser.Password = password;
+                    _user.UserName = username;
+                    _user.IsActive = isActive;
+                    _user.Password = password;
 
-                    if (_oldUser.Update())
+                    if (_user.Update())
                     {
                         DialogResult res = MessageBox.Show("User updated successfully!", "Update User!", MessageBoxButtons.OK);
                         if (res == DialogResult.OK)
@@ -173,47 +181,39 @@ namespace DrivingLicense
 
             }
         }
-        private void loadOldLoginData(clsUser oldUser)
-        {
-            UserNameTB.Text = oldUser.UserName;
-            PasswordTB.Text = oldUser.Password;
-            ConfirmPasswordTB.Text = oldUser.Password;
 
-            IsActiveCB.Checked = oldUser.IsActive;
-        }
 
         public AddEditUserForm()
         {
             InitializeComponent();
-            ResetTabControll();
+            ResetTabControl();
             ResetComboBox();
             ResetButtonState();
 
-            _newUser = new clsUser();
+            _user = new clsUser();
             _mode = Mode.enAdd;
         }
         public AddEditUserForm(clsUser user)
         {
-            _mode = Mode.enEdit;
             InitializeComponent();
-            ResetTabControll();
+            ResetFilterGB();
+            ResetTabControl();
             ResetComboBox();
             ResetButtonState();
+            _mode = Mode.enEdit;
 
-            _oldUser = user;
-            _person = clsPerson.FindPersonByID(_oldUser.PersonID);
-            loadNewPersonData(_person);
-
-            _UpdateFormLabel();
-            ResetFillterGB();
-
-            loadOldLoginData(_oldUser);
+            _user = user;
+            _person = clsPerson.FindPersonByID(_user.PersonID);
+            
+            _UpdateFormTitle();
+            loadPersonData(_person);
+            loadOldLoginData(_user);
         }
 
         private void AddPersonPB_Click_1(object sender, EventArgs e)
         {
             AddEditForm frm = new AddEditForm();
-            frm.EventTrigger += loadNewPersonData;
+            frm.EventTrigger += loadPersonData;
             frm.Show();
         }
 
@@ -274,7 +274,7 @@ namespace DrivingLicense
             {
                 if (!checkIfUserExist(_person.PersonID))
                 {
-
+                    TabControlWindow.SelectedIndex = 1;
                 }
                 else
                 {

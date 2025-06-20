@@ -34,7 +34,7 @@ namespace DrivingLicense
             
             if (_users != null && _users.Count > 0)
             {
-                UserGridView.AutoGenerateColumns = true;
+                UserGridView.AutoGenerateColumns = false;
                 UserGridView.DataSource = _users;
 
                 // Find and replace the boolean column

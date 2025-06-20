@@ -15,12 +15,13 @@ namespace DrivingLicenseBusinessLayer
         public bool IsActive { get; set; }
 
         public clsUser() { }
-        public clsUser(int userID,int personID,string userName,string fullName, bool isActive) 
+        public clsUser(int userID,int personID,string userName,string fullName,string password, bool isActive) 
         { 
             this.UserID = userID;
             this.PersonID = personID;
             this.UserName = userName;
             this.FullName = fullName;
+            this.Password = password;
             this.IsActive = isActive;
         }
 
@@ -55,6 +56,7 @@ namespace DrivingLicenseBusinessLayer
                     int personID = Convert.ToInt32(row["PersonID"]);
                     string userName = row["UserName"].ToString();
                     string fullName = row["FullName"].ToString();
+                    string password = row["Password"].ToString();
                     bool isActive = Convert.ToBoolean(row["IsActive"]);
 
                     // Create a new clsPerson object and add it to the list
@@ -63,6 +65,7 @@ namespace DrivingLicenseBusinessLayer
                         personID,
                         userName,
                         fullName,
+                        password,
                         isActive
                     );
 
