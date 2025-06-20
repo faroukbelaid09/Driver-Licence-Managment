@@ -1,6 +1,7 @@
 ﻿using DrivingLicenseBusinessLayer;
 using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Linq;
 using System.Windows.Forms;
 
@@ -283,7 +284,7 @@ namespace DrivingLicense
         // SEND AN EMAIL TO THE SELECTED PERSON
         private void emailToolStripMenuItem_Click(object sender, EventArgs e)
         {
-
+            Process.Start("outlookmail:");
         }
         // CALL THE SELECTED PERSON
         private void callToolStripMenuItem_Click(object sender, EventArgs e)
