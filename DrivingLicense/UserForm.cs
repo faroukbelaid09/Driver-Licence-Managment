@@ -289,7 +289,8 @@ namespace DrivingLicense
         // CALL THE SELECTED PERSON
         private void callToolStripMenuItem_Click(object sender, EventArgs e)
         {
-
+            MessageBox.Show("This feature is not available yet.", "Info",
+                    MessageBoxButtons.OK, MessageBoxIcon.Information);
         }
     }
 }
