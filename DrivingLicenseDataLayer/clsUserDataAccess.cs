@@ -41,6 +41,39 @@ namespace DrivingLicenseDataLayer
             return found;
         }
 
+        public static bool CheckIfUserNameExist(string username)
+        {
+            bool found = false;
+
+            SqlConnection connection = new SqlConnection(clsDataAccessSettings.ConnectionString);
+            string query = @"select 1 from Users where Users.UserName = @username;";
+
+            SqlCommand command = new SqlCommand(query, connection);
+            command.Parameters.AddWithValue("@username", username);
+
+            try
+            {
+                connection.Open();
+
+                object result = command.ExecuteScalar();
+
+                if (result != null && int.TryParse(result.ToString(), out int res))
+                {
+                    found = true;
+                }
+            }
+            catch (Exception ex)
+            {
+                found = false;
+                Console.WriteLine("DB: Error when looking for a user in DB.\n" + ex.Message);
+            }
+            finally
+            {
+                connection?.Close();
+            }
+
+            return found;
+        }
         public static bool FindUserByUserNameAndPassword(ref int userID, ref int personID,ref string username,ref string password,ref bool isActive)
         {
             bool userFound = false;

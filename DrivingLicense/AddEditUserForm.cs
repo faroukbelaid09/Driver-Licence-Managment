@@ -107,21 +107,29 @@ namespace DrivingLicense
                         _user.UserName = username;
                         _user.IsActive = isActive;
 
-                        int userID = _user.Add();
-                        if (userID != -1)
+                        if (!clsUser.CheckIfUserNameExist(_user.UserName))
                         {
-                            UserIDValue.Text = userID.ToString();
-                            DialogResult res = MessageBox.Show("User ID: " + userID.ToString(), "User Was added successfully!", MessageBoxButtons.OK);
-                            if (res == DialogResult.OK)
+                            int userID = _user.Add();
+                            if (userID != -1)
                             {
-                                EventTrigger?.Invoke();
-                                this.Close();
+                                UserIDValue.Text = userID.ToString();
+                                DialogResult res = MessageBox.Show("User ID: " + userID.ToString(), "User Was added successfully!", MessageBoxButtons.OK);
+                                if (res == DialogResult.OK)
+                                {
+                                    EventTrigger?.Invoke();
+                                    this.Close();
+                                }
+                            }
+                            else
+                            {
+                                MessageBox.Show("An error occurred when adding this user. please try again.", "Failed", MessageBoxButtons.OK, MessageBoxIcon.Error);
                             }
                         }
                         else
                         {
-                            MessageBox.Show("An error occurred when adding this user. please try again.", "Failed", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                            MessageBox.Show("This username already exist. please try another one.", "Failed", MessageBoxButtons.OK, MessageBoxIcon.Error);
                         }
+
                     }
                     else
                     {
@@ -152,20 +160,32 @@ namespace DrivingLicense
                     _user.IsActive = isActive;
                     _user.Password = password;
 
-                    if (_user.Update())
+                    if (!clsUser.CheckIfUserNameExist(_user.UserName))
                     {
-                        DialogResult res = MessageBox.Show("User updated successfully!", "Update User!", MessageBoxButtons.OK);
-                        if (res == DialogResult.OK)
+                        if (_user.Update())
                         {
-                            EventTrigger?.Invoke();
-                            this.Close();
-                        }
+                            DialogResult res = MessageBox.Show("User updated successfully!", "Update User!", MessageBoxButtons.OK);
+                            if (_user.UserID == ApplicationState.CurrentUser.UserID) 
+                            {
+                                ApplicationState.CurrentUser = _user;
+                            }
+                            if (res == DialogResult.OK)
+                            {
+                                EventTrigger?.Invoke();
+                                this.Close();
+                            }
 
+                        }
+                        else
+                        {
+                            MessageBox.Show("An error occured when updating user.", "Update User!", MessageBoxButtons.OK);
+                        }
                     }
                     else
                     {
-                        MessageBox.Show("An error occured when updating user.", "Update User!", MessageBoxButtons.OK);
+                        MessageBox.Show("This username already exist. please try another one.", "Failed", MessageBoxButtons.OK,MessageBoxIcon.Error);
                     }
+
                 }
                 else
                 {
@@ -179,7 +199,6 @@ namespace DrivingLicense
 
             }
         }
-
 
         public AddEditUserForm()
         {

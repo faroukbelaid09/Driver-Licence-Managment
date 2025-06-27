@@ -109,5 +109,9 @@ namespace DrivingLicenseBusinessLayer
             }
             return user;
         }
+        public static bool CheckIfUserNameExist(string userName) 
+        {
+            return clsUserDataAccess.CheckIfUserNameExist(userName);
+        }
     }
 }
