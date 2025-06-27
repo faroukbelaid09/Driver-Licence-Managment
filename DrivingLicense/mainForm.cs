@@ -6,10 +6,14 @@ namespace DrivingLicense
 {
     public partial class mainForm : Form
     {
-        clsPerson person1;
+        public bool SignedOut { get; private set; } = false;
         public mainForm()
         {
             InitializeComponent();
+
+            Console.WriteLine(ApplicationState.CurrentUser.PersonID);
+            Console.WriteLine(ApplicationState.CurrentUser.UserName);
+            Console.WriteLine(ApplicationState.CurrentUser.IsActive);
         }
 
         private void peopleToolStripMenuItem_Click(object sender, EventArgs e)
@@ -21,6 +25,25 @@ namespace DrivingLicense
         private void usersToolStripMenuItem_Click(object sender, EventArgs e)
         {
             UserForm frm = new UserForm();
+            frm.ShowDialog();
+        }
+
+        private void currentUserInfoToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            ShowUserDetails frm = new ShowUserDetails(ApplicationState.CurrentUser);
+            frm.ShowDialog();
+        }
+
+        private void signOutToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            this.SignedOut = true;
+            ApplicationState.CurrentUser = null;
+            this.Close();
+        }
+
+        private void changePasswordToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            ChangePasswordForm frm = new ChangePasswordForm(ApplicationState.CurrentUser);
             frm.ShowDialog();
         }
     }

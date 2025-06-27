@@ -16,7 +16,28 @@ namespace DrivingLicense
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new mainForm());
+
+            bool shouldExit = false;
+
+            while (!shouldExit)
+            {
+                using (var loginForm = new LoginForm())
+                {
+                    if (loginForm.ShowDialog() == DialogResult.OK)
+                    {
+                        // Show main form
+                        var mainForm = new mainForm();
+                        Application.Run(mainForm);
+
+                        // Check if we signed out or just closed the main form
+                        shouldExit = !mainForm.SignedOut;
+                    }
+                    else
+                    {
+                        shouldExit = true;
+                    }
+                }
+            }
         }
     }
 }

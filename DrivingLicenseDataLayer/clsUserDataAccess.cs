@@ -41,6 +41,45 @@ namespace DrivingLicenseDataLayer
             return found;
         }
 
+        public static DataTable FindUserByUserNameAndPassword(string username,string password)
+        {
+            DataTable dt = new DataTable();
+            SqlConnection connection = new SqlConnection(clsDataAccessSettings.ConnectionString);
+
+
+            string query = "select * from Users where UserName = @username and Password = @password";
+
+            SqlCommand command = new SqlCommand(query, connection);
+
+            command.Parameters.AddWithValue("@username", username);
+            command.Parameters.AddWithValue("@password", password);
+
+            try
+            {
+                connection.Open();
+
+                SqlDataReader reader = command.ExecuteReader();
+
+                if (reader.HasRows)
+
+                {
+                    dt.Load(reader);
+                }
+
+                reader.Close();
+            }
+
+            catch (Exception ex)
+            {
+                Console.WriteLine("Error: " + ex.Message);
+            }
+            finally
+            {
+                connection?.Close();
+            }
+
+            return dt;
+        }
         public static DataTable GetUsers()
         {
             DataTable dt = new DataTable();
