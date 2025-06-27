@@ -25,7 +25,7 @@ namespace DrivingLicenseBusinessLayer
             this.Password = password;
             this.IsActive = isActive;
         }
-        
+
         // User Info from DB
         public clsUser(int userID, int personID, string userName, string password, bool isActive)
         {
@@ -91,20 +91,13 @@ namespace DrivingLicenseBusinessLayer
         }
         public static clsUser FindUserByUserNameAndPassword(string username,string password)
         {
+            int userID = -1, personID = -1;
+            string userName = username, userPassword= password;
+            bool isActive = false;
+            
             clsUser user = null;
-            DataTable dataTable = clsUserDataAccess.FindUserByUserNameAndPassword(username,password);
-
-            if (dataTable.Rows != null)
+            if(clsUserDataAccess.FindUserByUserNameAndPassword(ref userID,ref personID,ref userName,ref userPassword,ref isActive))
             {
-                DataRow dataRow = dataTable.Rows[0];
-                // Extract data from the DataRow
-                int userID = Convert.ToInt32(dataRow["UserID"]);
-                int personID = Convert.ToInt32(dataRow["PersonID"]);
-                string userName = dataRow["UserName"].ToString();
-                //string fullName = dataRow["FullName"].ToString();
-                string userPassword = dataRow["Password"].ToString();
-                bool isActive = Convert.ToBoolean(dataRow["IsActive"]);
-
                 // Create a new clsPerson object and add it to the list
                 user = new clsUser(
                     userID,

@@ -32,7 +32,7 @@ namespace DrivingLicense
             }
         }
 
-        private bool Authenticate(string username,string password,bool isRemembered)
+        private bool Authenticate(string username,string password)
         {
             if (!string.IsNullOrEmpty(username) && !string.IsNullOrEmpty(password)) {
                 clsUser currentUser = clsUser.FindUserByUserNameAndPassword(username, password);
@@ -40,6 +40,10 @@ namespace DrivingLicense
                 {
                     ApplicationState.CurrentUser = currentUser;
                     return true;
+                }
+                else
+                {
+                    MessageBox.Show("Error","User was not found.",MessageBoxButtons.OK);
                 }
             }
             return false;
@@ -54,7 +58,7 @@ namespace DrivingLicense
             if (ValidateChildren(ValidationConstraints.Enabled))
             {
                 GetUserInput();
-                if (Authenticate(userInput.username, userInput.password, userInput.isRemembered))
+                if (Authenticate(userInput.username, userInput.password))
                 {
                     this.DialogResult = DialogResult.OK;
                 }

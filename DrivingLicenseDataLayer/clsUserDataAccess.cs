@@ -41,9 +41,9 @@ namespace DrivingLicenseDataLayer
             return found;
         }
 
-        public static DataTable FindUserByUserNameAndPassword(string username,string password)
+        public static bool FindUserByUserNameAndPassword(ref int userID, ref int personID,ref string username,ref string password,ref bool isActive)
         {
-            DataTable dt = new DataTable();
+            bool userFound = false;
             SqlConnection connection = new SqlConnection(clsDataAccessSettings.ConnectionString);
 
 
@@ -51,6 +51,8 @@ namespace DrivingLicenseDataLayer
 
             SqlCommand command = new SqlCommand(query, connection);
 
+            Console.WriteLine("USN: " + username);
+            Console.WriteLine("PASS: " + password);
             command.Parameters.AddWithValue("@username", username);
             command.Parameters.AddWithValue("@password", password);
 
@@ -60,10 +62,17 @@ namespace DrivingLicenseDataLayer
 
                 SqlDataReader reader = command.ExecuteReader();
 
-                if (reader.HasRows)
+                while (reader.Read())
 
                 {
-                    dt.Load(reader);
+                    userID = (int)reader["UserID"];
+                    personID = (int)reader["PersonID"];
+                    username = (string)reader["UserName"];
+                    //fullname = (string)reader["FullName"];
+                    password = (string)reader["Password"];
+                    isActive = (bool)reader["IsActive"];
+
+                    userFound = true;
                 }
 
                 reader.Close();
@@ -78,7 +87,7 @@ namespace DrivingLicenseDataLayer
                 connection?.Close();
             }
 
-            return dt;
+            return userFound;
         }
         public static DataTable GetUsers()
         {
