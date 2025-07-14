@@ -82,6 +82,7 @@ namespace DrivingLicense
         private void loadOldLoginData(clsUser oldUser)
         {
             UserNameTB.Text = oldUser.UserName;
+            UserNameTB.Enabled = false;
             PasswordTB.Text = oldUser.Password;
             ConfirmPasswordTB.Text = oldUser.Password;
             IsActiveCB.Checked = oldUser.IsActive;
@@ -160,32 +161,25 @@ namespace DrivingLicense
                     _user.IsActive = isActive;
                     _user.Password = password;
 
-                    if (!clsUser.CheckIfUserNameExist(_user.UserName))
+                    if (_user.Update())
                     {
-                        if (_user.Update())
+                        DialogResult res = MessageBox.Show("User updated successfully!", "Update User!", MessageBoxButtons.OK);
+                        if (_user.UserID == ApplicationState.CurrentUser.UserID) 
                         {
-                            DialogResult res = MessageBox.Show("User updated successfully!", "Update User!", MessageBoxButtons.OK);
-                            if (_user.UserID == ApplicationState.CurrentUser.UserID) 
-                            {
-                                ApplicationState.CurrentUser = _user;
-                            }
-                            if (res == DialogResult.OK)
-                            {
-                                EventTrigger?.Invoke();
-                                this.Close();
-                            }
+                            ApplicationState.CurrentUser = _user;
+                            Console.WriteLine(ApplicationState.CurrentUser.Password);
+                        }
+                        if (res == DialogResult.OK)
+                        {
+                            EventTrigger?.Invoke();
+                            this.Close();
+                        }
 
-                        }
-                        else
-                        {
-                            MessageBox.Show("An error occured when updating user.", "Update User!", MessageBoxButtons.OK);
-                        }
                     }
                     else
                     {
-                        MessageBox.Show("This username already exist. please try another one.", "Failed", MessageBoxButtons.OK,MessageBoxIcon.Error);
+                        MessageBox.Show("An error occured when updating user.", "Update User!", MessageBoxButtons.OK);
                     }
-
                 }
                 else
                 {

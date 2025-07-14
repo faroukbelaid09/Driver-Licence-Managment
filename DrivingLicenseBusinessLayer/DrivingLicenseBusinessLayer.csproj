@@ -43,6 +43,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="ApplicationState.cs" />
+    <Compile Include="clsApplicationType.cs" />
     <Compile Include="clsPerson.cs" />
     <Compile Include="clsUser.cs" />
     <Compile Include="ProfilePictureHelper.cs" />

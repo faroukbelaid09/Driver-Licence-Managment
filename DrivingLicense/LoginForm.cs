@@ -45,7 +45,7 @@ namespace DrivingLicense
                 }
                 else
                 {
-                    MessageBox.Show("Error","User was not found.",MessageBoxButtons.OK);
+                    MessageBox.Show("User was not found.", "Error", MessageBoxButtons.OK);
                 }
             }
             return false;

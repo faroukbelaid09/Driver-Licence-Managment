@@ -46,5 +46,11 @@ namespace DrivingLicense
             ChangePasswordForm frm = new ChangePasswordForm(ApplicationState.CurrentUser);
             frm.ShowDialog();
         }
+
+        private void manageApplicationTypeToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            ManageApplicationTypesForm frm = new ManageApplicationTypesForm();
+            frm.ShowDialog();
+        }
     }
 }
