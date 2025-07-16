@@ -99,7 +99,7 @@ namespace DrivingLicense
                 string confirmedPassword = ConfirmPasswordTB.Text.Trim();
                 bool isActive = IsActiveCB.Checked ? true : false;
 
-                if (password == confirmedPassword)
+                if (!string.IsNullOrEmpty(password) && !string.IsNullOrEmpty(confirmedPassword) && password == confirmedPassword)
                 {
                     if (_person != null && !checkIfUserExist(_person.PersonID))
                     {

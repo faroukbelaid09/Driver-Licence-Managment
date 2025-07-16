@@ -33,13 +33,13 @@
             this.label1 = new System.Windows.Forms.Label();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.dataGridView = new System.Windows.Forms.DataGridView();
+            this.ApplicationTypeID = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ApplicationTypeTitle = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ApplicationFees = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.label2 = new System.Windows.Forms.Label();
             this.RecordValue = new System.Windows.Forms.Label();
             this.contextMenuStrip = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.editApplicationTypeToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.ApplicationTypeID = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.ApplicationTypeTitle = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.ApplicationFees = new System.Windows.Forms.DataGridViewTextBoxColumn();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView)).BeginInit();
             this.contextMenuStrip.SuspendLayout();
@@ -82,6 +82,27 @@
             this.dataGridView.Size = new System.Drawing.Size(735, 150);
             this.dataGridView.TabIndex = 2;
             // 
+            // ApplicationTypeID
+            // 
+            this.ApplicationTypeID.DataPropertyName = "ApplicationTypeID";
+            this.ApplicationTypeID.HeaderText = "ID";
+            this.ApplicationTypeID.Name = "ApplicationTypeID";
+            this.ApplicationTypeID.ReadOnly = true;
+            // 
+            // ApplicationTypeTitle
+            // 
+            this.ApplicationTypeTitle.DataPropertyName = "ApplicationTypeTitle";
+            this.ApplicationTypeTitle.HeaderText = "Title";
+            this.ApplicationTypeTitle.Name = "ApplicationTypeTitle";
+            this.ApplicationTypeTitle.ReadOnly = true;
+            // 
+            // ApplicationFees
+            // 
+            this.ApplicationFees.DataPropertyName = "ApplicationFees";
+            this.ApplicationFees.HeaderText = "Fees";
+            this.ApplicationFees.Name = "ApplicationFees";
+            this.ApplicationFees.ReadOnly = true;
+            // 
             // label2
             // 
             this.label2.AutoSize = true;
@@ -107,7 +128,8 @@
             this.contextMenuStrip.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.editApplicationTypeToolStripMenuItem});
             this.contextMenuStrip.Name = "contextMenuStrip";
-            this.contextMenuStrip.Size = new System.Drawing.Size(186, 26);
+            this.contextMenuStrip.Size = new System.Drawing.Size(186, 48);
+            this.contextMenuStrip.Opening += new System.ComponentModel.CancelEventHandler(this.contextMenuStrip_Opening_1);
             // 
             // editApplicationTypeToolStripMenuItem
             // 
@@ -116,27 +138,6 @@
             this.editApplicationTypeToolStripMenuItem.Size = new System.Drawing.Size(185, 22);
             this.editApplicationTypeToolStripMenuItem.Text = "Edit Application Type";
             this.editApplicationTypeToolStripMenuItem.Click += new System.EventHandler(this.editApplicationTypeToolStripMenuItem_Click);
-            // 
-            // ApplicationTypeID
-            // 
-            this.ApplicationTypeID.DataPropertyName = "ApplicationTypeID";
-            this.ApplicationTypeID.HeaderText = "ID";
-            this.ApplicationTypeID.Name = "ApplicationTypeID";
-            this.ApplicationTypeID.ReadOnly = true;
-            // 
-            // ApplicationTypeTitle
-            // 
-            this.ApplicationTypeTitle.DataPropertyName = "ApplicationTypeTitle";
-            this.ApplicationTypeTitle.HeaderText = "Title";
-            this.ApplicationTypeTitle.Name = "ApplicationTypeTitle";
-            this.ApplicationTypeTitle.ReadOnly = true;
-            // 
-            // ApplicationFees
-            // 
-            this.ApplicationFees.DataPropertyName = "ApplicationFees";
-            this.ApplicationFees.HeaderText = "Fees";
-            this.ApplicationFees.Name = "ApplicationFees";
-            this.ApplicationFees.ReadOnly = true;
             // 
             // ManageApplicationTypesForm
             // 

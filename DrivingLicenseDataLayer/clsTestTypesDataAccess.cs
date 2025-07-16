@@ -1,18 +1,20 @@
 ﻿using System;
-using System.Data;
+using System.Collections.Generic;
 using System.Data.SqlClient;
-using System.Net;
-using System.Security.Policy;
+using System.Data;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
 
 namespace DrivingLicenseDataLayer
 {
-    public class clsApplicationTypesDataAccess
+    public class clsTestTypesDataAccess
     {
-        public static DataTable GetAllApplicationTypes()
+        public static DataTable GetAllTestTypes()
         {
             DataTable dt = new DataTable();
             SqlConnection connection = new SqlConnection(clsDataAccessSettings.ConnectionString);
-            string query = @"select * from ApplicationTypes";
+            string query = @"select * from TestTypes";
 
             SqlCommand command = new SqlCommand(query, connection);
 
@@ -43,21 +45,22 @@ namespace DrivingLicenseDataLayer
             return dt;
 
         }
-    
-        public static bool UpdateApplicationType(int appID, string appTitle,int appFees)
+
+        public static bool UpdateTestType(int testID, string testTitle,string TestDesc, int testFees)
         {
             bool isUpdated = false;
             SqlConnection connection = new SqlConnection(clsDataAccessSettings.ConnectionString);
 
-            string query = @"Update ApplicationTypes 
-                           Set ApplicationTypeTitle = @appTitle, ApplicationFees = @appFees
-                           Where ApplicationTypeID = @appID";
+            string query = @"Update TestTypes 
+                           Set TestTypeTitle = @testTitle, TestTypeDescription = @TestDesc, TestTypeFees = @testFees
+                           Where TestTypeID = @testID";
 
             SqlCommand command = new SqlCommand(query, connection);
 
-            command.Parameters.AddWithValue("@appID", appID);
-            command.Parameters.AddWithValue("@appTitle", appTitle);
-            command.Parameters.AddWithValue("@appFees", appFees);
+            command.Parameters.AddWithValue("@testID", testID);
+            command.Parameters.AddWithValue("@testTitle", testTitle);
+            command.Parameters.AddWithValue("@TestDesc", TestDesc);
+            command.Parameters.AddWithValue("@testFees", testFees);
 
             try
             {
@@ -66,14 +69,13 @@ namespace DrivingLicenseDataLayer
 
                 if (rowAffected > 0)
                 {
-                    Console.WriteLine("PASSED!");
                     isUpdated = true;
                 }
 
             }
             catch (Exception ex)
             {
-                Console.WriteLine("DB: Error when updating application." + ex.ToString());
+                Console.WriteLine("DB: Error when updating test." + ex.ToString());
             }
             finally
             {

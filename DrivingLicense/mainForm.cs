@@ -52,5 +52,11 @@ namespace DrivingLicense
             ManageApplicationTypesForm frm = new ManageApplicationTypesForm();
             frm.ShowDialog();
         }
+
+        private void manageTestTypesToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            ManageTestTypesForm frm = new ManageTestTypesForm();
+            frm.ShowDialog();
+        }
     }
 }

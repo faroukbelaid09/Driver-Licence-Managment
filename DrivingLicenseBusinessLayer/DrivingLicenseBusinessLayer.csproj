@@ -45,6 +45,7 @@
     <Compile Include="ApplicationState.cs" />
     <Compile Include="clsApplicationType.cs" />
     <Compile Include="clsPerson.cs" />
+    <Compile Include="clsTestType.cs" />
     <Compile Include="clsUser.cs" />
     <Compile Include="ProfilePictureHelper.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

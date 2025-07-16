@@ -13,7 +13,9 @@ namespace DrivingLicenseDataLayer
             bool isFound = false;
 
             SqlConnection connection = new SqlConnection(clsDataAccessSettings.ConnectionString);
-            string query = "select People.*,Countries.CountryName from People\r\ninner join Countries on People.NationalityCountryID = Countries.CountryID\r\nwhere People.PersonID = @PersonID";
+            string query = @"select People.*,Countries.CountryName from People 
+                            inner join Countries on People.NationalityCountryID = Countries.CountryID 
+                            where People.PersonID = @PersonID";
 
             SqlCommand command = new SqlCommand(query, connection);
             command.Parameters.AddWithValue("@PersonID", ID);
@@ -25,17 +27,27 @@ namespace DrivingLicenseDataLayer
 
                 if (reader.Read())
                 {
+                    Console.WriteLine("FOUND!!!");
                     isFound = true;
 
                     FirstName = (string)reader["FirstName"];
+                    Console.WriteLine("passed");
                     LastName = (string)reader["LastName"];
+                    Console.WriteLine("passed2");
                     Phone = (string)reader["Phone"];
+                    Console.WriteLine("passed3");
                     NationalNo = (string)reader["NationalNo"];
+                    Console.WriteLine("passed4");
                     Address = (string)reader["Address"];
+                    Console.WriteLine("passed5");
                     Gender = (int)reader["Gendor"];
+                    Console.WriteLine("passed6");
                     DateOfBirth = (DateTime)reader["DateOfBirth"];
+                    Console.WriteLine("passed6");
                     CountryID = (int)reader["NationalityCountryID"];
+                    Console.WriteLine("passed7");
                     CountryName = (string)reader["CountryName"];
+                    Console.WriteLine("passed8");
 
                     if (reader["Email"] != DBNull.Value)
                         Email = (string)reader["Email"];

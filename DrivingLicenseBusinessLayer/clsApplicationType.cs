@@ -2,9 +2,6 @@
 using System;
 using System.Collections.Generic;
 using System.Data;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace DrivingLicenseBusinessLayer
 {
@@ -51,5 +48,11 @@ namespace DrivingLicenseBusinessLayer
             return null;
 
         }
+    
+        public bool Update()
+        {
+            return clsApplicationTypesDataAccess.UpdateApplicationType(this.ApplicationTypeID,this.ApplicationTypeTitle,
+                this.ApplicationFees);
+        } 
     }
 }
