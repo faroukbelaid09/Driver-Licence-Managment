@@ -58,5 +58,11 @@ namespace DrivingLicense
             ManageTestTypesForm frm = new ManageTestTypesForm();
             frm.ShowDialog();
         }
+
+        private void localLicenseToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            NewLocalDrivingLicenseForm frm = new NewLocalDrivingLicenseForm();
+            frm.ShowDialog();
+        }
     }
 }

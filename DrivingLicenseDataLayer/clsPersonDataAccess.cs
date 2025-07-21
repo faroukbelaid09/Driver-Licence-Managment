@@ -1,6 +1,8 @@
 ﻿using System;
 using System.Data;
 using System.Data.SqlClient;
+using System.Net;
+using System.Security.Policy;
 
 namespace DrivingLicenseDataLayer
 {
@@ -74,6 +76,65 @@ namespace DrivingLicenseDataLayer
             return isFound;
         }
 
+        public static bool GetPersonByNationalNo(ref int PersonID, ref string FirstName, ref string LastName,
+            ref string Email, ref string Phone, string NationalNo, ref string Address, ref DateTime DateOfBirth,
+            ref int Gender, ref int CountryID, ref string CountryName, ref string ImagePath)
+        {
+            bool isFound = false;
+
+            SqlConnection connection = new SqlConnection(clsDataAccessSettings.ConnectionString);
+            string query = @"select People.*,Countries.CountryName from People 
+                            inner join Countries on People.NationalityCountryID = Countries.CountryID 
+                            where People.NationalNo = @nationalNo";
+
+            SqlCommand command = new SqlCommand(query, connection);
+            command.Parameters.AddWithValue("@nationalNo", NationalNo);
+
+            try
+            {
+                connection.Open();
+                SqlDataReader reader = command.ExecuteReader();
+
+                if (reader.Read())
+                {
+                    Console.WriteLine("FOUND!!!");
+                    isFound = true;
+
+                    PersonID = (int)reader["PersonID"];
+                    FirstName = (string)reader["FirstName"];
+                    LastName = (string)reader["LastName"];
+                    Phone = (string)reader["Phone"];
+                    //NationalNo = (string)reader["NationalNo"];
+                    Address = (string)reader["Address"];
+                    Gender = (int)reader["Gendor"];
+                    DateOfBirth = (DateTime)reader["DateOfBirth"];
+                    CountryID = (int)reader["NationalityCountryID"];
+                    CountryName = (string)reader["CountryName"];
+
+                    if (reader["Email"] != DBNull.Value)
+                        Email = (string)reader["Email"];
+                    else
+                        Email = "No Email was provided.";
+
+                    if (reader["ImagePath"] != DBNull.Value)
+                        ImagePath = (string)reader["ImagePath"];
+                    else
+                        ImagePath = "Image Path Is Not Available";
+                }
+                reader.Close();
+
+            }
+            catch (Exception ex)
+            {
+                isFound = false;
+                Console.WriteLine(ex.Message);
+            }
+            finally
+            {
+                connection?.Close();
+            }
+            return isFound;
+        }
         public static DataTable GetPeople()
         {
             DataTable dt = new DataTable();

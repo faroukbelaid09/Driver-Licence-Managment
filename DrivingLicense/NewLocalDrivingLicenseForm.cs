@@ -1,0 +1,183 @@
+﻿using DrivingLicenseBusinessLayer;
+using System;
+using System.Collections.Generic;
+using System.Windows.Forms;
+
+namespace DrivingLicense
+{
+    public partial class NewLocalDrivingLicenseForm : Form
+    {
+        private int _APPLICATION_ID = -1;
+        private int _APPLICATION_FEE = 15;
+        private int _APPLICATION_TYPE_ID = 1;
+        private int _APPLICATION_STATUS = 1;
+
+        private clsPerson _person;
+        private clsApplication _application;
+
+
+        private void _ResetFilterComboSettings()
+        {
+            FillterCB.SelectedIndex = 0;
+        }
+
+        private void _ResetFilterTextBoxSettings()
+        {
+            if (FillterCB.SelectedIndex == 0)
+            {
+                FillterTB.Visible = false;
+            }
+            else
+            {
+                FillterTB.Visible = true;
+            }
+        }
+
+        private void _LoadPerson(clsPerson person)
+        {
+            if (person != null)
+            {
+                _person = person;
+                ctrlPersonInfo1.HandleDataReceived(_person);
+                NextBTN.Enabled = true;
+            }
+            else
+            {
+                MessageBox.Show("This person does not exist.", "Error!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
+        private void _AddApplicationAuthor()
+        {
+            CreatedbyValue.Text = ApplicationState.CurrentUser.UserName;
+        }
+
+        private void _AddApplicationCurrentDate()
+        {
+            ApplicationDateValue.Text = DateTime.Now.ToString("yyyy-MM-dd");
+        }
+        
+        private void _AddApplicationFee()
+        {
+            ApplicationFeeValue.Text = _APPLICATION_FEE.ToString();
+        }
+
+        private void _GetClassesNames()
+        {
+            List<string> classesNames = clsLicenseClass.GetClassesNames();
+            if(classesNames != null)
+            {
+                LicenseClassCB.DataSource = classesNames;
+            }
+        }
+        
+        private void _AddNewLocalApplication()
+        {
+            string appDate = ApplicationDateValue.Text;
+
+            _application = clsApplication.Create(_person.PersonID,appDate,_APPLICATION_TYPE_ID,_APPLICATION_STATUS,
+                appDate,_APPLICATION_FEE,ApplicationState.CurrentUser.UserID);
+
+            if (_application != null)
+            {
+                ApplicationIDValue.Text = _application.ApplicationID.ToString();
+
+                MessageBox.Show("Application", "The application was successfully created!",
+                        MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }
+            else
+            {
+                MessageBox.Show("Application", "An error occured when creating the application.",
+                    MessageBoxButtons.OK, MessageBoxIcon.Error);
+
+            }
+        }
+
+        public NewLocalDrivingLicenseForm()
+        {
+            InitializeComponent();
+
+            _ResetFilterComboSettings();
+            _ResetFilterTextBoxSettings();
+            _GetClassesNames();
+        }
+
+        private void SearchPersonPB_Click(object sender, EventArgs e)
+        {
+            string searchText = FillterTB.Text.Trim();
+
+            if(!string.IsNullOrEmpty(searchText))
+            {
+                var isNumeric = int.TryParse(searchText, out int id);
+                if (FillterCB.SelectedIndex == 1)
+                {
+                    if (isNumeric)
+                    {
+                        _person = clsPerson.FindPersonByID(Convert.ToInt32(id));
+                        _LoadPerson(_person);
+                    }
+                    else
+                    {
+                        MessageBox.Show("Invalid ID format", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    }
+
+                }
+                else if (FillterCB.SelectedIndex == 2)
+                {
+                    _person = clsPerson.FindPersonByNationalNo(searchText);
+                    _LoadPerson(_person);
+                }
+            }
+            else
+            {
+                MessageBox.Show("This field cannot be empty!", "Error",MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+            
+        }
+
+        private void FillterCB_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            _ResetFilterTextBoxSettings();
+        }
+
+        private void AddPersonPB_Click(object sender, EventArgs e)
+        {
+            AddEditForm frm = new AddEditForm();
+            frm.EventTrigger += _LoadPerson;
+            frm.ShowDialog();
+        }
+
+        private void SaveBTN_Click(object sender, EventArgs e)
+        {
+            if(_person != null)
+            {
+                _AddNewLocalApplication();
+            }
+        }
+
+        private void CloseBTN_Click(object sender, EventArgs e)
+        {
+            this.Close();
+        }
+
+        private void NextBTN_Click(object sender, EventArgs e)
+        {
+            TabControlWindow.SelectedIndex = 1;
+        }
+
+        private void TabControlWindow_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (TabControlWindow.SelectedIndex == 0)
+            {
+                SaveBTN.Enabled = false;
+            }
+            else
+            {
+                SaveBTN.Enabled = true;
+                _AddApplicationAuthor();
+                _AddApplicationCurrentDate();
+                _AddApplicationFee();
+            }
+        }
+    }
+}

@@ -67,6 +67,21 @@ namespace DrivingLicenseBusinessLayer
             }
             return null;
         }
+        public static clsPerson FindPersonByNationalNo(string nationalNo)
+        {
+            int CountryID = -1, GenderID = -1, PersonID = -1;
+            string FirstName = "", LastName = "", Phone = "", Email = "", Address = "", ImagePath = "", CountryName = "";
+            DateTime DateOfBirth = DateTime.Now;
+
+            if (clsPersonDataAccess.GetPersonByNationalNo(ref PersonID, ref FirstName, ref LastName, ref Email,
+                ref Phone, nationalNo, ref Address, ref DateOfBirth, ref GenderID, ref CountryID, ref CountryName, ref ImagePath))
+            {
+                return new clsPerson(PersonID, nationalNo, FirstName, LastName, GenderID == 1 ? "Male" : "Female", Phone,
+                    Address, DateOfBirth, CountryID, CountryName, ImagePath, Email);
+            }
+            return null;
+        }
+        
         public static List<clsPerson> GetAllPeople() {
 
             List<clsPerson> people = new List<clsPerson>();
