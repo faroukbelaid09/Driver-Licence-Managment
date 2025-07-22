@@ -64,5 +64,11 @@ namespace DrivingLicense
             NewLocalDrivingLicenseForm frm = new NewLocalDrivingLicenseForm();
             frm.ShowDialog();
         }
+
+        private void localDrivingLicenseApplicationToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            LocalDrivingLicenseApplicationsForm frm = new LocalDrivingLicenseApplicationsForm();
+            frm.ShowDialog();
+        }
     }
 }

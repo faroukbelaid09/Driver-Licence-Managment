@@ -293,5 +293,10 @@ namespace DrivingLicense
                     break;
             }
         }
+
+        private void PeopleForm_Load(object sender, EventArgs e)
+        {
+
+        }
     }
 }

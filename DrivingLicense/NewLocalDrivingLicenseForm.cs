@@ -14,6 +14,7 @@ namespace DrivingLicense
 
         private clsPerson _person;
         private clsApplication _application;
+        private clsLocalDrivingLicenseApplication _localApplication;
 
 
         private void _ResetFilterComboSettings()
@@ -74,20 +75,35 @@ namespace DrivingLicense
         private void _AddNewLocalApplication()
         {
             string appDate = ApplicationDateValue.Text;
+            int licenseClassID = LicenseClassCB.SelectedIndex;
+
 
             _application = clsApplication.Create(_person.PersonID,appDate,_APPLICATION_TYPE_ID,_APPLICATION_STATUS,
                 appDate,_APPLICATION_FEE,ApplicationState.CurrentUser.UserID);
 
+            
+
             if (_application != null)
             {
-                ApplicationIDValue.Text = _application.ApplicationID.ToString();
+                _localApplication = clsLocalDrivingLicenseApplication.Create(_application.ApplicationID, licenseClassID);
+                if (_localApplication != null) 
+                {
+                    ApplicationIDValue.Text = _localApplication.LocalDrivingLicenseApplicationID.ToString();
 
-                MessageBox.Show("Application", "The application was successfully created!",
-                        MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    MessageBox.Show("Local application was successfully created!", "Local Application",
+                            MessageBoxButtons.OK, MessageBoxIcon.Information);
+                }
+                else
+                {
+                    MessageBox.Show("An error occured when creating a local application.", "Local Application",
+                        MessageBoxButtons.OK, MessageBoxIcon.Error);
+
+                }
+
             }
             else
             {
-                MessageBox.Show("Application", "An error occured when creating the application.",
+                MessageBox.Show("An error occured when creating the application.", "Application",
                     MessageBoxButtons.OK, MessageBoxIcon.Error);
 
             }

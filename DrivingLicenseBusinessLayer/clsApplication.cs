@@ -1,6 +1,7 @@
 ﻿using DrivingLicenseDataLayer;
 using System;
 using System.Collections.Generic;
+using System.Data;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -49,5 +50,39 @@ namespace DrivingLicenseBusinessLayer
         }
 
 
+        public static List<clsFullLocalApplication> GetAllLocalApplications()
+        {
+            DataTable dataTable = new DataTable();
+            List<clsFullLocalApplication> clsFullLocalApplications = new List<clsFullLocalApplication>();
+
+            dataTable = clsApplicationDataAccess.GetAllLocalApplications();
+
+            if (dataTable.Rows != null)
+            {
+                foreach (DataRow row in dataTable.Rows)
+                {
+                    // Extract data from the DataRow
+                    int localappid = Convert.ToInt32(row["LocalDrivingLicenseApplicationID"]);
+                    string drivingclass = row["DrivingClass"].ToString();
+                    string nationalno = row["NationalNo"].ToString();
+                    string fullname = row["FullName"].ToString();
+                    string appdate = row["ApplicationDate"].ToString();
+                    int passedtests = Convert.ToInt32(row["PassedTests"]);
+
+                    string appstatus = Convert.ToInt32(row["ApplicationStatus"]) == 1 ? "New" : Convert.ToInt32(row["ApplicationStatus"]) == 2 ? "Cancelled" : "Completed";
+
+                    // Create a new clsFullLocalApplication object and add it to the list
+                    clsFullLocalApplication localapp = new clsFullLocalApplication(
+                        localappid,drivingclass,nationalno, fullname,appdate,passedtests,appstatus
+                    );
+
+                    clsFullLocalApplications.Add(localapp);
+                }
+
+                return clsFullLocalApplications;
+            }
+
+            return null;
+        }
     }
 }
