@@ -5,6 +5,7 @@ using System.Data.SqlClient;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Xml;
 
 namespace DrivingLicenseDataLayer
 {
@@ -93,6 +94,59 @@ namespace DrivingLicenseDataLayer
             }
 
             return dt;
+        }
+    
+    
+        public static bool CheckIfApplicationExist(string nationalNo, string drivingClass)
+        {
+
+            // Input validation
+            if (string.IsNullOrWhiteSpace(nationalNo) || string.IsNullOrWhiteSpace(drivingClass))
+            {
+                Console.WriteLine("Invalid input parameters");
+                return false;
+            }
+
+            bool isFound = false;
+            SqlConnection connection = new SqlConnection(clsDataAccessSettings.ConnectionString);
+
+            Console.WriteLine(nationalNo);
+            Console.WriteLine(drivingClass);
+
+            string query = @"select 1 from LocalDrivingLicenseFullApplications
+                  where NationalNo = @nationalNo and DrivingClass LIKE '%' + @drivingClass + '%'
+                  and(ApplicationStatus = 1 or ApplicationStatus = 3)";
+
+            SqlCommand command = new SqlCommand(query, connection);
+
+            command.Parameters.AddWithValue("@nationalNo", nationalNo);
+            command.Parameters.AddWithValue("@drivingClass", drivingClass);
+
+
+            try
+            {
+                connection.Open();
+
+                SqlDataReader reader = command.ExecuteReader(CommandBehavior.SingleRow);
+
+                if (reader.HasRows)
+                {
+                    isFound = true;
+                }
+                
+                reader.Close();
+            }
+
+            catch (Exception ex)
+            {
+                Console.WriteLine("Error: " + ex.Message);
+            }
+            finally
+            {
+                connection?.Close();
+            }
+            return isFound;
+
         }
     }
 }

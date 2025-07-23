@@ -84,5 +84,10 @@ namespace DrivingLicenseBusinessLayer
 
             return null;
         }
+    
+        public static bool CheckIfApplicationExist(string NationalNo, string DrivingClass)
+        {
+            return clsApplicationDataAccess.CheckIfApplicationExist(NationalNo, DrivingClass);
+        }
     }
 }
