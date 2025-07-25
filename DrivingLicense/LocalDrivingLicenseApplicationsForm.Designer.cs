@@ -30,7 +30,7 @@
         {
             this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(LocalDrivingLicenseApplicationsForm));
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle7 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
             this.CloseFormBTN = new System.Windows.Forms.Button();
             this.RecordValue = new System.Windows.Forms.Label();
             this.RecordLabel = new System.Windows.Forms.Label();
@@ -133,14 +133,14 @@
             this.ApplicationDate,
             this.PassedTests,
             this.ApplicationStatus});
-            dataGridViewCellStyle7.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle7.BackColor = System.Drawing.SystemColors.Window;
-            dataGridViewCellStyle7.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle7.ForeColor = System.Drawing.SystemColors.ControlText;
-            dataGridViewCellStyle7.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle7.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle7.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.LocalAppDataGridView.DefaultCellStyle = dataGridViewCellStyle7;
+            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle3.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle3.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle3.ForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle3.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle3.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.LocalAppDataGridView.DefaultCellStyle = dataGridViewCellStyle3;
             this.LocalAppDataGridView.Location = new System.Drawing.Point(38, 344);
             this.LocalAppDataGridView.Name = "LocalAppDataGridView";
             this.LocalAppDataGridView.ReadOnly = true;
@@ -265,7 +265,8 @@
             this.showLicenseToolStripMenuItem,
             this.showPersonLicenseHistoryToolStripMenuItem});
             this.contextMenuStrip.Name = "contextMenuStrip";
-            this.contextMenuStrip.Size = new System.Drawing.Size(246, 180);
+            this.contextMenuStrip.Size = new System.Drawing.Size(246, 202);
+            this.contextMenuStrip.Opening += new System.ComponentModel.CancelEventHandler(this.contextMenuStrip1_Opening);
             // 
             // editToolStripMenuItem
             // 
@@ -312,6 +313,7 @@
             this.visionTestToolStripMenuItem.Name = "visionTestToolStripMenuItem";
             this.visionTestToolStripMenuItem.Size = new System.Drawing.Size(187, 22);
             this.visionTestToolStripMenuItem.Text = "Sechdule Vision Test";
+            this.visionTestToolStripMenuItem.Click += new System.EventHandler(this.visionTestToolStripMenuItem_Click);
             // 
             // sechduleWrittenTestToolStripMenuItem
             // 
@@ -319,6 +321,7 @@
             this.sechduleWrittenTestToolStripMenuItem.Name = "sechduleWrittenTestToolStripMenuItem";
             this.sechduleWrittenTestToolStripMenuItem.Size = new System.Drawing.Size(187, 22);
             this.sechduleWrittenTestToolStripMenuItem.Text = "Sechdule Written Test";
+            this.sechduleWrittenTestToolStripMenuItem.Click += new System.EventHandler(this.sechduleWrittenTestToolStripMenuItem_Click);
             // 
             // sechduleStreetTestToolStripMenuItem
             // 
@@ -326,6 +329,7 @@
             this.sechduleStreetTestToolStripMenuItem.Name = "sechduleStreetTestToolStripMenuItem";
             this.sechduleStreetTestToolStripMenuItem.Size = new System.Drawing.Size(187, 22);
             this.sechduleStreetTestToolStripMenuItem.Text = "Sechdule Street Test";
+            this.sechduleStreetTestToolStripMenuItem.Click += new System.EventHandler(this.sechduleStreetTestToolStripMenuItem_Click);
             // 
             // issueDrivingLicenseFirstTimeToolStripMenuItem
             // 

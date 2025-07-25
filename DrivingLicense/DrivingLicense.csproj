@@ -71,6 +71,12 @@
     <Compile Include="ctrlAddEdit.Designer.cs">
       <DependentUpon>ctrlAddEdit.cs</DependentUpon>
     </Compile>
+    <Compile Include="ctrlDrivingLicenseApplicationInfo.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="ctrlDrivingLicenseApplicationInfo.Designer.cs">
+      <DependentUpon>ctrlDrivingLicenseApplicationInfo.cs</DependentUpon>
+    </Compile>
     <Compile Include="ctrlPersonInfo.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -133,6 +139,12 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="ScheduleAppointmentForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ScheduleAppointmentForm.Designer.cs">
+      <DependentUpon>ScheduleAppointmentForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="ShowPersonDetailsForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -162,6 +174,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="ctrlAddEdit.resx">
       <DependentUpon>ctrlAddEdit.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ctrlDrivingLicenseApplicationInfo.resx">
+      <DependentUpon>ctrlDrivingLicenseApplicationInfo.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="ctrlPersonInfo.resx">
       <DependentUpon>ctrlPersonInfo.cs</DependentUpon>
@@ -203,6 +218,9 @@
       <DependentUpon>Resources.resx</DependentUpon>
       <DesignTime>True</DesignTime>
     </Compile>
+    <EmbeddedResource Include="ScheduleAppointmentForm.resx">
+      <DependentUpon>ScheduleAppointmentForm.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="ShowPersonDetailsForm.resx">
       <DependentUpon>ShowPersonDetailsForm.cs</DependentUpon>
     </EmbeddedResource>

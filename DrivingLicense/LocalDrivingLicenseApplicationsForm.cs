@@ -75,6 +75,64 @@ namespace DrivingLicense
             }
         }
 
+        // RETURN THE SELECTED APPLICATION FROM THE MENU
+        private clsFullLocalApplication GetTheSelectedApplication()
+        {
+            // Get the selected row index from the ContextMenuStrip's Tag
+            int rowIndex = (int)contextMenuStrip.Tag;
+
+            // Access the data of the selected row
+            var selectedRow = LocalAppDataGridView.Rows[rowIndex];
+            clsFullLocalApplication app = selectedRow.DataBoundItem as clsFullLocalApplication;
+
+            return app;
+        }
+
+        private void contextMenuStrip1_Opening(object sender, System.ComponentModel.CancelEventArgs e)
+        {
+            // Get the mouse position relative to the DataGridView
+            var hitTest = LocalAppDataGridView.HitTest(LocalAppDataGridView.PointToClient(Cursor.Position).X,
+                LocalAppDataGridView.PointToClient(Cursor.Position).Y);
+
+            // Check if the right-click was on a row
+            if (hitTest.RowIndex >= 0)
+            {
+                // Store the selected row index in the ContextMenuStrip's Tag
+                contextMenuStrip.Tag = hitTest.RowIndex;
+                int num = GetTheSelectedApplication().PassedTests;
+
+                if (num == 0)
+                {
+                    visionTestToolStripMenuItem.Enabled = true;
+                    sechduleWrittenTestToolStripMenuItem.Enabled = false;
+                    sechduleStreetTestToolStripMenuItem.Enabled = false;
+                }
+                else if (num == 1)
+                {
+                    visionTestToolStripMenuItem.Enabled = false;
+                    sechduleWrittenTestToolStripMenuItem.Enabled = true;
+                    sechduleStreetTestToolStripMenuItem.Enabled = false;
+                }
+                else if (num == 2) 
+                {
+                    visionTestToolStripMenuItem.Enabled = false;
+                    sechduleWrittenTestToolStripMenuItem.Enabled = false;
+                    sechduleStreetTestToolStripMenuItem.Enabled = true;
+                }
+                else
+                {
+                    visionTestToolStripMenuItem.Enabled = false;
+                    sechduleWrittenTestToolStripMenuItem.Enabled = false;
+                    sechduleStreetTestToolStripMenuItem.Enabled = false;
+                }
+            }
+            else
+            {
+                // Cancel the context menu if the right-click was not on a row
+                e.Cancel = true;
+            }
+        }
+
         public LocalDrivingLicenseApplicationsForm()
         {
             InitializeComponent();
@@ -167,6 +225,25 @@ namespace DrivingLicense
                 default:
                     break;
             }
+        }
+
+        private void visionTestToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            ScheduleAppointmentForm frm = new ScheduleAppointmentForm("vision");
+            frm.ShowDialog();
+        }
+
+        private void sechduleWrittenTestToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            ScheduleAppointmentForm frm = new ScheduleAppointmentForm("writing");
+            frm.ShowDialog();
+
+        }
+
+        private void sechduleStreetTestToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            ScheduleAppointmentForm frm = new ScheduleAppointmentForm("driving");
+            frm.ShowDialog();
         }
     }
 }

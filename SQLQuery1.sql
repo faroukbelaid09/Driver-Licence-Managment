@@ -11,3 +11,8 @@ inner join People on People.PersonID = Applications.ApplicantPersonID
 
 select 1 from LocalDrivingLicenseFullApplications
 where NationalNo = '0123' and DrivingClass LIKE '%Class 4%'
+
+
+select * from LocalDrivingLicenseFullApplications
+                             where NationalNo = '0123' and DrivingClass LIKE '%Class 1%' 
+                             and (ApplicationStatus = 1 or ApplicationStatus = 3)
