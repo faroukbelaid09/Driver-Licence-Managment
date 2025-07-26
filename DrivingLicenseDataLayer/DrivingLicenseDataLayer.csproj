@@ -47,6 +47,7 @@
     <Compile Include="clsLicenseClassDataAccess.cs" />
     <Compile Include="clsLocalApplicationDataAccess.cs" />
     <Compile Include="clsPersonDataAccess.cs" />
+    <Compile Include="clsTestAppointmentDataAccess.cs" />
     <Compile Include="clsTestTypesDataAccess.cs" />
     <Compile Include="clsUserDataAccess.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

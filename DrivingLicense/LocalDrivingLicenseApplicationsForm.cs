@@ -1,22 +1,22 @@
 ﻿using DrivingLicenseBusinessLayer;
 using System;
 using System.Collections.Generic;
-using System.ComponentModel;
 using System.Data;
-using System.Drawing;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace DrivingLicense
 {
     public partial class LocalDrivingLicenseApplicationsForm : Form
     {
+        public delegate void TriggerEventHandler();
+        public event TriggerEventHandler EventTrigger;
+
         private List<clsFullLocalApplication> _allLocalApplications;
         private List<clsFullLocalApplication> _filteredLocalApplications;
+
+        private clsFullLocalApplication _selectedApplication;
         private enum FilterOptions{ LocalAppID = 1, NationalNo = 2, FullName = 3, Status = 4}
-        
         
         void _ResetFilterCombo()
         {
@@ -99,21 +99,21 @@ namespace DrivingLicense
             {
                 // Store the selected row index in the ContextMenuStrip's Tag
                 contextMenuStrip.Tag = hitTest.RowIndex;
-                int num = GetTheSelectedApplication().PassedTests;
+                _selectedApplication = GetTheSelectedApplication();
 
-                if (num == 0)
+                if (_selectedApplication.PassedTests == 0)
                 {
                     visionTestToolStripMenuItem.Enabled = true;
                     sechduleWrittenTestToolStripMenuItem.Enabled = false;
                     sechduleStreetTestToolStripMenuItem.Enabled = false;
                 }
-                else if (num == 1)
+                else if (_selectedApplication.PassedTests == 1)
                 {
                     visionTestToolStripMenuItem.Enabled = false;
                     sechduleWrittenTestToolStripMenuItem.Enabled = true;
                     sechduleStreetTestToolStripMenuItem.Enabled = false;
                 }
-                else if (num == 2) 
+                else if (_selectedApplication.PassedTests == 2) 
                 {
                     visionTestToolStripMenuItem.Enabled = false;
                     sechduleWrittenTestToolStripMenuItem.Enabled = false;
@@ -133,6 +133,23 @@ namespace DrivingLicense
             }
         }
 
+        private clsApplication _GetApplication()
+        {
+            clsLocalDrivingLicenseApplication lapp = clsLocalDrivingLicenseApplication.FindLocalApplication
+                (_selectedApplication.LocalDrivingLicenseApplicationID);
+
+            Console.WriteLine("Local APP::: " +  lapp.ApplicationID);
+
+            clsApplication app = clsApplication.FindApplication(lapp.ApplicationID);
+
+            Console.WriteLine("app.ApplicantPersonID::: " + app.ApplicantPersonID);
+            if (app != null) 
+            {
+                Console.WriteLine("APP");
+                return app;
+            }
+            return null;
+        }
         public LocalDrivingLicenseApplicationsForm()
         {
             InitializeComponent();
@@ -183,11 +200,6 @@ namespace DrivingLicense
             _ResetTextField();
         }
 
-        private void PagePB_Click(object sender, EventArgs e)
-        {
-
-        }
-
         private void AddPersonPB_Click(object sender, EventArgs e)
         {
             NewLocalDrivingLicenseForm frm = new NewLocalDrivingLicenseForm();
@@ -229,20 +241,23 @@ namespace DrivingLicense
 
         private void visionTestToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            ScheduleAppointmentForm frm = new ScheduleAppointmentForm("vision");
+            ScheduleAppointmentForm frm = new ScheduleAppointmentForm("vision", _GetApplication(),
+                _selectedApplication);
             frm.ShowDialog();
         }
 
         private void sechduleWrittenTestToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            ScheduleAppointmentForm frm = new ScheduleAppointmentForm("writing");
+            ScheduleAppointmentForm frm = new ScheduleAppointmentForm("writing", _GetApplication(),
+                _selectedApplication);
             frm.ShowDialog();
 
         }
 
         private void sechduleStreetTestToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            ScheduleAppointmentForm frm = new ScheduleAppointmentForm("driving");
+            ScheduleAppointmentForm frm = new ScheduleAppointmentForm("driving", _GetApplication(), 
+                _selectedApplication);
             frm.ShowDialog();
         }
     }

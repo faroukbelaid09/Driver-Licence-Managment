@@ -83,7 +83,6 @@ namespace DrivingLicense
             string appDate = ApplicationDateValue.Text;
             int licenseClassID = LicenseClassCB.SelectedIndex+1;
 
-            Console.WriteLine(LicenseClassCB.Text);
             if (!_CheckIfApplicationExist(_person.NationalNo, LicenseClassCB.Text))
             {
 

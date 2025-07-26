@@ -35,5 +35,16 @@ namespace DrivingLicenseBusinessLayer
 
             return null;
         }
+
+        public static clsLocalDrivingLicenseApplication FindLocalApplication(int localAppID)
+        {
+            int appID = -1, licenseClassID = -1;
+
+            if (clsLocalApplicationDataAccess.FindLocalApplication(localAppID,ref appID,ref licenseClassID))
+            {
+                return new clsLocalDrivingLicenseApplication(localAppID,appID,licenseClassID);
+            }
+            return null;
+        }
     }
 }

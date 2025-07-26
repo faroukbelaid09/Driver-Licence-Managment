@@ -1,4 +1,5 @@
-﻿using System;
+﻿using DrivingLicenseBusinessLayer;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -12,6 +13,9 @@ namespace DrivingLicense
 {
     public partial class ScheduleAppointmentForm : Form
     {
+        private clsApplication _application;
+        private clsFullLocalApplication _fullLocalApplication;
+        private List<clsTestAppointment> _testAppointment;
 
         private void SetScreenImage(string imageFullName)
         {
@@ -43,15 +47,43 @@ namespace DrivingLicense
                 SetScreenImage("driving.png");
             }
         }
-        public ScheduleAppointmentForm(string testName)
+        private void _GetAllTestAppointments(string testName,int localDrivingAppID)
+        {
+            if (testName == "vision")
+            {
+                _testAppointment = clsTestAppointment.GetVisionTests(localDrivingAppID);
+            }
+            else if (testName == "writing")
+            {
+                _testAppointment = clsTestAppointment.GetWrittingTests(localDrivingAppID);
+            }
+            else if (testName == "driving")
+            {
+                _testAppointment = clsTestAppointment.GetStreetTests(localDrivingAppID);
+            }
+        }
+        public ScheduleAppointmentForm(string testName,clsApplication application,
+            clsFullLocalApplication fullLocalApplication)
         {
             InitializeComponent();
             _CustomizeScreen(testName);
+
+            _application = application;
+            _fullLocalApplication = fullLocalApplication;
+
+            _GetAllTestAppointments(testName,_fullLocalApplication.LocalDrivingLicenseApplicationID);
+
+            TestAppointmentsGridView.DataSource = _testAppointment;
         }
 
         private void pictureBox1_Click(object sender, EventArgs e)
         {
 
+        }
+
+        private void ctrlDrivingLicenseApplicationInfo1_Load(object sender, EventArgs e)
+        {
+            ctrlDrivingLicenseApplicationInfo1.LoadData(_application,_fullLocalApplication);
         }
     }
 }

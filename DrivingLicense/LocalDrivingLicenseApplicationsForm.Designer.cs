@@ -251,7 +251,6 @@
             this.PagePB.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.PagePB.TabIndex = 12;
             this.PagePB.TabStop = false;
-            this.PagePB.Click += new System.EventHandler(this.PagePB_Click);
             // 
             // contextMenuStrip
             // 

@@ -34,17 +34,17 @@
             this.ctrlDrivingLicenseApplicationInfo1 = new DrivingLicense.ctrlDrivingLicenseApplicationInfo();
             this.AppoitmentLabel = new System.Windows.Forms.Label();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
-            this.dataGridView1 = new System.Windows.Forms.DataGridView();
-            this.RecordLabel = new System.Windows.Forms.Label();
-            this.RecordValue = new System.Windows.Forms.Label();
+            this.TestAppointmentsGridView = new System.Windows.Forms.DataGridView();
             this.AppointmentID = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.AppointmentDate = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.PaidFees = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.IsLooked = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.RecordLabel = new System.Windows.Forms.Label();
+            this.RecordValue = new System.Windows.Forms.Label();
             this.CloseBTN = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.TestAppointmentsGridView)).BeginInit();
             this.SuspendLayout();
             // 
             // pictureBox
@@ -74,6 +74,7 @@
             this.ctrlDrivingLicenseApplicationInfo1.Name = "ctrlDrivingLicenseApplicationInfo1";
             this.ctrlDrivingLicenseApplicationInfo1.Size = new System.Drawing.Size(737, 384);
             this.ctrlDrivingLicenseApplicationInfo1.TabIndex = 2;
+            this.ctrlDrivingLicenseApplicationInfo1.Load += new System.EventHandler(this.ctrlDrivingLicenseApplicationInfo1_Load);
             // 
             // AppoitmentLabel
             // 
@@ -95,41 +96,21 @@
             this.pictureBox1.TabIndex = 4;
             this.pictureBox1.TabStop = false;
             // 
-            // dataGridView1
+            // TestAppointmentsGridView
             // 
-            this.dataGridView1.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
-            this.dataGridView1.AutoSizeRowsMode = System.Windows.Forms.DataGridViewAutoSizeRowsMode.AllCells;
-            this.dataGridView1.BackgroundColor = System.Drawing.SystemColors.Control;
-            this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView1.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.TestAppointmentsGridView.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
+            this.TestAppointmentsGridView.AutoSizeRowsMode = System.Windows.Forms.DataGridViewAutoSizeRowsMode.AllCells;
+            this.TestAppointmentsGridView.BackgroundColor = System.Drawing.SystemColors.Control;
+            this.TestAppointmentsGridView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.TestAppointmentsGridView.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.AppointmentID,
             this.AppointmentDate,
             this.PaidFees,
             this.IsLooked});
-            this.dataGridView1.Location = new System.Drawing.Point(16, 473);
-            this.dataGridView1.Name = "dataGridView1";
-            this.dataGridView1.Size = new System.Drawing.Size(733, 119);
-            this.dataGridView1.TabIndex = 5;
-            // 
-            // RecordLabel
-            // 
-            this.RecordLabel.AutoSize = true;
-            this.RecordLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.RecordLabel.Location = new System.Drawing.Point(23, 604);
-            this.RecordLabel.Name = "RecordLabel";
-            this.RecordLabel.Size = new System.Drawing.Size(74, 17);
-            this.RecordLabel.TabIndex = 6;
-            this.RecordLabel.Text = "#Record:";
-            // 
-            // RecordValue
-            // 
-            this.RecordValue.AutoSize = true;
-            this.RecordValue.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.RecordValue.Location = new System.Drawing.Point(103, 604);
-            this.RecordValue.Name = "RecordValue";
-            this.RecordValue.Size = new System.Drawing.Size(34, 17);
-            this.RecordValue.TabIndex = 7;
-            this.RecordValue.Text = "N/A";
+            this.TestAppointmentsGridView.Location = new System.Drawing.Point(16, 473);
+            this.TestAppointmentsGridView.Name = "TestAppointmentsGridView";
+            this.TestAppointmentsGridView.Size = new System.Drawing.Size(733, 119);
+            this.TestAppointmentsGridView.TabIndex = 5;
             // 
             // AppointmentID
             // 
@@ -155,6 +136,26 @@
             this.IsLooked.Name = "IsLooked";
             this.IsLooked.ReadOnly = true;
             // 
+            // RecordLabel
+            // 
+            this.RecordLabel.AutoSize = true;
+            this.RecordLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.RecordLabel.Location = new System.Drawing.Point(23, 604);
+            this.RecordLabel.Name = "RecordLabel";
+            this.RecordLabel.Size = new System.Drawing.Size(74, 17);
+            this.RecordLabel.TabIndex = 6;
+            this.RecordLabel.Text = "#Record:";
+            // 
+            // RecordValue
+            // 
+            this.RecordValue.AutoSize = true;
+            this.RecordValue.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.RecordValue.Location = new System.Drawing.Point(103, 604);
+            this.RecordValue.Name = "RecordValue";
+            this.RecordValue.Size = new System.Drawing.Size(34, 17);
+            this.RecordValue.TabIndex = 7;
+            this.RecordValue.Text = "N/A";
+            // 
             // CloseBTN
             // 
             this.CloseBTN.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -173,7 +174,7 @@
             this.Controls.Add(this.CloseBTN);
             this.Controls.Add(this.RecordValue);
             this.Controls.Add(this.RecordLabel);
-            this.Controls.Add(this.dataGridView1);
+            this.Controls.Add(this.TestAppointmentsGridView);
             this.Controls.Add(this.pictureBox1);
             this.Controls.Add(this.AppoitmentLabel);
             this.Controls.Add(this.ctrlDrivingLicenseApplicationInfo1);
@@ -183,7 +184,7 @@
             this.Text = "ScheduleAppointmentForm";
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.TestAppointmentsGridView)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -196,7 +197,7 @@
         private ctrlDrivingLicenseApplicationInfo ctrlDrivingLicenseApplicationInfo1;
         private System.Windows.Forms.Label AppoitmentLabel;
         private System.Windows.Forms.PictureBox pictureBox1;
-        private System.Windows.Forms.DataGridView dataGridView1;
+        private System.Windows.Forms.DataGridView TestAppointmentsGridView;
         private System.Windows.Forms.Label RecordLabel;
         private System.Windows.Forms.Label RecordValue;
         private System.Windows.Forms.DataGridViewTextBoxColumn AppointmentID;

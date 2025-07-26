@@ -16,7 +16,7 @@ namespace DrivingLicenseBusinessLayer
         public int PassedTests { get; set; }
         public string ApplicationStatus { get; set; }
 
-        public clsFullLocalApplication(int localAppID, string drivingClass,string nationalNo,string fullName,
+        public clsFullLocalApplication(int localAppID,string drivingClass,string nationalNo,string fullName,
             string appDate,int passedTests, string appStatus) 
         {
             this.LocalDrivingLicenseApplicationID = localAppID;

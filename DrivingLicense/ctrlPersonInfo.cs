@@ -90,27 +90,6 @@ namespace DrivingLicense
             EditInfoLinkLabel.Enabled = true;
         }
 
-       /*public void ClearAllData()
-        {
-            _Person = null;
-
-            SetPersonID("N/A");
-            SetFullName("Full" , " Name");
-            SetNationalNo("??????");
-            SetDateOfBirth("??????");
-            SetGender("??????");
-            SetPhone("??????");
-            SetEmail("??????");
-            SetCountry("??????");
-            SetAddress("??????");
-            if (!string.IsNullOrEmpty(_Person.ImagePath))
-            {
-                SetProfilePicture((Bitmap)ProfilePictureHelper.LoadProfilePicture(_Person.ImagePath));
-            }
-
-            // enable editing
-            EditInfoLinkLabel.Enabled = false;
-        }*/
         private void EditInfoLinkLabel_Click(object sender, EventArgs e)
         {
             AddEditForm EditForm = new AddEditForm(_Person);

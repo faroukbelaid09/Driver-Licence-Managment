@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Data;
 using System.Data.SqlClient;
@@ -56,8 +57,62 @@ namespace DrivingLicenseDataLayer
 
             return appID;
         }
-    
 
+        public static bool FindApplication(int appID, ref int appPersonID, ref string appPersonName, ref string appDate, 
+            ref string appTypeTitle,ref int appStatus, ref string appLastStatusDate, ref int appPaidFees, 
+            ref string appCreatedByUserName)
+        {
+            bool isFound = false;
+
+            SqlConnection connection = new SqlConnection(clsDataAccessSettings.ConnectionString);
+
+            string query = @"select Applications.*,FullName = People.FirstName + People.LastName,
+                            ApplicationTypes.ApplicationTypeTitle,Users.UserName
+                            from Applications inner join People on People.PersonID = Applications.ApplicantPersonID
+                            inner join ApplicationTypes on ApplicationTypes.ApplicationTypeID = Applications.ApplicationTypeID
+                            inner join Users on Users.UserID = Applications.CreatedByUserID
+                            where ApplicationID = @appID";
+
+            SqlCommand command = new SqlCommand(query, connection);
+
+            command.Parameters.AddWithValue("@appID", appID);
+
+
+            try
+            {
+                connection.Open();
+                SqlDataReader reader = command.ExecuteReader();
+
+                if (reader.Read())
+                {
+
+
+                    isFound = true;
+
+                    appPersonID = (int)reader["ApplicantPersonID"];
+                    appPersonName = (string)reader["FullName"];
+                    appDate = ((DateTime)reader["ApplicationDate"]).ToString();
+                    appTypeTitle = (string)reader["ApplicationTypeTitle"];
+                    appStatus = (int)reader["ApplicationStatus"];
+                    appLastStatusDate = ((DateTime)reader["LastStatusDate"]).ToString();
+                    appPaidFees = (int)reader["PaidFees"];
+                    appCreatedByUserName = (string)reader["UserName"];
+                }
+                reader.Close();
+
+            }
+            catch (Exception ex)
+            {
+                isFound = false;
+                Console.WriteLine(ex.Message);
+            }
+            finally
+            {
+                connection?.Close();
+            }
+            return isFound;
+
+        }
         public static DataTable GetAllLocalApplications()
         {
             DataTable dt = new DataTable();

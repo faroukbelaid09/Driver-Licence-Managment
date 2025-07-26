@@ -193,7 +193,6 @@
             this.DLAppIDValue.Size = new System.Drawing.Size(34, 17);
             this.DLAppIDValue.TabIndex = 2;
             this.DLAppIDValue.Text = "N/A";
-            this.DLAppIDValue.Click += new System.EventHandler(this.DLAppIDValue_Click);
             // 
             // PB1
             // 
@@ -204,7 +203,6 @@
             this.PB1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.PB1.TabIndex = 1;
             this.PB1.TabStop = false;
-            this.PB1.Click += new System.EventHandler(this.pictureBox1_Click);
             // 
             // DLAppIDLabel
             // 
@@ -470,7 +468,6 @@
             this.ApplicantLabel.Size = new System.Drawing.Size(80, 17);
             this.ApplicantLabel.TabIndex = 14;
             this.ApplicantLabel.Text = "Applicant:";
-            this.ApplicantLabel.Click += new System.EventHandler(this.label9_Click);
             // 
             // FeeLabel
             // 

@@ -21,6 +21,11 @@ namespace DrivingLicenseBusinessLayer
         public int CreatedByUserID  { get; set; }
 
 
+        // For second Constrctor
+        public string ApplicationPersonName { get; set; }
+        public string ApplicationTypeTitle { get; set; }
+        public string ApplicationCreatedByUserName { get; set; }
+
         public clsApplication(int appID, int appPersonID, string appDate, int appTypeID, int appStatus,
             string appLastStatusDate, int appFees, int createdUserID) 
         {
@@ -34,6 +39,22 @@ namespace DrivingLicenseBusinessLayer
             this.CreatedByUserID = createdUserID;
         }
 
+
+        // Constructer for decoded IDs value
+        public clsApplication(int appID, int appPersonID, string appPersonName, string appDate, string appTypeTitle, int appStatus,
+            string appLastStatusDate, int appFees, string createdUserName)
+        {
+            this.ApplicationID = appID;
+            this.ApplicantPersonID = appPersonID;
+            this.ApplicationPersonName = appPersonName;
+            this.ApplicationDate = appDate;
+            this.ApplicationTypeTitle = appTypeTitle;
+            this.ApplicationStatus = appStatus;
+            this.LastStatusDate = appLastStatusDate;
+            this.PaidFees = appFees;
+            this.ApplicationCreatedByUserName = createdUserName;
+        }
+        
         public static clsApplication Create(int personID,string appDate, int appTypeID,int appStatus,
             string appLastStatusDate, int appFees, int userID)
         {
@@ -88,6 +109,21 @@ namespace DrivingLicenseBusinessLayer
         public static bool CheckIfApplicationExist(string NationalNo, string DrivingClass)
         {
             return clsApplicationDataAccess.CheckIfApplicationExist(NationalNo, DrivingClass);
+        }
+
+        public static clsApplication FindApplication(int appID)
+        {
+            int appPersonID = -1,appStatus = -1,appPaidFees = -1;
+            string appPersonName = "", appDate = "", appTypeTitle = "", 
+                appLastStatusDate = "", appCreatedUserName = "";
+
+             if(clsApplicationDataAccess.FindApplication(appID,ref appPersonID, ref appPersonName, ref appDate,
+                ref appTypeTitle, ref appStatus, ref appLastStatusDate, ref appPaidFees, ref appCreatedUserName))
+            {
+                return new clsApplication(appID,appPersonID,appPersonName,appDate,appTypeTitle,appStatus,
+                    appLastStatusDate,appPaidFees,appCreatedUserName);
+            }
+            return null;
         }
     }
 }
