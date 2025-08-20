@@ -46,7 +46,12 @@ namespace DrivingLicenseBusinessLayer
             return null;
         }
 
-
+        public static bool Update(int testappointmentid,int testtypeid, int localdrivingappid, string appointmentdate,
+            int paidfees, int createdbyuserid, int islocked, int retaketestappid)
+        {
+            return clsTestAppointmentDataAccess.Update(testappointmentid, testtypeid, localdrivingappid, appointmentdate,
+            paidfees, createdbyuserid, islocked, retaketestappid);
+        }
         public static clsTestAppointment Find(int testAppointmentID)
         {
             int TestTypeID = -1, LocalDrivingAppID = -1, PaidFees = -1, Islocked = -1, CreatedbyUserID = -1,
@@ -80,7 +85,11 @@ namespace DrivingLicenseBusinessLayer
                     int paidfees = Convert.ToInt32(row["PaidFees"]);
                     int creatdebyuserid = Convert.ToInt32(row["CreatedByUserID"]);
                     int islocked = Convert.ToInt32(row["IsLocked"]);
-                    int retaketestappid = Convert.ToInt32(row["RetakeTestApplicationID"]);
+                    int retaketestappid = -1;
+                    if (row["RetakeTestApplicationID"] != System.DBNull.Value)
+                    {
+                        retaketestappid = Convert.ToInt32(row["RetakeTestApplicationID"]);
+                    }
 
 
                     // Create a new clsFullLocalApplication object and add it to the list
@@ -97,10 +106,10 @@ namespace DrivingLicenseBusinessLayer
             return null;
         }
 
-        public static List<clsTestAppointment> GetWrittingTests(int localDrivingAppID)
+        public static List<clsTestAppointment> GetWritingTests(int localDrivingAppID)
         {
             List<clsTestAppointment> tests = new List<clsTestAppointment>();
-            DataTable dt = clsTestAppointmentDataAccess.GetAllVisionAppointmentsTest(localDrivingAppID);
+            DataTable dt = clsTestAppointmentDataAccess.GetAllWritingAppointmentsTest(localDrivingAppID);
 
             if (dt.Rows != null)
             {
@@ -114,8 +123,11 @@ namespace DrivingLicenseBusinessLayer
                     int paidfees = Convert.ToInt32(row["PaidFees"]);
                     int creatdebyuserid = Convert.ToInt32(row["CreatedByUserID"]);
                     int islocked = Convert.ToInt32(row["IsLocked"]);
-                    int retaketestappid = Convert.ToInt32(row["RetakeTestApplicationID"]);
-
+                    int retaketestappid = -1;
+                    if (row["RetakeTestApplicationID"] != System.DBNull.Value)
+                    {
+                        retaketestappid = Convert.ToInt32(row["RetakeTestApplicationID"]);
+                    }
 
                     // Create a new clsFullLocalApplication object and add it to the list
                     clsTestAppointment test = new clsTestAppointment(
@@ -134,7 +146,7 @@ namespace DrivingLicenseBusinessLayer
         public static List<clsTestAppointment> GetStreetTests(int localDrivingAppID)
         {
             List<clsTestAppointment> tests = new List<clsTestAppointment>();
-            DataTable dt = clsTestAppointmentDataAccess.GetAllVisionAppointmentsTest(localDrivingAppID);
+            DataTable dt = clsTestAppointmentDataAccess.GetAllStreetAppointmentsTest(localDrivingAppID);
 
             if (dt.Rows != null)
             {
@@ -148,8 +160,11 @@ namespace DrivingLicenseBusinessLayer
                     int paidfees = Convert.ToInt32(row["PaidFees"]);
                     int creatdebyuserid = Convert.ToInt32(row["CreatedByUserID"]);
                     int islocked = Convert.ToInt32(row["IsLocked"]);
-                    int retaketestappid = row["RetakeTestApplicationID"] != DBNull.Value ? Convert.ToInt32(row["RetakeTestApplicationID"]) : -1;
-
+                    int retaketestappid = -1;
+                    if (row["RetakeTestApplicationID"] != System.DBNull.Value)
+                    {
+                        retaketestappid = Convert.ToInt32(row["RetakeTestApplicationID"]);
+                    }
 
                     // Create a new clsFullLocalApplication object and add it to the list
                     clsTestAppointment test = new clsTestAppointment(
@@ -163,6 +178,19 @@ namespace DrivingLicenseBusinessLayer
                 return tests;
             }
             return null;
+        }
+    
+        public static bool CheckTestAppointmentResult(int testappointmentid)
+        {
+            int TestResult = -1;
+            clsTestsDataAccess.CheckTestResult(testappointmentid,ref TestResult);
+
+            return TestResult > 0 ? true : false;
+        }
+    
+        public static bool UpdateRetakeAppID(int testAppointmentID, int retakeID)
+        {
+            return clsTestAppointmentDataAccess.UpdateRetakeAppID(testAppointmentID,retakeID);
         }
     }
 }

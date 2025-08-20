@@ -31,3 +31,6 @@ order by TestAppointmentID desc
 
 select * from TestAppointments where 
 TestAppointments.LocalDrivingLicenseApplicationID = 36 and TestTypeID = 1
+
+
+select TestResult from Tests where TestAppointmentID = 108;

@@ -57,5 +57,10 @@ namespace DrivingLicenseBusinessLayer
             return clsTestTypesDataAccess.UpdateTestType(this.TestTypeID, this.TestTypeTitle,this.TestTypeDescription,
                 this.TestTypeFees);
         }
+
+        public static int GetTestFees(int testID)
+        {
+            return clsTestTypesDataAccess.GetTestFees(testID);
+        }
     }
 }

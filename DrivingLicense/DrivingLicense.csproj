@@ -145,6 +145,12 @@
     <Compile Include="ScheduleAppointmentForm.Designer.cs">
       <DependentUpon>ScheduleAppointmentForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="ScheduleTestForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ScheduleTestForm.Designer.cs">
+      <DependentUpon>ScheduleTestForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="ShowPersonDetailsForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -156,6 +162,12 @@
     </Compile>
     <Compile Include="ShowUserDetails.Designer.cs">
       <DependentUpon>ShowUserDetails.cs</DependentUpon>
+    </Compile>
+    <Compile Include="TakeTestForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="TakeTestForm.Designer.cs">
+      <DependentUpon>TakeTestForm.cs</DependentUpon>
     </Compile>
     <Compile Include="UserForm.cs">
       <SubType>Form</SubType>
@@ -221,11 +233,17 @@
     <EmbeddedResource Include="ScheduleAppointmentForm.resx">
       <DependentUpon>ScheduleAppointmentForm.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="ScheduleTestForm.resx">
+      <DependentUpon>ScheduleTestForm.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="ShowPersonDetailsForm.resx">
       <DependentUpon>ShowPersonDetailsForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="ShowUserDetails.resx">
       <DependentUpon>ShowUserDetails.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="TakeTestForm.resx">
+      <DependentUpon>TakeTestForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="UserForm.resx">
       <DependentUpon>UserForm.cs</DependentUpon>

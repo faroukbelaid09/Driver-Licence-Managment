@@ -106,24 +106,32 @@ namespace DrivingLicense
                     visionTestToolStripMenuItem.Enabled = true;
                     sechduleWrittenTestToolStripMenuItem.Enabled = false;
                     sechduleStreetTestToolStripMenuItem.Enabled = false;
+
+                    issueDrivingLicenseFirstTimeToolStripMenuItem.Enabled = false;
                 }
                 else if (_selectedApplication.PassedTests == 1)
                 {
                     visionTestToolStripMenuItem.Enabled = false;
                     sechduleWrittenTestToolStripMenuItem.Enabled = true;
                     sechduleStreetTestToolStripMenuItem.Enabled = false;
+
+                    issueDrivingLicenseFirstTimeToolStripMenuItem.Enabled = false;
                 }
                 else if (_selectedApplication.PassedTests == 2) 
                 {
                     visionTestToolStripMenuItem.Enabled = false;
                     sechduleWrittenTestToolStripMenuItem.Enabled = false;
                     sechduleStreetTestToolStripMenuItem.Enabled = true;
+
+                    issueDrivingLicenseFirstTimeToolStripMenuItem.Enabled = false;
                 }
                 else
                 {
                     visionTestToolStripMenuItem.Enabled = false;
                     sechduleWrittenTestToolStripMenuItem.Enabled = false;
                     sechduleStreetTestToolStripMenuItem.Enabled = false;
+
+                    issueDrivingLicenseFirstTimeToolStripMenuItem.Enabled = true;
                 }
             }
             else
@@ -243,6 +251,7 @@ namespace DrivingLicense
         {
             ScheduleAppointmentForm frm = new ScheduleAppointmentForm("vision", _GetApplication(),
                 _selectedApplication);
+            frm.EventTrigger += _DisplayLocalApplications;
             frm.ShowDialog();
         }
 
@@ -250,6 +259,7 @@ namespace DrivingLicense
         {
             ScheduleAppointmentForm frm = new ScheduleAppointmentForm("writing", _GetApplication(),
                 _selectedApplication);
+            frm.EventTrigger += _DisplayLocalApplications;
             frm.ShowDialog();
 
         }
@@ -258,6 +268,7 @@ namespace DrivingLicense
         {
             ScheduleAppointmentForm frm = new ScheduleAppointmentForm("driving", _GetApplication(), 
                 _selectedApplication);
+            frm.EventTrigger += _DisplayLocalApplications;
             frm.ShowDialog();
         }
     }

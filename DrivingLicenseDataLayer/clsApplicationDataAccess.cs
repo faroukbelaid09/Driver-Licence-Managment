@@ -150,8 +150,6 @@ namespace DrivingLicenseDataLayer
 
             return dt;
         }
-    
-    
         public static bool CheckIfApplicationExist(string nationalNo, string drivingClass)
         {
 

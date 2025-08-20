@@ -121,7 +121,7 @@
   <data name="pictureBox.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
         iVBORw0KGgoAAAANSUhEUgAAAGQAAABkCAYAAABw4pVUAAAABGdBTUEAALGPC/xhBQAAAAlwSFlzAAAL
-        EAAACxABrSO9dQAADShJREFUeF7tnGlwW9UVxxUolBZaSoGWQmFaGNpO6QZdZrpCgbYw0JZ+KOVDp9Oy
+        DAAACwwBP0AiyAAADShJREFUeF7tnGlwW9UVxxUolBZaSoGWQmFaGNpO6QZdZrpCgbYw0JZ+KOVDp9Oy
         pAGGJsMAgVII7UDLEiI7SQ0mIQmWlUWxpHiJs9uJ49ixLUvypu09LZZtxVtsS5ZtbdbtufI1OM9H0nuy
         ndjp/c38JxhL957zv++u7z2rOBwOh8PhcDgcDofD4XA4HA6Hw+FwOBwOh8PhnL+otxo/81bRgUvZj5yF
         5u1tuuvUxYZ78zSG59Uaw468YkOzuljvUWv0Q/DfZFrwmVieRj+QV6wX4LO18PtC+PmJPK3hJ/mayk+z
@@ -183,7 +183,7 @@
   <data name="pictureBox1.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
         iVBORw0KGgoAAAANSUhEUgAAAGQAAABkCAYAAABw4pVUAAAABGdBTUEAALGPC/xhBQAAAAlwSFlzAAAL
-        EAAACxABrSO9dQAACuVJREFUeF7tXVtsHNUZjnqVelVb1L71oj72IrWlfeWlj23pzVUL3jUi4BRKFBLv
+        DAAACwwBP0AiyAAACuVJREFUeF7tXVtsHNUZjnqVelVb1L71oj72IrWlfeWlj23pzVUL3jUi4BRKFBLv
         zBoSso5jO3VFbBwSB3tm49i5G2JDbMdx4oqUJg40JSopCmlCLpRW0KJcCK1EXzj9vzP/WY/Nifc+c2Y9
         n/Qp1mbnXP5vz2XO+c9/lsSIESNGjBgxYgSCxr7GDyed1DeT/fbPk671cNKxh4gzCcc6TbxAn11NOtb/
         JOlvfIb/o7+P07+D8hl69q5t6W8gLU42RqGoG677YIPT/B0y5Iqkaw8nXOs6/SsqQUrrvyTmERKqJZFN
@@ -242,7 +242,13 @@
   <metadata name="PaidFees.UserAddedColumn" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
     <value>True</value>
   </metadata>
-  <metadata name="IsLooked.UserAddedColumn" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+  <metadata name="IsLocked.UserAddedColumn" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
     <value>True</value>
+  </metadata>
+  <metadata name="ContextMenuStrip.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+    <value>17, 17</value>
+  </metadata>
+  <metadata name="$this.TrayHeight" type="System.Int32, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>25</value>
   </metadata>
 </root>

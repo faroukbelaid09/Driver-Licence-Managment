@@ -19,9 +19,9 @@ namespace DrivingLicenseDataLayer
             SqlConnection connection = new SqlConnection(clsDataAccessSettings.ConnectionString);
 
             string query = @"Insert into TestAppointments (TestTypeID, LocalDrivingLicenseApplicationID,
-                            AppointmentDate,PaidFees, IsLocked, RetakeTestApplicationID)
+                            AppointmentDate,PaidFees, CreatedByUserID, IsLocked, RetakeTestApplicationID)
                             Values(@TestTypeID, @LocalDrivingLicenseApplicationID, @AppointmentDate, 
-                            @PaidFees, @IsLocked, @RetakeTestApplicationID);
+                            @PaidFees, @createdbyuserid, @IsLocked, @RetakeTestApplicationID);
                             SELECT SCOPE_IDENTITY();";
 
             SqlCommand command = new SqlCommand(query, connection);
@@ -30,8 +30,10 @@ namespace DrivingLicenseDataLayer
             command.Parameters.AddWithValue("@LocalDrivingLicenseApplicationID", localdrivingappid);
             command.Parameters.AddWithValue("@AppointmentDate", appointmentdate);
             command.Parameters.AddWithValue("@PaidFees", paidfees);
+            command.Parameters.AddWithValue("@createdbyuserid", createdbyuserid);
             command.Parameters.AddWithValue("@IsLocked", islocked);
-            if(retaketestappid != null)
+            
+            if(retaketestappid != -1)
             {
                 command.Parameters.AddWithValue("@RetakeTestApplicationID", retaketestappid);
             }
@@ -63,6 +65,61 @@ namespace DrivingLicenseDataLayer
             return TestAppointmentID;
         }
     
+        public static bool Update(int testappointmentid,int testtypeid, int localdrivingappid, string appointmentdate,
+            int paidfees, int createdbyuserid, int islocked, int retaketestappid)
+        {
+            bool isUpdated = false;
+            SqlConnection connection = new SqlConnection(clsDataAccessSettings.ConnectionString);
+
+            string query = @"Update TestAppointments 
+                           Set TestTypeID = @testtypeid, LocalDrivingLicenseApplicationID = @localdrivingappid, 
+                            AppointmentDate = @appointmentdate,PaidFees = @paidfees, CreatedByUserID = @createdbyuserid, 
+                            IsLocked = @islocked,RetakeTestApplicationID=@retaketestappid
+                            Where TestAppointmentID = @testappointmentid";
+
+            SqlCommand command = new SqlCommand(query, connection);
+
+            command.Parameters.AddWithValue("@testappointmentid", testappointmentid);
+            command.Parameters.AddWithValue("@testtypeid", testtypeid);
+            command.Parameters.AddWithValue("@localdrivingappid", localdrivingappid);
+            command.Parameters.AddWithValue("@appointmentdate", appointmentdate);
+            command.Parameters.AddWithValue("@paidfees", paidfees);
+            command.Parameters.AddWithValue("@createdbyuserid", createdbyuserid);
+            command.Parameters.AddWithValue("@islocked", islocked);
+
+            if (retaketestappid != -1)
+            {
+                command.Parameters.AddWithValue("@retaketestappid", retaketestappid);
+            }
+            else
+            {
+                command.Parameters.AddWithValue("@retaketestappid", DBNull.Value);
+            }
+
+
+            try
+            {
+                connection.Open();
+                int rowAffected = command.ExecuteNonQuery();
+
+                if (rowAffected > 0)
+                {
+                    isUpdated = true;
+                }
+
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine("DB: Error when updating test appointment." + ex.ToString());
+            }
+            finally
+            {
+                connection?.Close();
+            }
+
+            return isUpdated;
+
+        }
         public static DataTable GetAllVisionAppointmentsTest(int localDrivingLicenseAppID)
         {
             DataTable table = new DataTable();
@@ -110,7 +167,7 @@ namespace DrivingLicenseDataLayer
 
             string query = @"select * from TestAppointments where 
                             TestAppointments.LocalDrivingLicenseApplicationID = @localdrivingappid
-                            and TestTypeID = 2";
+                            and TestAppointments.TestTypeID = 2";
 
             SqlCommand command = new SqlCommand(query, connection);
 
@@ -230,5 +287,42 @@ namespace DrivingLicenseDataLayer
             return found;
         }
 
+        public static bool UpdateRetakeAppID(int testAppointmentID, int retakeID)
+        {
+            bool updated = false;
+            SqlConnection connection = new SqlConnection(clsDataAccessSettings.ConnectionString);
+
+            string query = @"Update TestAppointments 
+                           Set RetakeTestApplicationID = @retakeID
+                           Where TestAppointmentID = @testAppointmentID";
+
+            SqlCommand command = new SqlCommand(query, connection);
+
+            command.Parameters.AddWithValue("@retakeID", retakeID);
+            command.Parameters.AddWithValue("@testAppointmentID", testAppointmentID);
+
+            try
+            {
+                Console.WriteLine("::::RETAKE:::: " + retakeID + "##" + testAppointmentID);
+                connection.Open();
+                int rowAffected = command.ExecuteNonQuery();
+
+                if (rowAffected > 0)
+                {
+                    updated = true;
+                }
+
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine("DB: Error when updating test appointment." + ex.ToString());
+            }
+            finally
+            {
+                connection?.Close();
+            }
+
+            return updated;
+        }
     }
 }

@@ -28,23 +28,28 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(ScheduleAppointmentForm));
             this.pictureBox = new System.Windows.Forms.PictureBox();
             this.Title = new System.Windows.Forms.Label();
-            this.ctrlDrivingLicenseApplicationInfo1 = new DrivingLicense.ctrlDrivingLicenseApplicationInfo();
             this.AppoitmentLabel = new System.Windows.Forms.Label();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.TestAppointmentsGridView = new System.Windows.Forms.DataGridView();
             this.AppointmentID = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.AppointmentDate = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.PaidFees = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.IsLooked = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.IsLocked = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.RecordLabel = new System.Windows.Forms.Label();
             this.RecordValue = new System.Windows.Forms.Label();
             this.CloseBTN = new System.Windows.Forms.Button();
+            this.ContextMenuStrip = new System.Windows.Forms.ContextMenuStrip(this.components);
+            this.editToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.takeTestToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.ctrlDrivingLicenseApplicationInfo1 = new DrivingLicense.ctrlDrivingLicenseApplicationInfo();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.TestAppointmentsGridView)).BeginInit();
+            this.ContextMenuStrip.SuspendLayout();
             this.SuspendLayout();
             // 
             // pictureBox
@@ -56,7 +61,6 @@
             this.pictureBox.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.pictureBox.TabIndex = 0;
             this.pictureBox.TabStop = false;
-            this.pictureBox.Click += new System.EventHandler(this.pictureBox1_Click);
             // 
             // Title
             // 
@@ -67,14 +71,6 @@
             this.Title.Size = new System.Drawing.Size(274, 26);
             this.Title.TabIndex = 1;
             this.Title.Text = "Desired Test Appoitment";
-            // 
-            // ctrlDrivingLicenseApplicationInfo1
-            // 
-            this.ctrlDrivingLicenseApplicationInfo1.Location = new System.Drawing.Point(12, 63);
-            this.ctrlDrivingLicenseApplicationInfo1.Name = "ctrlDrivingLicenseApplicationInfo1";
-            this.ctrlDrivingLicenseApplicationInfo1.Size = new System.Drawing.Size(737, 384);
-            this.ctrlDrivingLicenseApplicationInfo1.TabIndex = 2;
-            this.ctrlDrivingLicenseApplicationInfo1.Load += new System.EventHandler(this.ctrlDrivingLicenseApplicationInfo1_Load);
             // 
             // AppoitmentLabel
             // 
@@ -95,9 +91,12 @@
             this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.pictureBox1.TabIndex = 4;
             this.pictureBox1.TabStop = false;
+            this.pictureBox1.Click += new System.EventHandler(this.pictureBox1_Click_1);
             // 
             // TestAppointmentsGridView
             // 
+            this.TestAppointmentsGridView.AllowUserToAddRows = false;
+            this.TestAppointmentsGridView.AllowUserToDeleteRows = false;
             this.TestAppointmentsGridView.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.TestAppointmentsGridView.AutoSizeRowsMode = System.Windows.Forms.DataGridViewAutoSizeRowsMode.AllCells;
             this.TestAppointmentsGridView.BackgroundColor = System.Drawing.SystemColors.Control;
@@ -106,35 +105,41 @@
             this.AppointmentID,
             this.AppointmentDate,
             this.PaidFees,
-            this.IsLooked});
+            this.IsLocked});
+            this.TestAppointmentsGridView.GridColor = System.Drawing.SystemColors.Control;
             this.TestAppointmentsGridView.Location = new System.Drawing.Point(16, 473);
             this.TestAppointmentsGridView.Name = "TestAppointmentsGridView";
+            this.TestAppointmentsGridView.ReadOnly = true;
             this.TestAppointmentsGridView.Size = new System.Drawing.Size(733, 119);
             this.TestAppointmentsGridView.TabIndex = 5;
             // 
             // AppointmentID
             // 
+            this.AppointmentID.DataPropertyName = "TestAppointmentID";
             this.AppointmentID.HeaderText = "Appointment ID";
             this.AppointmentID.Name = "AppointmentID";
             this.AppointmentID.ReadOnly = true;
             // 
             // AppointmentDate
             // 
+            this.AppointmentDate.DataPropertyName = "AppointmentDate";
             this.AppointmentDate.HeaderText = "Appointment Date";
             this.AppointmentDate.Name = "AppointmentDate";
             this.AppointmentDate.ReadOnly = true;
             // 
             // PaidFees
             // 
+            this.PaidFees.DataPropertyName = "PaidFees";
             this.PaidFees.HeaderText = "Paid Fees";
             this.PaidFees.Name = "PaidFees";
             this.PaidFees.ReadOnly = true;
             // 
-            // IsLooked
+            // IsLocked
             // 
-            this.IsLooked.HeaderText = "Is Looked";
-            this.IsLooked.Name = "IsLooked";
-            this.IsLooked.ReadOnly = true;
+            this.IsLocked.DataPropertyName = "IsLocked";
+            this.IsLocked.HeaderText = "Is Looked";
+            this.IsLocked.Name = "IsLocked";
+            this.IsLocked.ReadOnly = true;
             // 
             // RecordLabel
             // 
@@ -165,6 +170,38 @@
             this.CloseBTN.TabIndex = 8;
             this.CloseBTN.Text = "Close";
             this.CloseBTN.UseVisualStyleBackColor = true;
+            this.CloseBTN.Click += new System.EventHandler(this.CloseBTN_Click);
+            // 
+            // ContextMenuStrip
+            // 
+            this.ContextMenuStrip.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.editToolStripMenuItem,
+            this.takeTestToolStripMenuItem});
+            this.ContextMenuStrip.Name = "ContextMenuStrip";
+            this.ContextMenuStrip.Size = new System.Drawing.Size(121, 48);
+            this.ContextMenuStrip.Opening += new System.ComponentModel.CancelEventHandler(this.contextMenuStrip1_Opening_1);
+            // 
+            // editToolStripMenuItem
+            // 
+            this.editToolStripMenuItem.Name = "editToolStripMenuItem";
+            this.editToolStripMenuItem.Size = new System.Drawing.Size(120, 22);
+            this.editToolStripMenuItem.Text = "Edit";
+            this.editToolStripMenuItem.Click += new System.EventHandler(this.editToolStripMenuItem_Click);
+            // 
+            // takeTestToolStripMenuItem
+            // 
+            this.takeTestToolStripMenuItem.Name = "takeTestToolStripMenuItem";
+            this.takeTestToolStripMenuItem.Size = new System.Drawing.Size(120, 22);
+            this.takeTestToolStripMenuItem.Text = "Take Test";
+            this.takeTestToolStripMenuItem.Click += new System.EventHandler(this.takeTestToolStripMenuItem_Click);
+            // 
+            // ctrlDrivingLicenseApplicationInfo1
+            // 
+            this.ctrlDrivingLicenseApplicationInfo1.Location = new System.Drawing.Point(12, 63);
+            this.ctrlDrivingLicenseApplicationInfo1.Name = "ctrlDrivingLicenseApplicationInfo1";
+            this.ctrlDrivingLicenseApplicationInfo1.Size = new System.Drawing.Size(737, 384);
+            this.ctrlDrivingLicenseApplicationInfo1.TabIndex = 2;
+            this.ctrlDrivingLicenseApplicationInfo1.Load += new System.EventHandler(this.ctrlDrivingLicenseApplicationInfo1_Load);
             // 
             // ScheduleAppointmentForm
             // 
@@ -185,6 +222,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.TestAppointmentsGridView)).EndInit();
+            this.ContextMenuStrip.ResumeLayout(false);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -200,10 +238,13 @@
         private System.Windows.Forms.DataGridView TestAppointmentsGridView;
         private System.Windows.Forms.Label RecordLabel;
         private System.Windows.Forms.Label RecordValue;
+        private System.Windows.Forms.Button CloseBTN;
         private System.Windows.Forms.DataGridViewTextBoxColumn AppointmentID;
         private System.Windows.Forms.DataGridViewTextBoxColumn AppointmentDate;
         private System.Windows.Forms.DataGridViewTextBoxColumn PaidFees;
-        private System.Windows.Forms.DataGridViewTextBoxColumn IsLooked;
-        private System.Windows.Forms.Button CloseBTN;
+        private System.Windows.Forms.DataGridViewTextBoxColumn IsLocked;
+        private System.Windows.Forms.ContextMenuStrip ContextMenuStrip;
+        private System.Windows.Forms.ToolStripMenuItem editToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem takeTestToolStripMenuItem;
     }
 }

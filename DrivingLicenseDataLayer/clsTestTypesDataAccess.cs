@@ -85,5 +85,37 @@ namespace DrivingLicenseDataLayer
             return isUpdated;
 
         }
+
+        public static int GetTestFees(int testID) 
+        {
+            int fees = -1;
+
+            SqlConnection connection = new SqlConnection(clsDataAccessSettings.ConnectionString);
+
+            string query = @"Select TestTypeFees from TestTypes 
+                           Where TestTypeID = @testID";
+
+            SqlCommand command = new SqlCommand(query, connection);
+            command.Parameters.AddWithValue("@testID", testID);
+
+            try
+            {
+                connection.Open();
+                SqlDataReader reader = command.ExecuteReader();
+
+                if (reader.Read()) {
+                    fees = (int)reader["TestTypeFees"];
+                }
+
+                reader.Close();
+            }
+            catch (Exception ex) {
+            
+            }finally { 
+                connection?.Close(); 
+            }
+
+            return fees;
+        }
     }
 }
