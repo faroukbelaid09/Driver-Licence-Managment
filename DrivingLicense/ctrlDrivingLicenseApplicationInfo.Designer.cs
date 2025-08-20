@@ -507,7 +507,6 @@
             this.Controls.Add(this.GB1);
             this.Name = "ctrlDrivingLicenseApplicationInfo";
             this.Size = new System.Drawing.Size(737, 384);
-            this.Load += new System.EventHandler(this.ctrlDrivingLicenseApplicationInfo_Load);
             this.GB1.ResumeLayout(false);
             this.GB1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.PB3)).EndInit();

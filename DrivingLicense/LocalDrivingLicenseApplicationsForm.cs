@@ -11,18 +11,17 @@ namespace DrivingLicense
     {
         public delegate void TriggerEventHandler();
         public event TriggerEventHandler EventTrigger;
-
         private List<clsFullLocalApplication> _allLocalApplications;
         private List<clsFullLocalApplication> _filteredLocalApplications;
-
         private clsFullLocalApplication _selectedApplication;
+        private clsApplication _application;
+        int selectedAppIndex = -1;
         private enum FilterOptions{ LocalAppID = 1, NationalNo = 2, FullName = 3, Status = 4}
         
-        void _ResetFilterCombo()
+        private void _ResetFilterCombo()
         {
             FillterCB.SelectedIndex = 0;
         }
-
         private void _ResetTextField()
         {
             if (FillterCB.SelectedIndex == 0)
@@ -34,12 +33,10 @@ namespace DrivingLicense
                 FillterTB.Visible = true;
             }
         }
-        
         private void _DisplayRecord(int record)
         {
             RecordValue.Text = record.ToString();
         }
-
         private void _ResetDataGridViewSettings()
         {
             // Add ContextMenuStrip to LocalAppDataGridView (Right click menu)
@@ -48,7 +45,6 @@ namespace DrivingLicense
             // Disable auto-generated columns
             LocalAppDataGridView.AutoGenerateColumns = false;
         }
-
         private void _DisplayLocalApplications()
         {
             _allLocalApplications = clsApplication.GetAllLocalApplications();
@@ -59,9 +55,20 @@ namespace DrivingLicense
 
             }
             _DisplayRecord(_allLocalApplications.Count);
-        }
+            if (selectedAppIndex != -1 && _allLocalApplications[selectedAppIndex].PassedTests == 3)
+            {
+                _UpdateApplicationStatus();
 
-        // DISPLAY FILLTRED PEOPLE
+                _allLocalApplications = clsApplication.GetAllLocalApplications();
+
+                if (_allLocalApplications != null && _allLocalApplications.Count > 0)
+                {
+                    LocalAppDataGridView.DataSource = clsApplication.GetAllLocalApplications();
+
+                }
+                _DisplayRecord(_allLocalApplications.Count);
+            }
+        }
         private void _DisplayFilteredApplications()
         {
             if (_filteredLocalApplications != null && _filteredLocalApplications.Count > 0)
@@ -74,20 +81,6 @@ namespace DrivingLicense
                 LocalAppDataGridView.DataSource = null;
             }
         }
-
-        // RETURN THE SELECTED APPLICATION FROM THE MENU
-        private clsFullLocalApplication GetTheSelectedApplication()
-        {
-            // Get the selected row index from the ContextMenuStrip's Tag
-            int rowIndex = (int)contextMenuStrip.Tag;
-
-            // Access the data of the selected row
-            var selectedRow = LocalAppDataGridView.Rows[rowIndex];
-            clsFullLocalApplication app = selectedRow.DataBoundItem as clsFullLocalApplication;
-
-            return app;
-        }
-
         private void contextMenuStrip1_Opening(object sender, System.ComponentModel.CancelEventArgs e)
         {
             // Get the mouse position relative to the DataGridView
@@ -133,6 +126,8 @@ namespace DrivingLicense
 
                     issueDrivingLicenseFirstTimeToolStripMenuItem.Enabled = true;
                 }
+
+                _application = _GetApplication();
             }
             else
             {
@@ -140,24 +135,35 @@ namespace DrivingLicense
                 e.Cancel = true;
             }
         }
+        private void _UpdateApplicationStatus()
+        {
+            clsApplication.UpdateApplicationStatus(_application.ApplicationID,3);
+        }
+        private clsFullLocalApplication GetTheSelectedApplication()
+        {
+            // Get the selected row index from the ContextMenuStrip's Tag
+            int rowIndex = (int)contextMenuStrip.Tag;
 
+            // Access the data of the selected row
+            var selectedRow = LocalAppDataGridView.Rows[rowIndex];
+            clsFullLocalApplication app = selectedRow.DataBoundItem as clsFullLocalApplication;
+
+            return app;
+        }
         private clsApplication _GetApplication()
         {
             clsLocalDrivingLicenseApplication lapp = clsLocalDrivingLicenseApplication.FindLocalApplication
                 (_selectedApplication.LocalDrivingLicenseApplicationID);
 
-            Console.WriteLine("Local APP::: " +  lapp.ApplicationID);
+            _application = clsApplication.FindApplication(lapp.ApplicationID);
 
-            clsApplication app = clsApplication.FindApplication(lapp.ApplicationID);
-
-            Console.WriteLine("app.ApplicantPersonID::: " + app.ApplicantPersonID);
-            if (app != null) 
+            if (_application != null) 
             {
-                Console.WriteLine("APP");
-                return app;
+                return _application;
             }
             return null;
         }
+        
         public LocalDrivingLicenseApplicationsForm()
         {
             InitializeComponent();
@@ -207,19 +213,16 @@ namespace DrivingLicense
         {
             _ResetTextField();
         }
-
         private void AddPersonPB_Click(object sender, EventArgs e)
         {
             NewLocalDrivingLicenseForm frm = new NewLocalDrivingLicenseForm();
             frm.EventTrigger += _DisplayLocalApplications;
             frm.ShowDialog();
         }
-
         private void CloseFormBTN_Click(object sender, EventArgs e)
         {
             this.Close();
         }
-
         private void FillterTB_TextChanged(object sender, EventArgs e)
         {
             string filterText = FillterTB.Text.Trim().ToLower();
@@ -246,29 +249,32 @@ namespace DrivingLicense
                     break;
             }
         }
-
         private void visionTestToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            ScheduleAppointmentForm frm = new ScheduleAppointmentForm("vision", _GetApplication(),
+            ScheduleAppointmentForm frm = new ScheduleAppointmentForm("vision", _application,
                 _selectedApplication);
             frm.EventTrigger += _DisplayLocalApplications;
             frm.ShowDialog();
         }
-
         private void sechduleWrittenTestToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            ScheduleAppointmentForm frm = new ScheduleAppointmentForm("writing", _GetApplication(),
+            ScheduleAppointmentForm frm = new ScheduleAppointmentForm("writing", _application,
                 _selectedApplication);
             frm.EventTrigger += _DisplayLocalApplications;
             frm.ShowDialog();
 
         }
-
         private void sechduleStreetTestToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            ScheduleAppointmentForm frm = new ScheduleAppointmentForm("driving", _GetApplication(), 
+            ScheduleAppointmentForm frm = new ScheduleAppointmentForm("driving", _application, 
                 _selectedApplication);
             frm.EventTrigger += _DisplayLocalApplications;
+            selectedAppIndex = Convert.ToInt32(contextMenuStrip.Tag);
+            frm.ShowDialog();
+        }
+        private void issueDrivingLicenseFirstTimeToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            IssueDrivingLicenseFirstTimeForm frm = new IssueDrivingLicenseFirstTimeForm(_application,_selectedApplication);
             frm.ShowDialog();
         }
     }

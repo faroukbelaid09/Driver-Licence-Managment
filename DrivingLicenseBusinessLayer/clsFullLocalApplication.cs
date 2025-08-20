@@ -27,5 +27,6 @@ namespace DrivingLicenseBusinessLayer
             this.PassedTests = passedTests;
             this.ApplicationStatus = appStatus;
         }
+        
     }
 }

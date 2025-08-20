@@ -125,5 +125,10 @@ namespace DrivingLicenseBusinessLayer
             }
             return null;
         }
+    
+        public static bool UpdateApplicationStatus(int appID,int appStatus)
+        {
+            return clsApplicationDataAccess.UpdateApplicationStatus(appID, appStatus);
+        }
     }
 }

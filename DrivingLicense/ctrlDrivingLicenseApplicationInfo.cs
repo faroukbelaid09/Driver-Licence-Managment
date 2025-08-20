@@ -40,10 +40,5 @@ namespace DrivingLicense
         {
             InitializeComponent();
         }
-
-        private void ctrlDrivingLicenseApplicationInfo_Load(object sender, EventArgs e)
-        {
-
-        }
     }
 }

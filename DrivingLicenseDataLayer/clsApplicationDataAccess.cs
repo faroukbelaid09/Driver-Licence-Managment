@@ -201,5 +201,43 @@ namespace DrivingLicenseDataLayer
             return isFound;
 
         }
+        
+        public static bool UpdateApplicationStatus(int appID, int appStatus)
+        {
+            bool updated = false;
+
+            SqlConnection connection = new SqlConnection(clsDataAccessSettings.ConnectionString);
+
+            string query = @"Update Applications 
+                           Set ApplicationStatus = @appStatus
+                            Where ApplicationID = @appID";
+
+            SqlCommand command = new SqlCommand(query, connection);
+
+            command.Parameters.AddWithValue("@appID", appID);
+            command.Parameters.AddWithValue("@appStatus", appStatus);
+
+            try
+            {
+                connection.Open();
+                int rowAffected = command.ExecuteNonQuery();
+
+                if (rowAffected > 0)
+                {
+                    updated = true;
+                }
+
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine("DB: Error when updating application status." + ex.ToString());
+            }
+            finally
+            {
+                connection?.Close();
+            }
+
+            return updated;
+        }
     }
 }

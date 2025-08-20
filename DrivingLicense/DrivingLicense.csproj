@@ -95,6 +95,12 @@
     <Compile Include="EditTestTypeForm.Designer.cs">
       <DependentUpon>EditTestTypeForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="IssueDrivingLicenseFirstTimeForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="IssueDrivingLicenseFirstTimeForm.Designer.cs">
+      <DependentUpon>IssueDrivingLicenseFirstTimeForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="LocalDrivingLicenseApplicationsForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -198,6 +204,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="EditTestTypeForm.resx">
       <DependentUpon>EditTestTypeForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="IssueDrivingLicenseFirstTimeForm.resx">
+      <DependentUpon>IssueDrivingLicenseFirstTimeForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="LocalDrivingLicenseApplicationsForm.resx">
       <DependentUpon>LocalDrivingLicenseApplicationsForm.cs</DependentUpon>
