@@ -6,6 +6,7 @@ using System.Linq;
 using System.Net.NetworkInformation;
 using System.Text;
 using System.Threading.Tasks;
+using static System.Net.Mime.MediaTypeNames;
 
 namespace DrivingLicenseDataLayer
 {
@@ -78,6 +79,55 @@ namespace DrivingLicenseDataLayer
                 connection?.Close();
             }
             return classNames;
+
+        }
+
+        public static bool GetByName(ref int classID, string className, ref string classDescription, 
+            ref int minimumAllowedAge, ref int defaultValidity, ref int classFees)
+        {
+            bool isFound = false;
+            SqlConnection connection = new SqlConnection(clsDataAccessSettings.ConnectionString);
+
+            string query = @"Select * from LicenseClasses where ClassName = @className";
+
+            SqlCommand command = new SqlCommand(query, connection);
+            command.Parameters.AddWithValue("@className", className);
+
+            try
+            {
+                connection.Open();
+                SqlDataReader reader = command.ExecuteReader();
+
+                if (reader.Read())
+                {
+
+
+                    isFound = true;
+
+                    classID = (int)reader["LicenseClassID"];
+                    Console.WriteLine("ID");
+                    classDescription = (string)reader["ClassDescription"];
+                    Console.WriteLine("DESC");
+                    minimumAllowedAge = (int)reader["MinimumAllowedAge"];
+                    Console.WriteLine("MIN AGE");
+                    defaultValidity = (int)reader["DefaultValidityLength"];
+                    Console.WriteLine("LENGTH");
+                    classFees = (int)reader["ClassFees"];
+                    Console.WriteLine("Class Fees");
+                }
+                reader.Close();
+
+            }
+            catch (Exception ex)
+            {
+                isFound = false;
+                Console.WriteLine(ex.Message);
+            }
+            finally
+            {
+                connection?.Close();
+            }
+            return isFound;
 
         }
 

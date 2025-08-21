@@ -84,6 +84,7 @@
             this.SaveBTN.TabIndex = 4;
             this.SaveBTN.Text = "Save";
             this.SaveBTN.UseVisualStyleBackColor = true;
+            this.SaveBTN.Click += new System.EventHandler(this.SaveBTN_Click);
             // 
             // CloseBTN
             // 

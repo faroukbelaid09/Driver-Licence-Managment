@@ -22,10 +22,50 @@ namespace DrivingLicense
             _application = _app;
             _fullApplication = _fullApp;
         }
-
         private void ctrlDrivingLicenseApplicationInfo1_Load(object sender, EventArgs e)
         {
             ctrlDrivingLicenseApplicationInfo1.LoadData(_application,_fullApplication);
+        }
+        private void SaveBTN_Click(object sender, EventArgs e)
+        {
+            clsDriver driver = null;
+            // First Check if the user is already a driver
+            if (!clsDriver.CheckIfDriverExist(_application.ApplicantPersonID))
+            {
+                driver = clsDriver.Create(_application.ApplicantPersonID, ApplicationState.CurrentUser.UserID,
+                DateTime.Now.ToString());
+            }
+
+            if (driver != null)
+            {
+                Console.WriteLine("::::DRIVER CREATED:::");
+                clsLicenseClass lincensClass = clsLicenseClass.GetLicenseClassByName(_fullApplication.DrivingClass);
+                if (lincensClass != null)
+                {
+                    Console.WriteLine(":::License Class Recived::::");
+
+                    clsLicense license = clsLicense.Create(_application.ApplicationID, driver.DriverID,
+                        lincensClass.LicenseClassID, DateTime.Now.ToString(),
+                        DateTime.Now.AddYears(lincensClass.DefaultValidityLength).ToString(),
+                        "Empty Notes", lincensClass.ClassFees, true, 1, ApplicationState.CurrentUser.UserID);
+
+                    if (license != null)
+                    {
+                        MessageBox.Show("License was created successfully!", "Success", MessageBoxButtons.OK,
+                            MessageBoxIcon.Information);
+
+                        this.Close();
+                    }
+                    else
+                    {
+                        MessageBox.Show("An error happend when creating a License.", "Error", MessageBoxButtons.OK,
+                            MessageBoxIcon.Error);
+
+                        this.Close();
+                    }
+                }
+
+            }
         }
     }
 }

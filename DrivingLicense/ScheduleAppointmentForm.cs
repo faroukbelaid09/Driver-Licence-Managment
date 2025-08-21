@@ -83,6 +83,7 @@ namespace DrivingLicense
             RecordValue.Text = record.ToString();
         }
 
+
         // RETURN THE SELECTED APPOINTMENT FROM THE MENU
         private clsTestAppointment GetTheSelectedAppointment()
         {
@@ -95,7 +96,6 @@ namespace DrivingLicense
 
             return appointment;
         }
-
         private void contextMenuStrip1_Opening_1(object sender, System.ComponentModel.CancelEventArgs e)
         {
             // Get the mouse position relative to the DataGridView

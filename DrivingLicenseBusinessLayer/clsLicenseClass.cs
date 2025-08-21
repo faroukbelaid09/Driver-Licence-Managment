@@ -2,9 +2,6 @@
 using System;
 using System.Collections.Generic;
 using System.Data;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace DrivingLicenseBusinessLayer
 {
@@ -16,7 +13,6 @@ namespace DrivingLicenseBusinessLayer
         public int MinimumAllowedAge { get; set; }
         public int DefaultValidityLength { get; set; }
         public int ClassFees { get; set; }
-
 
         public clsLicenseClass(int classID, string className, string classDescription, 
             int minAllowedAge, int validityLength, int classFee) 
@@ -82,5 +78,17 @@ namespace DrivingLicenseBusinessLayer
             return null;
         }
 
+        public static clsLicenseClass GetLicenseClassByName(string className)
+        {
+            int classID =-1,minAge=-1,classLength=-1,classFee = -1;
+            string classDescription = "";
+
+            if(clsLicenseClassDataAccess.GetByName(ref classID,className,ref classDescription,ref minAge,
+                ref classLength,ref classFee))
+            {
+                return new clsLicenseClass(classID,className,classDescription,minAge,classLength,classFee);
+            }
+            return null;
+        }
     }
 }
