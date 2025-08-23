@@ -10,7 +10,7 @@ namespace DrivingLicenseBusinessLayer
     {
         public static clsUser CurrentUser { get; set; }
         public static bool IsLoggedIn => CurrentUser != null;
-
+        public static bool IsFirstTime = false;
         public static void Logout()
         {
             CurrentUser = null;

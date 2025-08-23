@@ -38,7 +38,6 @@ namespace DrivingLicenseBusinessLayer
             this.CreatedByUserID = createdByUserID;
         }
 
-
         public static clsLicense Create(int appID, int driverID, int licenseClass, string issueDate, string expirationDate,
             string notes, int paidFeed, bool isActive, int issueReason, int createdByUserID)
         {
@@ -54,6 +53,30 @@ namespace DrivingLicenseBusinessLayer
             }
 
             return null;
+        }
+    
+        public static clsFullLicenseDetails GetFullLicenseDetails(int licenseid)
+        {
+            bool isactive = false;
+
+            string issuedate = "", expirationdate="", notes="", classname="", fullname="",nationalno="",
+                isdetained="",dateofbirth = "",gender="";
+            int issuereason=-1, driverid=-1;
+
+            if(clsLicenseDataAccess.GetFullLicenseInfo(licenseid,ref isactive,ref issuedate,ref expirationdate,
+                ref notes,ref classname,ref fullname,ref issuereason,ref driverid,ref isdetained,ref nationalno,
+                ref dateofbirth,ref gender))
+            {
+                return new clsFullLicenseDetails(licenseid,isactive,issuedate,expirationdate,issuereason,
+                    notes,driverid,classname,isdetained,fullname,nationalno,dateofbirth,gender);
+            }
+
+            return null;
+        }
+    
+        public static int GetLicenseID(int appID)
+        {
+            return clsLicenseDataAccess.GetLicenseID(appID);
         }
     }
 }

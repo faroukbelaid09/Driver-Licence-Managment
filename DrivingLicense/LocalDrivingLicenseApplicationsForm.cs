@@ -55,9 +55,12 @@ namespace DrivingLicense
 
             }
             _DisplayRecord(_allLocalApplications.Count);
+
             if (selectedAppIndex != -1 && _allLocalApplications[selectedAppIndex].PassedTests == 3)
             {
                 _UpdateApplicationStatus();
+                ApplicationState.IsFirstTime = true;
+                issueDrivingLicenseFirstTimeToolStripMenuItem.Enabled = ApplicationState.IsFirstTime;
 
                 _allLocalApplications = clsApplication.GetAllLocalApplications();
 
@@ -124,7 +127,11 @@ namespace DrivingLicense
                     sechduleWrittenTestToolStripMenuItem.Enabled = false;
                     sechduleStreetTestToolStripMenuItem.Enabled = false;
 
-                    issueDrivingLicenseFirstTimeToolStripMenuItem.Enabled = true;
+                    editAppliToolStripMenuItem.Enabled = false;
+                    deleteApplicationToolStripMenuItem.Enabled = false;
+                    cancelApplicationToolStripMenuItem.Enabled = false;
+
+
                 }
 
                 _application = _GetApplication();
@@ -139,6 +146,14 @@ namespace DrivingLicense
         {
             clsApplication.UpdateApplicationStatus(_application.ApplicationID,3);
         }
+        private void _DisableContextMenuOptions()
+        {
+           ApplicationState.IsFirstTime = false;
+           issueDrivingLicenseFirstTimeToolStripMenuItem.Enabled = ApplicationState.IsFirstTime;
+
+            _DisplayLocalApplications();
+        }
+        
         private clsFullLocalApplication GetTheSelectedApplication()
         {
             // Get the selected row index from the ContextMenuStrip's Tag
@@ -275,6 +290,20 @@ namespace DrivingLicense
         private void issueDrivingLicenseFirstTimeToolStripMenuItem_Click(object sender, EventArgs e)
         {
             IssueDrivingLicenseFirstTimeForm frm = new IssueDrivingLicenseFirstTimeForm(_application,_selectedApplication);
+            selectedAppIndex = -1;
+            frm.EventTrigger += _DisableContextMenuOptions;
+            frm.ShowDialog();
+        }
+
+        private void showLicenseToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            ShowLicenseForm frm = new ShowLicenseForm(_application.ApplicationID);
+            frm.ShowDialog();
+        }
+
+        private void editToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            ShowApplicationInfoForm frm = new ShowApplicationInfoForm(_application,_selectedApplication);
             frm.ShowDialog();
         }
     }

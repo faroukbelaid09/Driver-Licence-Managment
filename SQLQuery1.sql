@@ -36,3 +36,37 @@ TestAppointments.LocalDrivingLicenseApplicationID = 36 and TestTypeID = 1
 
 
 select TestResult from Tests where TestAppointmentID = 108;
+
+
+select Licenses.LicenseID,Licenses.IsActive,Licenses.IssueDate,Licenses.ExpirationDate,Licenses.IssueReason,Licenses.Notes,
+Licenses.DriverID,LicenseClasses.ClassName,isDetained = (select DetainedLicenses.IsReleased from DetainedLicenses where Licenses.LicenseID = DetainedLicenses.LicenseID and DetainedLicenses.IsReleased = 'False'),
+FullName = People.FirstName+People.LastName from Licenses
+inner join LicenseClasses on Licenses.LicenseClass = LicenseClasses.LicenseClassID
+inner join Applications on Licenses.ApplicationID = Applications.ApplicationID
+inner join People on Applications.ApplicantPersonID = People.PersonID
+
+
+CREATE VIEW LicenseDetailsView AS 
+SELECT 
+    Licenses.LicenseID,
+    Licenses.IsActive,
+    Licenses.IssueDate,
+    Licenses.ExpirationDate,
+    Licenses.IssueReason,
+    Licenses.Notes,
+    Licenses.DriverID,
+    LicenseClasses.ClassName,
+    isDetained = CASE 
+                    WHEN EXISTS (
+                        SELECT 1 
+                        FROM DetainedLicenses 
+                        WHERE DetainedLicenses.LicenseID = Licenses.LicenseID 
+                        AND DetainedLicenses.IsReleased = 'False'
+                    ) THEN 1 
+                    ELSE 0 
+                 END,
+    FullName = People.FirstName + ' ' + People.LastName
+FROM Licenses
+INNER JOIN LicenseClasses ON Licenses.LicenseClass = LicenseClasses.LicenseClassID
+INNER JOIN Applications ON Licenses.ApplicationID = Applications.ApplicationID
+INNER JOIN People ON Applications.ApplicantPersonID = People.PersonID;

@@ -157,6 +157,18 @@
     <Compile Include="ScheduleTestForm.Designer.cs">
       <DependentUpon>ScheduleTestForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="ShowApplicationInfoForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ShowApplicationInfoForm.Designer.cs">
+      <DependentUpon>ShowApplicationInfoForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ShowLicenseForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ShowLicenseForm.Designer.cs">
+      <DependentUpon>ShowLicenseForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="ShowPersonDetailsForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -244,6 +256,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="ScheduleTestForm.resx">
       <DependentUpon>ScheduleTestForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ShowApplicationInfoForm.resx">
+      <DependentUpon>ShowApplicationInfoForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ShowLicenseForm.resx">
+      <DependentUpon>ShowLicenseForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="ShowPersonDetailsForm.resx">
       <DependentUpon>ShowPersonDetailsForm.cs</DependentUpon>

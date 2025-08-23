@@ -13,6 +13,9 @@ namespace DrivingLicense
 {
     public partial class IssueDrivingLicenseFirstTimeForm : Form
     {
+        public delegate void TriggerEventHandler();
+        public event TriggerEventHandler EventTrigger;
+
         clsFullLocalApplication _fullApplication;
         clsApplication _application;
         public IssueDrivingLicenseFirstTimeForm(clsApplication _app,clsFullLocalApplication _fullApp)
@@ -54,6 +57,7 @@ namespace DrivingLicense
                         MessageBox.Show("License was created successfully!", "Success", MessageBoxButtons.OK,
                             MessageBoxIcon.Information);
 
+                        EventTrigger?.Invoke();
                         this.Close();
                     }
                     else

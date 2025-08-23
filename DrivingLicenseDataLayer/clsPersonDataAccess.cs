@@ -10,7 +10,7 @@ namespace DrivingLicenseDataLayer
     {
         public static bool GetPersonByID(int ID, ref string FirstName, ref string LastName,
             ref string Email, ref string Phone,ref string NationalNo, ref string Address, ref DateTime DateOfBirth,
-            ref int Gender, ref int CountryID,ref string CountryName, ref string ImagePath)
+            ref int Gender, ref int CountryID,ref string CountryName, ref string ImagePath) 
         {
             bool isFound = false;
 
