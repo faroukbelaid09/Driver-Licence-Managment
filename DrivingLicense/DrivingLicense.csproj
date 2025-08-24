@@ -101,6 +101,12 @@
     <Compile Include="IssueDrivingLicenseFirstTimeForm.Designer.cs">
       <DependentUpon>IssueDrivingLicenseFirstTimeForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="LicenseHistoryForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="LicenseHistoryForm.Designer.cs">
+      <DependentUpon>LicenseHistoryForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="LocalDrivingLicenseApplicationsForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -219,6 +225,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="IssueDrivingLicenseFirstTimeForm.resx">
       <DependentUpon>IssueDrivingLicenseFirstTimeForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="LicenseHistoryForm.resx">
+      <DependentUpon>LicenseHistoryForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="LocalDrivingLicenseApplicationsForm.resx">
       <DependentUpon>LocalDrivingLicenseApplicationsForm.cs</DependentUpon>

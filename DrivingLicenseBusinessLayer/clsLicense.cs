@@ -1,6 +1,7 @@
 ﻿using DrivingLicenseDataLayer;
 using System;
 using System.Collections.Generic;
+using System.Data;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -61,13 +62,13 @@ namespace DrivingLicenseBusinessLayer
 
             string issuedate = "", expirationdate="", notes="", classname="", fullname="",nationalno="",
                 isdetained="",dateofbirth = "",gender="";
-            int issuereason=-1, driverid=-1;
+            int issuereason=-1, driverid=-1,appid = -1,personid = -1;
 
-            if(clsLicenseDataAccess.GetFullLicenseInfo(licenseid,ref isactive,ref issuedate,ref expirationdate,
+            if(clsLicenseDataAccess.GetFullLicenseInfo(licenseid,ref appid,ref personid, ref isactive,ref issuedate,ref expirationdate,
                 ref notes,ref classname,ref fullname,ref issuereason,ref driverid,ref isdetained,ref nationalno,
                 ref dateofbirth,ref gender))
             {
-                return new clsFullLicenseDetails(licenseid,isactive,issuedate,expirationdate,issuereason,
+                return new clsFullLicenseDetails(licenseid,appid,personid,isactive,issuedate,expirationdate,issuereason,
                     notes,driverid,classname,isdetained,fullname,nationalno,dateofbirth,gender);
             }
 
@@ -78,5 +79,49 @@ namespace DrivingLicenseBusinessLayer
         {
             return clsLicenseDataAccess.GetLicenseID(appID);
         }
+    
+        public static List<clsFullLicenseDetails> GetAllLocalLicenses(int personID)
+        {
+            List<clsFullLicenseDetails> _allPersonLocalLicesnse = new List<clsFullLicenseDetails>();
+            DataTable dataTable  = new DataTable();
+
+            dataTable = clsLicenseDataAccess.GetAllLocalLicenses(personID);
+
+            if (dataTable.Rows != null)
+            {
+                foreach (DataRow row in dataTable.Rows)
+                {
+                    // Extract data from the DataRow
+                    int LicenseID = Convert.ToInt32(row["LicenseID"]);
+                    int ApplicationID = Convert.ToInt32(row["ApplicationID"]);
+                    int PersonID = Convert.ToInt32(row["PersonID"]);
+                    bool IsActive = (bool)row["IsActive"];
+                    string IssueDate = row["IssueDate"].ToString();
+                    string ExpirationDate = row["IssueDate"].ToString();
+                    int IssueReason = Convert.ToInt32(row["IssueReason"]);
+                    string Notes = row["Notes"].ToString();
+                    int DiverID = Convert.ToInt32(row["DriverID"]);
+                    string ClassName = row["ClassName"].ToString();
+                    string IsDetained = row["IsDetained"].ToString();
+                    string FullName = row["FullName"].ToString();
+                    string NationalNo = row["NationalNo"].ToString();
+                    string DateOfBirth = row["DateOfBirth"].ToString();
+                    string Gender = row["Gendor"].ToString();
+ 
+                    // Create a new clsPerson object and add it to the list
+                   clsFullLicenseDetails localLicense = new clsFullLicenseDetails(
+                        LicenseID,ApplicationID, PersonID,IsActive,IssueDate,ExpirationDate,IssueReason, Notes,
+                        DiverID, ClassName,IsDetained, FullName, NationalNo, DateOfBirth,Gender
+                    );
+
+                    _allPersonLocalLicesnse.Add(localLicense);
+                }
+
+                return _allPersonLocalLicesnse;
+            }
+
+            return null;
+        }
+    
     }
 }

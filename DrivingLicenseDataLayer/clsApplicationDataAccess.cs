@@ -201,7 +201,6 @@ namespace DrivingLicenseDataLayer
             return isFound;
 
         }
-        
         public static bool UpdateApplicationStatus(int appID, int appStatus)
         {
             bool updated = false;

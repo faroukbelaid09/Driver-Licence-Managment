@@ -16,6 +16,7 @@ namespace DrivingLicense
         private clsFullLocalApplication _selectedApplication;
         private clsApplication _application;
         int selectedAppIndex = -1;
+
         private enum FilterOptions{ LocalAppID = 1, NationalNo = 2, FullName = 3, Status = 4}
         
         private void _ResetFilterCombo()
@@ -127,9 +128,9 @@ namespace DrivingLicense
                     sechduleWrittenTestToolStripMenuItem.Enabled = false;
                     sechduleStreetTestToolStripMenuItem.Enabled = false;
 
-                    editAppliToolStripMenuItem.Enabled = false;
-                    deleteApplicationToolStripMenuItem.Enabled = false;
-                    cancelApplicationToolStripMenuItem.Enabled = false;
+                    //editAppliToolStripMenuItem.Enabled = false;
+                    //deleteApplicationToolStripMenuItem.Enabled = false;
+                    //cancelApplicationToolStripMenuItem.Enabled = false;
 
 
                 }
@@ -290,21 +291,55 @@ namespace DrivingLicense
         private void issueDrivingLicenseFirstTimeToolStripMenuItem_Click(object sender, EventArgs e)
         {
             IssueDrivingLicenseFirstTimeForm frm = new IssueDrivingLicenseFirstTimeForm(_application,_selectedApplication);
-            selectedAppIndex = -1;
+            //selectedAppIndex = -1;
             frm.EventTrigger += _DisableContextMenuOptions;
             frm.ShowDialog();
         }
-
         private void showLicenseToolStripMenuItem_Click(object sender, EventArgs e)
         {
             ShowLicenseForm frm = new ShowLicenseForm(_application.ApplicationID);
             frm.ShowDialog();
         }
-
         private void editToolStripMenuItem_Click(object sender, EventArgs e)
         {
             ShowApplicationInfoForm frm = new ShowApplicationInfoForm(_application,_selectedApplication);
             frm.ShowDialog();
+        }
+        private void deleteApplicationToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            DialogResult res = MessageBox.Show("Are you sure you want to delete this application?","Delete",MessageBoxButtons.YesNo,
+                MessageBoxIcon.Warning);
+
+            if (res == DialogResult.Yes) 
+            {
+                if (clsLocalDrivingLicenseApplication.Delete(_selectedApplication.LocalDrivingLicenseApplicationID))
+                {
+                    MessageBox.Show("Application was deleted successfully!","Delete",MessageBoxButtons.OK);
+                    _DisplayLocalApplications();
+                }
+                else
+                {
+                    MessageBox.Show("An error happend when deleting the application.", "Delete", MessageBoxButtons.OK,MessageBoxIcon.Error);
+                }
+            }
+        }
+        private void showPersonLicenseHistoryToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            LicenseHistoryForm frm = new LicenseHistoryForm(_application.ApplicantPersonID);
+            frm.ShowDialog();
+        }
+        private void cancelApplicationToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            if (clsApplication.UpdateApplicationStatus(_application.ApplicationID, 2))
+            {
+                MessageBox.Show("Application was cancelled!","Done!",MessageBoxButtons.OK);
+                _DisplayLocalApplications();
+            }
+            else
+            {
+                MessageBox.Show("An error happened when cancelling the application.", "Done!", MessageBoxButtons.OK);
+
+            }
         }
     }
 }

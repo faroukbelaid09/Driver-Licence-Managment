@@ -49,6 +49,7 @@ inner join People on Applications.ApplicantPersonID = People.PersonID
 CREATE VIEW LicenseDetailsView AS 
 SELECT 
     Licenses.LicenseID,
+    Licenses.ApplicationID,
     Licenses.IsActive,
     Licenses.IssueDate,
     Licenses.ExpirationDate,
@@ -65,7 +66,8 @@ SELECT
                     ) THEN 1 
                     ELSE 0 
                  END,
-    FullName = People.FirstName + ' ' + People.LastName
+    FullName = People.FirstName + ' ' + People.LastName,
+    People.NationalNo,People.DateOfBirth,People.Gendor,People.PersonID
 FROM Licenses
 INNER JOIN LicenseClasses ON Licenses.LicenseClass = LicenseClasses.LicenseClassID
 INNER JOIN Applications ON Licenses.ApplicationID = Applications.ApplicationID

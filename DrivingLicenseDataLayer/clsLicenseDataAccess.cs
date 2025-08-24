@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel;
+using System.Data;
 using System.Data.SqlClient;
 using System.Linq;
 using System.Text;
@@ -61,14 +62,13 @@ namespace DrivingLicenseDataLayer
             return LicenseID;
         }
     
-        public static bool GetFullLicenseInfo(int licenseid,ref bool isactive, ref string issuedate, 
+        public static bool GetFullLicenseInfo(int licenseid,ref int appid,ref int personid, ref bool isactive, ref string issuedate, 
             ref string expirationdate,ref string notes, ref string classname, ref string fullname, 
             ref int issuereason, ref int driverid, ref string isdetained,ref string nationalno,ref string dateofbirth,
             ref string gender)
         {
             bool isFound = false;
             SqlConnection connection = new SqlConnection(clsDataAccessSettings.ConnectionString);
-
 
             string query = "select * from LicenseDetailsView where LicenseID =@licenseid";
 
@@ -85,8 +85,13 @@ namespace DrivingLicenseDataLayer
                 {
                     isFound = true;
 
-                    isactive = (bool)reader["IsActive"];
+                    appid = (int)reader["ApplicationID"];
                     Console.WriteLine("passed");
+                    
+                    personid = (int)reader["PersonID"];
+
+                    isactive = (bool)reader["IsActive"];
+                    Console.WriteLine("passed1");
 
                     issuedate = ((DateTime)reader["IssueDate"]).ToString();
                     Console.WriteLine("passed2");
@@ -166,5 +171,47 @@ namespace DrivingLicenseDataLayer
             }
             return LicenseID;
         }
+    
+        public static DataTable GetAllLocalLicenses(int personID)
+        {
+            DataTable dt = new DataTable();
+
+            SqlConnection connection = new SqlConnection(clsDataAccessSettings.ConnectionString);
+
+
+            string query = "select * from LicenseDetailsView where PersonID =@personID";
+
+            SqlCommand command = new SqlCommand(query, connection);
+
+            command.Parameters.AddWithValue("@personID", personID);
+
+            try
+            {
+                connection.Open();
+
+                SqlDataReader reader = command.ExecuteReader();
+
+                if (reader.HasRows)
+
+                {
+                    dt.Load(reader);
+                }
+
+                reader.Close();
+            }
+
+            catch (Exception ex)
+            {
+                Console.WriteLine("Error: " + ex.Message);
+            }
+            finally
+            {
+                connection?.Close();
+            }
+
+            return dt;
+        }
+
+
     }
 }

@@ -46,5 +46,10 @@ namespace DrivingLicenseBusinessLayer
             }
             return null;
         }
+
+        public static bool Delete(int appID) 
+        {
+            return clsLocalApplicationDataAccess.Delete(appID);
+        }
     }
 }

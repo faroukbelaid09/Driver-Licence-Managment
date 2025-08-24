@@ -88,5 +88,38 @@ namespace DrivingLicenseDataLayer
             }
             return isFound;
         }
+
+        public static bool Delete(int appID) 
+        {
+            bool isDeleted = false;
+            SqlConnection connection = new SqlConnection(clsDataAccessSettings.ConnectionString);
+
+            string query = "Delete from LocalDrivingLicenseApplications where LocalDrivingLicenseApplicationID = @appID";
+
+            SqlCommand command = new SqlCommand(query, connection);
+
+            command.Parameters.AddWithValue("@appID", appID);
+
+            try
+            {
+                connection.Open();
+                int rowAffected = command.ExecuteNonQuery();
+
+                if (rowAffected > 0)
+                {
+                    isDeleted = true;
+                }
+
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine("DB: Error when deleting this person.");
+            }
+            finally
+            {
+                connection?.Close();
+            }
+            return isDeleted;
+        }
     }
 }
