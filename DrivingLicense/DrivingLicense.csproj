@@ -71,11 +71,23 @@
     <Compile Include="ctrlAddEdit.Designer.cs">
       <DependentUpon>ctrlAddEdit.cs</DependentUpon>
     </Compile>
+    <Compile Include="ctrlDriverLicenseInfo.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="ctrlDriverLicenseInfo.Designer.cs">
+      <DependentUpon>ctrlDriverLicenseInfo.cs</DependentUpon>
+    </Compile>
     <Compile Include="ctrlDrivingLicenseApplicationInfo.cs">
       <SubType>UserControl</SubType>
     </Compile>
     <Compile Include="ctrlDrivingLicenseApplicationInfo.Designer.cs">
       <DependentUpon>ctrlDrivingLicenseApplicationInfo.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ctrlInternationlApplicationInfo.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="ctrlInternationlApplicationInfo.Designer.cs">
+      <DependentUpon>ctrlInternationlApplicationInfo.cs</DependentUpon>
     </Compile>
     <Compile Include="ctrlPersonInfo.cs">
       <SubType>UserControl</SubType>
@@ -94,6 +106,12 @@
     </Compile>
     <Compile Include="EditTestTypeForm.Designer.cs">
       <DependentUpon>EditTestTypeForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="InternationalLicenseForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="InternationalLicenseForm.Designer.cs">
+      <DependentUpon>InternationalLicenseForm.cs</DependentUpon>
     </Compile>
     <Compile Include="IssueDrivingLicenseFirstTimeForm.cs">
       <SubType>Form</SubType>
@@ -211,8 +229,14 @@
     <EmbeddedResource Include="ctrlAddEdit.resx">
       <DependentUpon>ctrlAddEdit.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="ctrlDriverLicenseInfo.resx">
+      <DependentUpon>ctrlDriverLicenseInfo.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="ctrlDrivingLicenseApplicationInfo.resx">
       <DependentUpon>ctrlDrivingLicenseApplicationInfo.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ctrlInternationlApplicationInfo.resx">
+      <DependentUpon>ctrlInternationlApplicationInfo.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="ctrlPersonInfo.resx">
       <DependentUpon>ctrlPersonInfo.cs</DependentUpon>
@@ -222,6 +246,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="EditTestTypeForm.resx">
       <DependentUpon>EditTestTypeForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="InternationalLicenseForm.resx">
+      <DependentUpon>InternationalLicenseForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="IssueDrivingLicenseFirstTimeForm.resx">
       <DependentUpon>IssueDrivingLicenseFirstTimeForm.cs</DependentUpon>

@@ -33,6 +33,12 @@
             this.label2 = new System.Windows.Forms.Label();
             this.searchTextBox = new System.Windows.Forms.TextBox();
             this.searchBTN = new System.Windows.Forms.Button();
+            this.SaveBTN = new System.Windows.Forms.Button();
+            this.CloseBTN = new System.Windows.Forms.Button();
+            this.linkLabel1 = new System.Windows.Forms.LinkLabel();
+            this.linkLabel2 = new System.Windows.Forms.LinkLabel();
+            this.ctrlDriverLicenseInfo1 = new DrivingLicense.ctrlDriverLicenseInfo();
+            this.ctrlInternationlApplicationInfo1 = new DrivingLicense.ctrlInternationlApplicationInfo();
             this.groupBox1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -53,7 +59,7 @@
             this.groupBox1.Controls.Add(this.searchTextBox);
             this.groupBox1.Controls.Add(this.label2);
             this.groupBox1.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.groupBox1.Location = new System.Drawing.Point(12, 51);
+            this.groupBox1.Location = new System.Drawing.Point(12, 36);
             this.groupBox1.Name = "groupBox1";
             this.groupBox1.Size = new System.Drawing.Size(516, 76);
             this.groupBox1.TabIndex = 1;
@@ -85,11 +91,72 @@
             this.searchBTN.Text = "Search";
             this.searchBTN.UseVisualStyleBackColor = true;
             // 
+            // SaveBTN
+            // 
+            this.SaveBTN.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.SaveBTN.Location = new System.Drawing.Point(712, 584);
+            this.SaveBTN.Name = "SaveBTN";
+            this.SaveBTN.Size = new System.Drawing.Size(75, 28);
+            this.SaveBTN.TabIndex = 4;
+            this.SaveBTN.Text = "Save";
+            this.SaveBTN.UseVisualStyleBackColor = true;
+            // 
+            // CloseBTN
+            // 
+            this.CloseBTN.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.CloseBTN.Location = new System.Drawing.Point(631, 584);
+            this.CloseBTN.Name = "CloseBTN";
+            this.CloseBTN.Size = new System.Drawing.Size(75, 28);
+            this.CloseBTN.TabIndex = 5;
+            this.CloseBTN.Text = "Close";
+            this.CloseBTN.UseVisualStyleBackColor = true;
+            // 
+            // linkLabel1
+            // 
+            this.linkLabel1.AutoSize = true;
+            this.linkLabel1.Location = new System.Drawing.Point(13, 584);
+            this.linkLabel1.Name = "linkLabel1";
+            this.linkLabel1.Size = new System.Drawing.Size(109, 13);
+            this.linkLabel1.TabIndex = 6;
+            this.linkLabel1.TabStop = true;
+            this.linkLabel1.Text = "Show License History";
+            // 
+            // linkLabel2
+            // 
+            this.linkLabel2.AutoSize = true;
+            this.linkLabel2.Enabled = false;
+            this.linkLabel2.Location = new System.Drawing.Point(128, 584);
+            this.linkLabel2.Name = "linkLabel2";
+            this.linkLabel2.Size = new System.Drawing.Size(95, 13);
+            this.linkLabel2.TabIndex = 7;
+            this.linkLabel2.TabStop = true;
+            this.linkLabel2.Text = "Show License Info";
+            // 
+            // ctrlDriverLicenseInfo1
+            // 
+            this.ctrlDriverLicenseInfo1.Location = new System.Drawing.Point(12, 118);
+            this.ctrlDriverLicenseInfo1.Name = "ctrlDriverLicenseInfo1";
+            this.ctrlDriverLicenseInfo1.Size = new System.Drawing.Size(782, 317);
+            this.ctrlDriverLicenseInfo1.TabIndex = 2;
+            // 
+            // ctrlInternationlApplicationInfo1
+            // 
+            this.ctrlInternationlApplicationInfo1.Location = new System.Drawing.Point(12, 433);
+            this.ctrlInternationlApplicationInfo1.Name = "ctrlInternationlApplicationInfo1";
+            this.ctrlInternationlApplicationInfo1.Size = new System.Drawing.Size(780, 141);
+            this.ctrlInternationlApplicationInfo1.TabIndex = 8;
+            // 
             // InternationalLicenseForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(800, 600);
+            this.ClientSize = new System.Drawing.Size(800, 619);
+            this.Controls.Add(this.ctrlInternationlApplicationInfo1);
+            this.Controls.Add(this.linkLabel2);
+            this.Controls.Add(this.linkLabel1);
+            this.Controls.Add(this.CloseBTN);
+            this.Controls.Add(this.SaveBTN);
+            this.Controls.Add(this.ctrlDriverLicenseInfo1);
             this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.label1);
             this.Name = "InternationalLicenseForm";
@@ -108,5 +175,11 @@
         private System.Windows.Forms.Button searchBTN;
         private System.Windows.Forms.TextBox searchTextBox;
         private System.Windows.Forms.Label label2;
+        private ctrlDriverLicenseInfo ctrlDriverLicenseInfo1;
+        private System.Windows.Forms.Button SaveBTN;
+        private System.Windows.Forms.Button CloseBTN;
+        private System.Windows.Forms.LinkLabel linkLabel1;
+        private System.Windows.Forms.LinkLabel linkLabel2;
+        private ctrlInternationlApplicationInfo ctrlInternationlApplicationInfo1;
     }
 }
