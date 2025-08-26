@@ -187,6 +187,12 @@
     <Compile Include="ShowApplicationInfoForm.Designer.cs">
       <DependentUpon>ShowApplicationInfoForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="ShowDriversForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ShowDriversForm.Designer.cs">
+      <DependentUpon>ShowDriversForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="ShowLicenseForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -295,6 +301,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="ShowApplicationInfoForm.resx">
       <DependentUpon>ShowApplicationInfoForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ShowDriversForm.resx">
+      <DependentUpon>ShowDriversForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="ShowLicenseForm.resx">
       <DependentUpon>ShowLicenseForm.cs</DependentUpon>

@@ -65,15 +65,21 @@ namespace DrivingLicense
             frm.ShowDialog();
         }
 
-        private void localDrivingLicenseApplicationToolStripMenuItem_Click(object sender, EventArgs e)
+        private void internationalLicenseToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            InternationalLicenseForm frm = new InternationalLicenseForm();
+            frm.ShowDialog();
+        }
+
+        private void manageApplicationsToolStripMenuItem_Click(object sender, EventArgs e)
         {
             LocalDrivingLicenseApplicationsForm frm = new LocalDrivingLicenseApplicationsForm();
             frm.ShowDialog();
         }
 
-        private void internationalLicenseToolStripMenuItem_Click(object sender, EventArgs e)
+        private void driversToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            InternationalLicenseForm frm = new InternationalLicenseForm();
+            ShowDriversForm frm = new ShowDriversForm();
             frm.ShowDialog();
         }
     }

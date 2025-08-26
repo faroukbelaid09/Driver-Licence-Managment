@@ -118,5 +118,46 @@ namespace DrivingLicenseDataLayer
 
             return DriverID;
         }
+    
+        public static DataTable GetAllDrivers()
+        {
+            DataTable dt = new DataTable();
+            SqlConnection connection = new SqlConnection(clsDataAccessSettings.ConnectionString);
+
+
+            string query = @"select Drivers.*, DriverName = People.FirstName+People.LastName, 
+                            CreatedBy = Users.UserName from Drivers inner join People on 
+                            Drivers.PersonID = People.PersonID inner join users on 
+                            Drivers.CreatedByUserID = Users.UserID";
+
+            SqlCommand command = new SqlCommand(query, connection);
+
+            try
+            {
+                connection.Open();
+
+                SqlDataReader reader = command.ExecuteReader();
+
+                if (reader.HasRows)
+
+                {
+                    dt.Load(reader);
+                }
+
+                reader.Close();
+            }
+
+            catch (Exception ex)
+            {
+                Console.WriteLine("Error: " + ex.Message);
+            }
+            finally
+            {
+                connection?.Close();
+            }
+
+            return dt;
+
+        }
     }
 }

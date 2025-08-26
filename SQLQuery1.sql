@@ -72,3 +72,8 @@ FROM Licenses
 INNER JOIN LicenseClasses ON Licenses.LicenseClass = LicenseClasses.LicenseClassID
 INNER JOIN Applications ON Licenses.ApplicationID = Applications.ApplicationID
 INNER JOIN People ON Applications.ApplicantPersonID = People.PersonID;
+
+
+select Drivers.*, DriverName = People.FirstName+People.LastName, CreatedBy = Users.UserName from Drivers
+inner join People on Drivers.PersonID = People.PersonID
+inner join users on Drivers.CreatedByUserID = Users.UserID
