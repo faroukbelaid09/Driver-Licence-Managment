@@ -84,5 +84,39 @@ namespace DrivingLicenseDataLayer
             }
             return isFound;
         }
+        
+        public static int GetDriverID(int personID)
+        {
+            int DriverID = -1;
+
+            SqlConnection connection = new SqlConnection(clsDataAccessSettings.ConnectionString);
+            string query = @"select DriverID from Drivers
+                            where PersonID = @personID";
+
+            SqlCommand command = new SqlCommand(query, connection);
+            command.Parameters.AddWithValue("@personID", personID);
+
+            try
+            {
+                connection.Open();
+
+                object result = command.ExecuteScalar();
+
+                if (result != null && int.TryParse(result.ToString(), out int insertedID))
+                {
+                    DriverID = insertedID;
+                }
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine("DB: Error when getting driverID from DB.\n" + ex.Message);
+            }
+            finally
+            {
+                connection?.Close();
+            }
+
+            return DriverID;
+        }
     }
 }

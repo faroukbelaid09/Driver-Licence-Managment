@@ -83,5 +83,45 @@ namespace DrivingLicenseDataLayer
             return isUpdated;
 
         }
+    
+        public static bool GetApplication(int appTypeID, ref string appTypeTitle, ref int appTypeFees)
+        {
+            bool isFound = false;
+            SqlConnection connection = new SqlConnection(clsDataAccessSettings.ConnectionString);
+            string query = @"select * from ApplicationTypes where ApplicationTypeID =@appTypeID";
+
+            SqlCommand command = new SqlCommand(query, connection);
+
+            command.Parameters.AddWithValue("@appTypeID", appTypeID);
+
+            try
+            {
+                connection.Open();
+                SqlDataReader reader = command.ExecuteReader();
+
+                if (reader.Read())
+                {
+                    isFound = true;
+
+                    appTypeTitle = (string)reader["ApplicationTypeTitle"];
+                    Console.WriteLine("passed1");
+                    appTypeFees = (int)reader["ApplicationFees"];
+                    Console.WriteLine("passed2");
+                    
+                }
+                reader.Close();
+
+            }
+            catch (Exception ex)
+            {
+                isFound = false;
+                Console.WriteLine(ex.Message);
+            }
+            finally
+            {
+                connection?.Close();
+            }
+            return isFound;
+        }
     }
 }

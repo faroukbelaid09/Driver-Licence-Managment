@@ -18,7 +18,7 @@ namespace DrivingLicense
             InitializeComponent();
         }
 
-        private void LoadDate(clsFullLicenseDetails fullLicernse)
+        public void LoadData(clsFullLicenseDetails fullLicernse)
         {
             ClassValue.Text = fullLicernse.ClassName;
             NameValue.Text = fullLicernse.FullName;

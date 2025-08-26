@@ -325,7 +325,8 @@ namespace DrivingLicense
         }
         private void showPersonLicenseHistoryToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            LicenseHistoryForm frm = new LicenseHistoryForm(_application.ApplicantPersonID);
+            LicenseHistoryForm frm = new LicenseHistoryForm(_application.ApplicantPersonID,
+                clsDriver.GetDriverID(_application.ApplicantPersonID));
             frm.ShowDialog();
         }
         private void cancelApplicationToolStripMenuItem_Click(object sender, EventArgs e)

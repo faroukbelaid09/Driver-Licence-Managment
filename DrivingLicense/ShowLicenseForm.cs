@@ -13,7 +13,6 @@ namespace DrivingLicense
 {
     public partial class ShowLicenseForm : Form
     {
-
         private clsFullLicenseDetails _fullLicenseDetails;
         private int GetLicenseID(int appID)
         {

@@ -30,15 +30,15 @@
         {
             this.label1 = new System.Windows.Forms.Label();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
-            this.label2 = new System.Windows.Forms.Label();
-            this.searchTextBox = new System.Windows.Forms.TextBox();
             this.searchBTN = new System.Windows.Forms.Button();
+            this.searchTextBox = new System.Windows.Forms.TextBox();
+            this.label2 = new System.Windows.Forms.Label();
             this.SaveBTN = new System.Windows.Forms.Button();
             this.CloseBTN = new System.Windows.Forms.Button();
             this.linkLabel1 = new System.Windows.Forms.LinkLabel();
             this.linkLabel2 = new System.Windows.Forms.LinkLabel();
-            this.ctrlDriverLicenseInfo1 = new DrivingLicense.ctrlDriverLicenseInfo();
             this.ctrlInternationlApplicationInfo1 = new DrivingLicense.ctrlInternationlApplicationInfo();
+            this.ctrlDriverLicenseInfo1 = new DrivingLicense.ctrlDriverLicenseInfo();
             this.groupBox1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -66,22 +66,6 @@
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Filter";
             // 
-            // label2
-            // 
-            this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(71, 28);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(89, 17);
-            this.label2.TabIndex = 0;
-            this.label2.Text = "License ID:";
-            // 
-            // searchTextBox
-            // 
-            this.searchTextBox.Location = new System.Drawing.Point(166, 25);
-            this.searchTextBox.Name = "searchTextBox";
-            this.searchTextBox.Size = new System.Drawing.Size(175, 23);
-            this.searchTextBox.TabIndex = 1;
-            // 
             // searchBTN
             // 
             this.searchBTN.Location = new System.Drawing.Point(364, 22);
@@ -90,6 +74,23 @@
             this.searchBTN.TabIndex = 2;
             this.searchBTN.Text = "Search";
             this.searchBTN.UseVisualStyleBackColor = true;
+            this.searchBTN.Click += new System.EventHandler(this.searchBTN_Click);
+            // 
+            // searchTextBox
+            // 
+            this.searchTextBox.Location = new System.Drawing.Point(166, 25);
+            this.searchTextBox.Name = "searchTextBox";
+            this.searchTextBox.Size = new System.Drawing.Size(175, 23);
+            this.searchTextBox.TabIndex = 1;
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Location = new System.Drawing.Point(71, 28);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(89, 17);
+            this.label2.TabIndex = 0;
+            this.label2.Text = "License ID:";
             // 
             // SaveBTN
             // 
@@ -100,6 +101,7 @@
             this.SaveBTN.TabIndex = 4;
             this.SaveBTN.Text = "Save";
             this.SaveBTN.UseVisualStyleBackColor = true;
+            this.SaveBTN.Click += new System.EventHandler(this.SaveBTN_Click);
             // 
             // CloseBTN
             // 
@@ -110,6 +112,7 @@
             this.CloseBTN.TabIndex = 5;
             this.CloseBTN.Text = "Close";
             this.CloseBTN.UseVisualStyleBackColor = true;
+            this.CloseBTN.Click += new System.EventHandler(this.CloseBTN_Click);
             // 
             // linkLabel1
             // 
@@ -120,6 +123,7 @@
             this.linkLabel1.TabIndex = 6;
             this.linkLabel1.TabStop = true;
             this.linkLabel1.Text = "Show License History";
+            this.linkLabel1.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.linkLabel1_LinkClicked);
             // 
             // linkLabel2
             // 
@@ -132,19 +136,19 @@
             this.linkLabel2.TabStop = true;
             this.linkLabel2.Text = "Show License Info";
             // 
-            // ctrlDriverLicenseInfo1
-            // 
-            this.ctrlDriverLicenseInfo1.Location = new System.Drawing.Point(12, 118);
-            this.ctrlDriverLicenseInfo1.Name = "ctrlDriverLicenseInfo1";
-            this.ctrlDriverLicenseInfo1.Size = new System.Drawing.Size(782, 317);
-            this.ctrlDriverLicenseInfo1.TabIndex = 2;
-            // 
             // ctrlInternationlApplicationInfo1
             // 
             this.ctrlInternationlApplicationInfo1.Location = new System.Drawing.Point(12, 433);
             this.ctrlInternationlApplicationInfo1.Name = "ctrlInternationlApplicationInfo1";
             this.ctrlInternationlApplicationInfo1.Size = new System.Drawing.Size(780, 141);
             this.ctrlInternationlApplicationInfo1.TabIndex = 8;
+            // 
+            // ctrlDriverLicenseInfo1
+            // 
+            this.ctrlDriverLicenseInfo1.Location = new System.Drawing.Point(12, 118);
+            this.ctrlDriverLicenseInfo1.Name = "ctrlDriverLicenseInfo1";
+            this.ctrlDriverLicenseInfo1.Size = new System.Drawing.Size(782, 317);
+            this.ctrlDriverLicenseInfo1.TabIndex = 2;
             // 
             // InternationalLicenseForm
             // 

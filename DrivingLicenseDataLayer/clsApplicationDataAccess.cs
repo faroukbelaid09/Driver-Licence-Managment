@@ -163,9 +163,6 @@ namespace DrivingLicenseDataLayer
             bool isFound = false;
             SqlConnection connection = new SqlConnection(clsDataAccessSettings.ConnectionString);
 
-            Console.WriteLine(nationalNo);
-            Console.WriteLine(drivingClass);
-
             string query = @"select 1 from LocalDrivingLicenseFullApplications
                   where NationalNo = @nationalNo and DrivingClass LIKE '%' + @drivingClass + '%'
                   and(ApplicationStatus = 1 or ApplicationStatus = 3)";

@@ -111,9 +111,11 @@
             // NotesValue
             // 
             this.NotesValue.AutoSize = true;
+            this.NotesValue.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.NotesValue.ForeColor = System.Drawing.SystemColors.MenuHighlight;
             this.NotesValue.Location = new System.Drawing.Point(127, 252);
             this.NotesValue.Name = "NotesValue";
-            this.NotesValue.Size = new System.Drawing.Size(34, 17);
+            this.NotesValue.Size = new System.Drawing.Size(31, 17);
             this.NotesValue.TabIndex = 25;
             this.NotesValue.Text = "N/A";
             // 
@@ -129,16 +131,18 @@
             // IsDetainedValue
             // 
             this.IsDetainedValue.AutoSize = true;
-            this.IsDetainedValue.Location = new System.Drawing.Point(382, 217);
+            this.IsDetainedValue.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.IsDetainedValue.ForeColor = System.Drawing.SystemColors.MenuHighlight;
+            this.IsDetainedValue.Location = new System.Drawing.Point(436, 217);
             this.IsDetainedValue.Name = "IsDetainedValue";
-            this.IsDetainedValue.Size = new System.Drawing.Size(34, 17);
+            this.IsDetainedValue.Size = new System.Drawing.Size(31, 17);
             this.IsDetainedValue.TabIndex = 23;
             this.IsDetainedValue.Text = "N/A";
             // 
             // lab1
             // 
             this.lab1.AutoSize = true;
-            this.lab1.Location = new System.Drawing.Point(281, 217);
+            this.lab1.Location = new System.Drawing.Point(335, 217);
             this.lab1.Name = "lab1";
             this.lab1.Size = new System.Drawing.Size(95, 17);
             this.lab1.TabIndex = 22;
@@ -147,9 +151,11 @@
             // IssueReasonValue
             // 
             this.IssueReasonValue.AutoSize = true;
+            this.IssueReasonValue.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.IssueReasonValue.ForeColor = System.Drawing.SystemColors.MenuHighlight;
             this.IssueReasonValue.Location = new System.Drawing.Point(127, 221);
             this.IssueReasonValue.Name = "IssueReasonValue";
-            this.IssueReasonValue.Size = new System.Drawing.Size(34, 17);
+            this.IssueReasonValue.Size = new System.Drawing.Size(31, 17);
             this.IssueReasonValue.TabIndex = 21;
             this.IssueReasonValue.Text = "N/A";
             // 
@@ -165,16 +171,18 @@
             // ExpirationDateValue
             // 
             this.ExpirationDateValue.AutoSize = true;
-            this.ExpirationDateValue.Location = new System.Drawing.Point(382, 187);
+            this.ExpirationDateValue.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.ExpirationDateValue.ForeColor = System.Drawing.SystemColors.MenuHighlight;
+            this.ExpirationDateValue.Location = new System.Drawing.Point(436, 187);
             this.ExpirationDateValue.Name = "ExpirationDateValue";
-            this.ExpirationDateValue.Size = new System.Drawing.Size(34, 17);
+            this.ExpirationDateValue.Size = new System.Drawing.Size(31, 17);
             this.ExpirationDateValue.TabIndex = 19;
             this.ExpirationDateValue.Text = "N/A";
             // 
             // label14
             // 
             this.label14.AutoSize = true;
-            this.label14.Location = new System.Drawing.Point(252, 187);
+            this.label14.Location = new System.Drawing.Point(306, 187);
             this.label14.Name = "label14";
             this.label14.Size = new System.Drawing.Size(124, 17);
             this.label14.TabIndex = 18;
@@ -183,9 +191,11 @@
             // IssueDateValue
             // 
             this.IssueDateValue.AutoSize = true;
+            this.IssueDateValue.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.IssueDateValue.ForeColor = System.Drawing.SystemColors.MenuHighlight;
             this.IssueDateValue.Location = new System.Drawing.Point(127, 190);
             this.IssueDateValue.Name = "IssueDateValue";
-            this.IssueDateValue.Size = new System.Drawing.Size(34, 17);
+            this.IssueDateValue.Size = new System.Drawing.Size(31, 17);
             this.IssueDateValue.TabIndex = 17;
             this.IssueDateValue.Text = "N/A";
             // 
@@ -201,16 +211,18 @@
             // DriverIDValue
             // 
             this.DriverIDValue.AutoSize = true;
-            this.DriverIDValue.Location = new System.Drawing.Point(382, 157);
+            this.DriverIDValue.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.DriverIDValue.ForeColor = System.Drawing.SystemColors.MenuHighlight;
+            this.DriverIDValue.Location = new System.Drawing.Point(436, 157);
             this.DriverIDValue.Name = "DriverIDValue";
-            this.DriverIDValue.Size = new System.Drawing.Size(34, 17);
+            this.DriverIDValue.Size = new System.Drawing.Size(31, 17);
             this.DriverIDValue.TabIndex = 15;
             this.DriverIDValue.Text = "N/A";
             // 
             // label12
             // 
             this.label12.AutoSize = true;
-            this.label12.Location = new System.Drawing.Point(299, 157);
+            this.label12.Location = new System.Drawing.Point(353, 157);
             this.label12.Name = "label12";
             this.label12.Size = new System.Drawing.Size(77, 17);
             this.label12.TabIndex = 14;
@@ -219,9 +231,11 @@
             // GenderValue
             // 
             this.GenderValue.AutoSize = true;
+            this.GenderValue.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.GenderValue.ForeColor = System.Drawing.SystemColors.MenuHighlight;
             this.GenderValue.Location = new System.Drawing.Point(127, 159);
             this.GenderValue.Name = "GenderValue";
-            this.GenderValue.Size = new System.Drawing.Size(34, 17);
+            this.GenderValue.Size = new System.Drawing.Size(31, 17);
             this.GenderValue.TabIndex = 13;
             this.GenderValue.Text = "N/A";
             // 
@@ -237,16 +251,18 @@
             // DateOfBirthValue
             // 
             this.DateOfBirthValue.AutoSize = true;
-            this.DateOfBirthValue.Location = new System.Drawing.Point(382, 127);
+            this.DateOfBirthValue.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.DateOfBirthValue.ForeColor = System.Drawing.SystemColors.MenuHighlight;
+            this.DateOfBirthValue.Location = new System.Drawing.Point(436, 127);
             this.DateOfBirthValue.Name = "DateOfBirthValue";
-            this.DateOfBirthValue.Size = new System.Drawing.Size(34, 17);
+            this.DateOfBirthValue.Size = new System.Drawing.Size(31, 17);
             this.DateOfBirthValue.TabIndex = 11;
             this.DateOfBirthValue.Text = "N/A";
             // 
             // label5
             // 
             this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(268, 127);
+            this.label5.Location = new System.Drawing.Point(322, 127);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(108, 17);
             this.label5.TabIndex = 10;
@@ -255,9 +271,11 @@
             // NationalNoValue
             // 
             this.NationalNoValue.AutoSize = true;
+            this.NationalNoValue.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.NationalNoValue.ForeColor = System.Drawing.SystemColors.MenuHighlight;
             this.NationalNoValue.Location = new System.Drawing.Point(127, 128);
             this.NationalNoValue.Name = "NationalNoValue";
-            this.NationalNoValue.Size = new System.Drawing.Size(34, 17);
+            this.NationalNoValue.Size = new System.Drawing.Size(31, 17);
             this.NationalNoValue.TabIndex = 9;
             this.NationalNoValue.Text = "N/A";
             // 
@@ -273,16 +291,18 @@
             // IsActiveValue
             // 
             this.IsActiveValue.AutoSize = true;
-            this.IsActiveValue.Location = new System.Drawing.Point(382, 97);
+            this.IsActiveValue.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.IsActiveValue.ForeColor = System.Drawing.SystemColors.MenuHighlight;
+            this.IsActiveValue.Location = new System.Drawing.Point(436, 97);
             this.IsActiveValue.Name = "IsActiveValue";
-            this.IsActiveValue.Size = new System.Drawing.Size(34, 17);
+            this.IsActiveValue.Size = new System.Drawing.Size(31, 17);
             this.IsActiveValue.TabIndex = 7;
             this.IsActiveValue.Text = "N/A";
             // 
             // lab
             // 
             this.lab.AutoSize = true;
-            this.lab.Location = new System.Drawing.Point(302, 97);
+            this.lab.Location = new System.Drawing.Point(356, 97);
             this.lab.Name = "lab";
             this.lab.Size = new System.Drawing.Size(74, 17);
             this.lab.TabIndex = 6;
@@ -291,9 +311,11 @@
             // LicenseIDValue
             // 
             this.LicenseIDValue.AutoSize = true;
+            this.LicenseIDValue.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.LicenseIDValue.ForeColor = System.Drawing.SystemColors.MenuHighlight;
             this.LicenseIDValue.Location = new System.Drawing.Point(127, 97);
             this.LicenseIDValue.Name = "LicenseIDValue";
-            this.LicenseIDValue.Size = new System.Drawing.Size(34, 17);
+            this.LicenseIDValue.Size = new System.Drawing.Size(31, 17);
             this.LicenseIDValue.TabIndex = 5;
             this.LicenseIDValue.Text = "N/A";
             // 
@@ -309,9 +331,11 @@
             // NameValue
             // 
             this.NameValue.AutoSize = true;
+            this.NameValue.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.NameValue.ForeColor = System.Drawing.SystemColors.MenuHighlight;
             this.NameValue.Location = new System.Drawing.Point(127, 66);
             this.NameValue.Name = "NameValue";
-            this.NameValue.Size = new System.Drawing.Size(34, 17);
+            this.NameValue.Size = new System.Drawing.Size(31, 17);
             this.NameValue.TabIndex = 3;
             this.NameValue.Text = "N/A";
             // 
@@ -327,9 +351,11 @@
             // ClassValue
             // 
             this.ClassValue.AutoSize = true;
+            this.ClassValue.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.ClassValue.ForeColor = System.Drawing.SystemColors.MenuHighlight;
             this.ClassValue.Location = new System.Drawing.Point(127, 35);
             this.ClassValue.Name = "ClassValue";
-            this.ClassValue.Size = new System.Drawing.Size(34, 17);
+            this.ClassValue.Size = new System.Drawing.Size(31, 17);
             this.ClassValue.TabIndex = 1;
             this.ClassValue.Text = "N/A";
             // 

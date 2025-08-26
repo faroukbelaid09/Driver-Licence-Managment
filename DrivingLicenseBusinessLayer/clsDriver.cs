@@ -40,6 +40,10 @@ namespace DrivingLicenseBusinessLayer
         {
             return clsDriverDataAccess.Find(personid);
         }
-    
+
+        public static int GetDriverID(int personID) 
+        {
+            return clsDriverDataAccess.GetDriverID(personID);
+        }
     }
 }

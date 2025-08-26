@@ -122,6 +122,41 @@ namespace DrivingLicenseBusinessLayer
 
             return null;
         }
-    
+
+        public static List<clsInternationalLicense> GetAllInternationalLicenses(int driverID)
+        {
+            List<clsInternationalLicense> _allPersonInternationalLicesnse = new List<clsInternationalLicense>();
+            DataTable dataTable = new DataTable();
+
+            dataTable = clsLicenseDataAccess.GetAllInternationalLicenses(driverID);
+
+            if (dataTable.Rows != null)
+            {
+                foreach (DataRow row in dataTable.Rows)
+                {
+                    // Extract data from the DataRow
+                    int InternationalLicenseID = Convert.ToInt32(row["InternationalLicenseID"]);
+                    int ApplicationID = Convert.ToInt32(row["ApplicationID"]);
+                    int DriverID = Convert.ToInt32(row["DriverID"]);
+                    int IssuedUsingLocalLicenseID = Convert.ToInt32(row["IssuedUsingLocalLicenseID"]);
+                    int IsActive = (int)row["IsActive"];
+                    string IssueDate = row["IssueDate"].ToString();
+                    string ExpirationDate = row["ExpirationDate"].ToString();
+                    
+
+                    // Create a new clsPerson object and add it to the list
+                    clsInternationalLicense internationalLicense = new clsInternationalLicense(
+                         InternationalLicenseID, ApplicationID, DriverID, IssuedUsingLocalLicenseID,
+                         IssueDate, ExpirationDate, IsActive, ApplicationState.CurrentUser.UserID);
+
+                    _allPersonInternationalLicesnse.Add(internationalLicense);
+                }
+
+                return _allPersonInternationalLicesnse;
+            }
+
+            return null;
+        }
+
     }
 }

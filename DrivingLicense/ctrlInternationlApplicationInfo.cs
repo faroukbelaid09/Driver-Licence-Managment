@@ -1,4 +1,5 @@
-﻿using System;
+﻿using DrivingLicenseBusinessLayer;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -17,16 +18,17 @@ namespace DrivingLicense
             InitializeComponent();
         }
 
-        private void LoadDate()
+        public void LoadDate(int localLicenseID,int fees, string InternationalAppID = "???", 
+            string InternationalLicenseID = "???")
         {
-            InternationalAppIDValue.Text = "";
-            AppDateValue.Text = "";
-            IssueDateValue.Text = "";
-            FeesValue.Text = "";
-            InternationalLicenseIDValue.Text = "";
-            LocalLicenseIDValue.Text = "";
-            ExpDateValue.Text = "";
-            CreatedByValue.Text = "";
+            InternationalAppIDValue.Text = InternationalAppID;
+            AppDateValue.Text = DateTime.Now.ToString();
+            IssueDateValue.Text = DateTime.Now.ToString();
+            FeesValue.Text = fees.ToString();
+            InternationalLicenseIDValue.Text = InternationalLicenseID;
+            LocalLicenseIDValue.Text = localLicenseID.ToString();
+            ExpDateValue.Text = DateTime.Now.AddYears(1).ToString();
+            CreatedByValue.Text = ApplicationState.CurrentUser.UserName;
         }
     }
 }

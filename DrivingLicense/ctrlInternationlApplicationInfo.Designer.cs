@@ -67,7 +67,7 @@
             this.groupBox2.Controls.Add(this.InternationalAppIDValue);
             this.groupBox2.Controls.Add(this.label3);
             this.groupBox2.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.groupBox2.Location = new System.Drawing.Point(0, 0);
+            this.groupBox2.Location = new System.Drawing.Point(2, 0);
             this.groupBox2.Name = "groupBox2";
             this.groupBox2.Size = new System.Drawing.Size(775, 137);
             this.groupBox2.TabIndex = 4;
@@ -77,16 +77,18 @@
             // ExpDateValue
             // 
             this.ExpDateValue.AutoSize = true;
-            this.ExpDateValue.Location = new System.Drawing.Point(675, 46);
+            this.ExpDateValue.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.ExpDateValue.ForeColor = System.Drawing.SystemColors.MenuHighlight;
+            this.ExpDateValue.Location = new System.Drawing.Point(660, 47);
             this.ExpDateValue.Name = "ExpDateValue";
-            this.ExpDateValue.Size = new System.Drawing.Size(34, 17);
+            this.ExpDateValue.Size = new System.Drawing.Size(31, 17);
             this.ExpDateValue.TabIndex = 16;
             this.ExpDateValue.Text = "N/A";
             // 
             // label7
             // 
             this.label7.AutoSize = true;
-            this.label7.Location = new System.Drawing.Point(545, 46);
+            this.label7.Location = new System.Drawing.Point(530, 47);
             this.label7.Name = "label7";
             this.label7.Size = new System.Drawing.Size(124, 17);
             this.label7.TabIndex = 15;
@@ -95,16 +97,18 @@
             // LocalLicenseIDValue
             // 
             this.LocalLicenseIDValue.AutoSize = true;
-            this.LocalLicenseIDValue.Location = new System.Drawing.Point(404, 90);
+            this.LocalLicenseIDValue.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.LocalLicenseIDValue.ForeColor = System.Drawing.SystemColors.MenuHighlight;
+            this.LocalLicenseIDValue.Location = new System.Drawing.Point(433, 90);
             this.LocalLicenseIDValue.Name = "LocalLicenseIDValue";
-            this.LocalLicenseIDValue.Size = new System.Drawing.Size(34, 17);
+            this.LocalLicenseIDValue.Size = new System.Drawing.Size(31, 17);
             this.LocalLicenseIDValue.TabIndex = 14;
             this.LocalLicenseIDValue.Text = "N/A";
             // 
             // label11
             // 
             this.label11.AutoSize = true;
-            this.label11.Location = new System.Drawing.Point(265, 90);
+            this.label11.Location = new System.Drawing.Point(294, 90);
             this.label11.Name = "label11";
             this.label11.Size = new System.Drawing.Size(133, 17);
             this.label11.TabIndex = 13;
@@ -113,16 +117,18 @@
             // InternationalLicenseIDValue
             // 
             this.InternationalLicenseIDValue.AutoSize = true;
-            this.InternationalLicenseIDValue.Location = new System.Drawing.Point(404, 63);
+            this.InternationalLicenseIDValue.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.InternationalLicenseIDValue.ForeColor = System.Drawing.SystemColors.MenuHighlight;
+            this.InternationalLicenseIDValue.Location = new System.Drawing.Point(433, 63);
             this.InternationalLicenseIDValue.Name = "InternationalLicenseIDValue";
-            this.InternationalLicenseIDValue.Size = new System.Drawing.Size(34, 17);
+            this.InternationalLicenseIDValue.Size = new System.Drawing.Size(31, 17);
             this.InternationalLicenseIDValue.TabIndex = 12;
             this.InternationalLicenseIDValue.Text = "N/A";
             // 
             // label13
             // 
             this.label13.AutoSize = true;
-            this.label13.Location = new System.Drawing.Point(295, 63);
+            this.label13.Location = new System.Drawing.Point(324, 63);
             this.label13.Name = "label13";
             this.label13.Size = new System.Drawing.Size(103, 17);
             this.label13.TabIndex = 11;
@@ -131,16 +137,18 @@
             // CreatedByValue
             // 
             this.CreatedByValue.AutoSize = true;
-            this.CreatedByValue.Location = new System.Drawing.Point(675, 89);
+            this.CreatedByValue.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.CreatedByValue.ForeColor = System.Drawing.SystemColors.MenuHighlight;
+            this.CreatedByValue.Location = new System.Drawing.Point(660, 90);
             this.CreatedByValue.Name = "CreatedByValue";
-            this.CreatedByValue.Size = new System.Drawing.Size(34, 17);
+            this.CreatedByValue.Size = new System.Drawing.Size(31, 17);
             this.CreatedByValue.TabIndex = 10;
             this.CreatedByValue.Text = "N/A";
             // 
             // label15
             // 
             this.label15.AutoSize = true;
-            this.label15.Location = new System.Drawing.Point(576, 89);
+            this.label15.Location = new System.Drawing.Point(561, 90);
             this.label15.Name = "label15";
             this.label15.Size = new System.Drawing.Size(93, 17);
             this.label15.TabIndex = 9;
@@ -149,16 +157,18 @@
             // FeesValue
             // 
             this.FeesValue.AutoSize = true;
-            this.FeesValue.Location = new System.Drawing.Point(404, 36);
+            this.FeesValue.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.FeesValue.ForeColor = System.Drawing.SystemColors.MenuHighlight;
+            this.FeesValue.Location = new System.Drawing.Point(433, 36);
             this.FeesValue.Name = "FeesValue";
-            this.FeesValue.Size = new System.Drawing.Size(34, 17);
+            this.FeesValue.Size = new System.Drawing.Size(31, 17);
             this.FeesValue.TabIndex = 8;
             this.FeesValue.Text = "N/A";
             // 
             // label9
             // 
             this.label9.AutoSize = true;
-            this.label9.Location = new System.Drawing.Point(350, 36);
+            this.label9.Location = new System.Drawing.Point(379, 36);
             this.label9.Name = "label9";
             this.label9.Size = new System.Drawing.Size(48, 17);
             this.label9.TabIndex = 7;
@@ -167,9 +177,11 @@
             // IssueDateValue
             // 
             this.IssueDateValue.AutoSize = true;
+            this.IssueDateValue.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.IssueDateValue.ForeColor = System.Drawing.SystemColors.MenuHighlight;
             this.IssueDateValue.Location = new System.Drawing.Point(162, 90);
             this.IssueDateValue.Name = "IssueDateValue";
-            this.IssueDateValue.Size = new System.Drawing.Size(34, 17);
+            this.IssueDateValue.Size = new System.Drawing.Size(31, 17);
             this.IssueDateValue.TabIndex = 6;
             this.IssueDateValue.Text = "N/A";
             // 
@@ -185,9 +197,11 @@
             // AppDateValue
             // 
             this.AppDateValue.AutoSize = true;
+            this.AppDateValue.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.AppDateValue.ForeColor = System.Drawing.SystemColors.MenuHighlight;
             this.AppDateValue.Location = new System.Drawing.Point(162, 63);
             this.AppDateValue.Name = "AppDateValue";
-            this.AppDateValue.Size = new System.Drawing.Size(34, 17);
+            this.AppDateValue.Size = new System.Drawing.Size(31, 17);
             this.AppDateValue.TabIndex = 4;
             this.AppDateValue.Text = "N/A";
             // 
@@ -203,9 +217,11 @@
             // InternationalAppIDValue
             // 
             this.InternationalAppIDValue.AutoSize = true;
+            this.InternationalAppIDValue.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.InternationalAppIDValue.ForeColor = System.Drawing.SystemColors.MenuHighlight;
             this.InternationalAppIDValue.Location = new System.Drawing.Point(162, 36);
             this.InternationalAppIDValue.Name = "InternationalAppIDValue";
-            this.InternationalAppIDValue.Size = new System.Drawing.Size(34, 17);
+            this.InternationalAppIDValue.Size = new System.Drawing.Size(31, 17);
             this.InternationalAppIDValue.TabIndex = 2;
             this.InternationalAppIDValue.Text = "N/A";
             // 

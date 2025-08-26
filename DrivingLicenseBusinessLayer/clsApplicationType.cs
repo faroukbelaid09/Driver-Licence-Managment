@@ -54,5 +54,17 @@ namespace DrivingLicenseBusinessLayer
             return clsApplicationTypesDataAccess.UpdateApplicationType(this.ApplicationTypeID,this.ApplicationTypeTitle,
                 this.ApplicationFees);
         } 
+    
+        public static clsApplicationType GetApplicationTypeInfo(int appTypeID)
+        {
+            int appFees = -1;
+            string appTypeTitle = "";
+
+            if (clsApplicationTypesDataAccess.GetApplication(appTypeID,ref appTypeTitle,ref appFees))
+            {
+                return new clsApplicationType(appTypeID, appTypeTitle, appFees);
+            }
+            return null;
+        }
     }
 }

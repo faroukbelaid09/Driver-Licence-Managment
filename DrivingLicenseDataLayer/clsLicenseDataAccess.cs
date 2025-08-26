@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Data.SqlClient;
+using System.Diagnostics.Contracts;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -212,6 +213,129 @@ namespace DrivingLicenseDataLayer
             return dt;
         }
 
+        public static int CreateInternationalLicense(int appID, int driverID,
+            int localLicenseID, string issueDate, string expirationDate, int isActive, int createdByUserID)
+        {
+            int InternationalLicenseID = -1;
 
+            SqlConnection connection = new SqlConnection(clsDataAccessSettings.ConnectionString);
+
+            string query = @"Insert into InternationalLicenses (ApplicationID, DriverID, IssuedUsingLocalLicenseID,
+                            IssueDate,ExpirationDate, IsActive,CreatedByUserID)
+                            Values(@ApplicationID, @DriverID,@IssuedUsingLocalLicenseID,@IssueDate,@ExpirationDate,
+                            @IsActive,@CreatedByUserID);
+                            SELECT SCOPE_IDENTITY();";
+
+            SqlCommand command = new SqlCommand(query, connection);
+
+            command.Parameters.AddWithValue("@ApplicationID", appID);
+            command.Parameters.AddWithValue("@DriverID", driverID);
+            command.Parameters.AddWithValue("@IssuedUsingLocalLicenseID", localLicenseID);
+            command.Parameters.AddWithValue("@IssueDate", issueDate);
+            command.Parameters.AddWithValue("@ExpirationDate", expirationDate);
+            command.Parameters.AddWithValue("@IsActive", isActive);
+            command.Parameters.AddWithValue("@CreatedByUserID", createdByUserID);
+
+            try
+            {
+                connection.Open();
+
+                object result = command.ExecuteScalar();
+
+                if (result != null && int.TryParse(result.ToString(), out int insertedID))
+                {
+                    InternationalLicenseID = insertedID;
+                }
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine("DB: Error when creating an international license in DB.\n" + ex.Message);
+            }
+            finally
+            {
+                connection?.Close();
+            }
+
+            return InternationalLicenseID;
+        }
+    
+        public static bool CheckIfLicenseExist(int driverID, int localLicenseID)
+        {
+            bool isFound = false;
+            SqlConnection connection = new SqlConnection(clsDataAccessSettings.ConnectionString);
+
+            string query = @"select 1 from InternationalLicenses
+                  where DriverID = @driverID and IssuedUsingLocalLicenseID =@localLicenseID";
+
+            SqlCommand command = new SqlCommand(query, connection);
+
+            command.Parameters.AddWithValue("@driverID", driverID);
+            command.Parameters.AddWithValue("@localLicenseID", localLicenseID);
+
+
+            try
+            {
+                connection.Open();
+
+                SqlDataReader reader = command.ExecuteReader(CommandBehavior.SingleRow);
+
+                if (reader.HasRows)
+                {
+                    isFound = true;
+                }
+
+                reader.Close();
+            }
+
+            catch (Exception ex)
+            {
+                Console.WriteLine("Error: " + ex.Message);
+            }
+            finally
+            {
+                connection?.Close();
+            }
+            return isFound;
+        }
+    
+        public static DataTable GetAllInternationalLicenses(int driverID)
+        {
+            DataTable dt = new DataTable();
+
+            SqlConnection connection = new SqlConnection(clsDataAccessSettings.ConnectionString);
+
+
+            string query = "select * from InternationalLicenses where DriverID =@driverID";
+
+            SqlCommand command = new SqlCommand(query, connection);
+
+            command.Parameters.AddWithValue("@driverID", driverID);
+
+            try
+            {
+                connection.Open();
+
+                SqlDataReader reader = command.ExecuteReader();
+
+                if (reader.HasRows)
+
+                {
+                    dt.Load(reader);
+                }
+
+                reader.Close();
+            }
+
+            catch (Exception ex)
+            {
+                Console.WriteLine("Error: " + ex.Message);
+            }
+            finally
+            {
+                connection?.Close();
+            }
+
+            return dt;
+        }
     }
 }

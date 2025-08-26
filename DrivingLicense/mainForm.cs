@@ -70,5 +70,11 @@ namespace DrivingLicense
             LocalDrivingLicenseApplicationsForm frm = new LocalDrivingLicenseApplicationsForm();
             frm.ShowDialog();
         }
+
+        private void internationalLicenseToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            InternationalLicenseForm frm = new InternationalLicenseForm();
+            frm.ShowDialog();
+        }
     }
 }
