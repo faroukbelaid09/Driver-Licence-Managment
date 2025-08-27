@@ -13,7 +13,6 @@ namespace DrivingLicenseDataLayer
 {
     public class clsLicenseDataAccess
     {
-
         public static int CreateLicense(int ApplicationID, int DriverID, int LicenseClass, string IssueDate,
             string ExpirationDate, string Notes, int PaidFees, bool IsActive, int IssueReason, int CreatedByUserID)
         {
@@ -337,5 +336,41 @@ namespace DrivingLicenseDataLayer
 
             return dt;
         }
+    
+        public static bool Deactivate(int licenseid)
+        {
+            bool deactivated = false;
+
+            SqlConnection connection = new SqlConnection(clsDataAccessSettings.ConnectionString);
+
+            string query = @"Update Licenses Set IsActive = @deactivated where LicenseID = @licenseid";
+
+            SqlCommand command = new SqlCommand(query, connection);
+
+            command.Parameters.AddWithValue("@licenseid", licenseid);
+            command.Parameters.AddWithValue("@deactivated", deactivated);
+
+            try
+            {
+                connection.Open();
+                int rowAffected = command.ExecuteNonQuery();
+
+                if (rowAffected > 0)
+                {
+                    deactivated = true;
+                }
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine("DB: Error when deactivated the license." + ex.ToString());
+            }
+            finally
+            {
+                connection?.Close();
+            }
+            return deactivated;
+        }
+    
+        
     }
 }

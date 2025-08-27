@@ -10,17 +10,17 @@ namespace DrivingLicenseBusinessLayer
 {
     public class clsLicense
     {
-        int LicenseId { get; set; }
-        int ApplicationID { get; set; }
-        int DriverID { get; set; }
-        int LicenseClass {  get; set; }
-        string IssueDate { get; set; }
-        string ExpirationDate { get; set; }
-        string Notes { get; set; }
-        int PaidFees { get; set; }
-        bool IsActive { get; set; }
-        int IssueReason { get; set; }
-        int CreatedByUserID {  get; set; }
+        public int LicenseId { get; set; }
+        public int ApplicationID { get; set; }
+        public int DriverID { get; set; }
+        public int LicenseClass {  get; set; }
+        public string IssueDate { get; set; }
+        public string ExpirationDate { get; set; }
+        public string Notes { get; set; }
+        public int PaidFees { get; set; }
+        public bool IsActive { get; set; }
+        public int IssueReason { get; set; }
+        public int CreatedByUserID {  get; set; }
 
 
         public clsLicense(int licenseID,int appID,int driverID,int licenseClass, string issueDate,string expirationDate,
@@ -157,6 +157,10 @@ namespace DrivingLicenseBusinessLayer
 
             return null;
         }
-
+        
+        public static bool DeactivateLicense(int licensID)
+        {
+            return clsLicenseDataAccess.Deactivate(licensID);
+        }
     }
 }

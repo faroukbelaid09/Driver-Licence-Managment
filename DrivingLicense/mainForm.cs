@@ -82,5 +82,11 @@ namespace DrivingLicense
             ShowDriversForm frm = new ShowDriversForm();
             frm.ShowDialog();
         }
+
+        private void renewDrivingLicenseToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            RenewLocalLicenseForm frm = new RenewLocalLicenseForm();
+            frm.ShowDialog();
+        }
     }
 }
