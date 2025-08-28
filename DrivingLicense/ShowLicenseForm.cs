@@ -35,7 +35,7 @@ namespace DrivingLicense
             DriverIDValue.Text = fullLicernse.DiverID.ToString();
             IssueDateValue.Text = fullLicernse.IssueDate;
             ExpirationDateValue.Text = fullLicernse.ExpirationDate;
-            IssueReasonValue.Text = fullLicernse.IssueReason == 1 ? "First Time" : "Others";
+            IssueReasonValue.Text = fullLicernse.IssueReason == 1 ? "First Time" : fullLicernse.IssueReason == 2 ? "Renew" :"Others";
             IsDetainedValue.Text = fullLicernse.IsDetained.ToString();
             NotesValue.Text = fullLicernse.Notes;
         }

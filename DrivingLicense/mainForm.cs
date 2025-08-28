@@ -88,5 +88,11 @@ namespace DrivingLicense
             RenewLocalLicenseForm frm = new RenewLocalLicenseForm();
             frm.ShowDialog();
         }
+
+        private void replacmentForLostOrDamagedLicenseToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            RenewLostReplacmentLicenseForm frm = new RenewLostReplacmentLicenseForm();
+            frm.ShowDialog();
+        }
     }
 }

@@ -89,6 +89,12 @@
     <Compile Include="ctrlInternationlApplicationInfo.Designer.cs">
       <DependentUpon>ctrlInternationlApplicationInfo.cs</DependentUpon>
     </Compile>
+    <Compile Include="ctrlLicenseReplacmentAppInfo.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="ctrlLicenseReplacmentAppInfo.Designer.cs">
+      <DependentUpon>ctrlLicenseReplacmentAppInfo.cs</DependentUpon>
+    </Compile>
     <Compile Include="ctrlPersonInfo.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -181,6 +187,12 @@
     <Compile Include="RenewLocalLicenseForm.Designer.cs">
       <DependentUpon>RenewLocalLicenseForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="RenewLostReplacmentLicenseForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="RenewLostReplacmentLicenseForm.Designer.cs">
+      <DependentUpon>RenewLostReplacmentLicenseForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="ScheduleAppointmentForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -256,6 +268,9 @@
     <EmbeddedResource Include="ctrlInternationlApplicationInfo.resx">
       <DependentUpon>ctrlInternationlApplicationInfo.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="ctrlLicenseReplacmentAppInfo.resx">
+      <DependentUpon>ctrlLicenseReplacmentAppInfo.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="ctrlPersonInfo.resx">
       <DependentUpon>ctrlPersonInfo.cs</DependentUpon>
     </EmbeddedResource>
@@ -310,6 +325,9 @@
     </Compile>
     <EmbeddedResource Include="RenewLocalLicenseForm.resx">
       <DependentUpon>RenewLocalLicenseForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="RenewLostReplacmentLicenseForm.resx">
+      <DependentUpon>RenewLostReplacmentLicenseForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="ScheduleAppointmentForm.resx">
       <DependentUpon>ScheduleAppointmentForm.cs</DependentUpon>
