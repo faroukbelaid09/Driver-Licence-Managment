@@ -94,5 +94,11 @@ namespace DrivingLicense
             RenewLostReplacmentLicenseForm frm = new RenewLostReplacmentLicenseForm();
             frm.ShowDialog();
         }
+
+        private void detainLicenseToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            DetainLicenseForm frm = new DetainLicenseForm();
+            frm.ShowDialog();
+        }
     }
 }

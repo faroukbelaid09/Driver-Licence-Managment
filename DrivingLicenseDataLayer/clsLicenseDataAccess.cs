@@ -370,7 +370,39 @@ namespace DrivingLicenseDataLayer
             }
             return deactivated;
         }
-    
-        
+
+        /*public static bool UpdateDetainStatus(int licenseid) 
+        {
+            bool detained = false;
+
+            SqlConnection connection = new SqlConnection(clsDataAccessSettings.ConnectionString);
+
+            string query = @"Update Licenses Set IsActive = @deactivated where LicenseID = @licenseid";
+
+            SqlCommand command = new SqlCommand(query, connection);
+
+            command.Parameters.AddWithValue("@licenseid", licenseid);
+            command.Parameters.AddWithValue("@deactivated", deactivated);
+
+            try
+            {
+                connection.Open();
+                int rowAffected = command.ExecuteNonQuery();
+
+                if (rowAffected > 0)
+                {
+                    deactivated = true;
+                }
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine("DB: Error when deactivated the license." + ex.ToString());
+            }
+            finally
+            {
+                connection?.Close();
+            }
+            return deactivated;
+        }*/
     }
 }

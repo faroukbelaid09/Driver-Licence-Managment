@@ -25,5 +25,13 @@ namespace DrivingLicense
             LicenseIDValue.Text = licenseIDValue;
             CreatedByValue.Text = ApplicationState.CurrentUser.UserName;
         }
+        public int GetFineAmount()
+        {
+            if (!string.IsNullOrEmpty(fineAmountTB.Text.Trim()))
+            {
+                return Convert.ToInt32(fineAmountTB.Text);
+            }
+            return -1;
+        }
     }
 }

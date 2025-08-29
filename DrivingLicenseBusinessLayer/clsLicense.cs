@@ -162,5 +162,10 @@ namespace DrivingLicenseBusinessLayer
         {
             return clsLicenseDataAccess.Deactivate(licensID);
         }
+
+        /*public static bool UpdateDetainStatus(int licenseID) 
+        {
+            return clsLicenseDataAccess.UpdateDetainStatus(licenseID);
+        }*/
     }
 }

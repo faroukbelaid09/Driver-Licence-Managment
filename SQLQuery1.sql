@@ -62,7 +62,7 @@ SELECT
                         SELECT 1 
                         FROM DetainedLicenses 
                         WHERE DetainedLicenses.LicenseID = Licenses.LicenseID 
-                        AND DetainedLicenses.IsReleased = 'False'
+                        AND DetainedLicenses.IsReleased = 0
                     ) THEN 1 
                     ELSE 0 
                  END,

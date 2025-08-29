@@ -33,7 +33,7 @@
             this.createdby = new System.Windows.Forms.Label();
             this.LicenseIDValue = new System.Windows.Forms.Label();
             this.label9 = new System.Windows.Forms.Label();
-            this.textBox1 = new System.Windows.Forms.TextBox();
+            this.fineAmountTB = new System.Windows.Forms.TextBox();
             this.DetainDateValue = new System.Windows.Forms.Label();
             this.label7 = new System.Windows.Forms.Label();
             this.label5 = new System.Windows.Forms.Label();
@@ -48,7 +48,7 @@
             this.groupBox1.Controls.Add(this.createdby);
             this.groupBox1.Controls.Add(this.LicenseIDValue);
             this.groupBox1.Controls.Add(this.label9);
-            this.groupBox1.Controls.Add(this.textBox1);
+            this.groupBox1.Controls.Add(this.fineAmountTB);
             this.groupBox1.Controls.Add(this.DetainDateValue);
             this.groupBox1.Controls.Add(this.label7);
             this.groupBox1.Controls.Add(this.label5);
@@ -76,11 +76,11 @@
             // createdby
             // 
             this.createdby.AutoSize = true;
-            this.createdby.Location = new System.Drawing.Point(347, 62);
+            this.createdby.Location = new System.Drawing.Point(353, 62);
             this.createdby.Name = "createdby";
-            this.createdby.Size = new System.Drawing.Size(99, 17);
+            this.createdby.Size = new System.Drawing.Size(93, 17);
             this.createdby.TabIndex = 9;
-            this.createdby.Text = "Detain Date:";
+            this.createdby.Text = "Created By:";
             // 
             // LicenseIDValue
             // 
@@ -102,12 +102,12 @@
             this.label9.TabIndex = 7;
             this.label9.Text = "License ID:";
             // 
-            // textBox1
+            // fineAmountTB
             // 
-            this.textBox1.Location = new System.Drawing.Point(123, 90);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(43, 23);
-            this.textBox1.TabIndex = 6;
+            this.fineAmountTB.Location = new System.Drawing.Point(123, 90);
+            this.fineAmountTB.Name = "fineAmountTB";
+            this.fineAmountTB.Size = new System.Drawing.Size(43, 23);
+            this.fineAmountTB.TabIndex = 6;
             // 
             // DetainDateValue
             // 
@@ -178,7 +178,7 @@
         private System.Windows.Forms.Label createdby;
         private System.Windows.Forms.Label LicenseIDValue;
         private System.Windows.Forms.Label label9;
-        private System.Windows.Forms.TextBox textBox1;
+        private System.Windows.Forms.TextBox fineAmountTB;
         private System.Windows.Forms.Label DetainDateValue;
         private System.Windows.Forms.Label label7;
         private System.Windows.Forms.Label label5;

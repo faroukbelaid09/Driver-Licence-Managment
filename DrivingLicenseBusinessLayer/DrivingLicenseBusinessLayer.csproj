@@ -45,6 +45,7 @@
     <Compile Include="ApplicationState.cs" />
     <Compile Include="clsApplication.cs" />
     <Compile Include="clsApplicationType.cs" />
+    <Compile Include="clsDetainLicense.cs" />
     <Compile Include="clsDriver.cs" />
     <Compile Include="clsFullLicenseDetails.cs" />
     <Compile Include="clsFullLocalApplication.cs" />

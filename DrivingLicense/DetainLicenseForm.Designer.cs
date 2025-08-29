@@ -37,8 +37,8 @@
             this.DeatinBTN = new System.Windows.Forms.Button();
             this.ShowLicenseHistory = new System.Windows.Forms.LinkLabel();
             this.CloseBTN = new System.Windows.Forms.Button();
-            this.ctrlDriverLicenseInfo1 = new DrivingLicense.ctrlDriverLicenseInfo();
             this.ctrlDetainInfo1 = new DrivingLicense.ctrlDetainInfo();
+            this.ctrlDriverLicenseInfo1 = new DrivingLicense.ctrlDriverLicenseInfo();
             this.groupBox2.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -63,6 +63,7 @@
             this.searchBTN.TabIndex = 2;
             this.searchBTN.Text = "Search";
             this.searchBTN.UseVisualStyleBackColor = true;
+            this.searchBTN.Click += new System.EventHandler(this.searchBTN_Click);
             // 
             // searchTextBox
             // 
@@ -101,6 +102,7 @@
             this.ShowLicense.TabIndex = 18;
             this.ShowLicense.TabStop = true;
             this.ShowLicense.Text = "Show License";
+            this.ShowLicense.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.ShowLicense_LinkClicked);
             // 
             // DeatinBTN
             // 
@@ -112,6 +114,7 @@
             this.DeatinBTN.TabIndex = 17;
             this.DeatinBTN.Text = "Detain";
             this.DeatinBTN.UseVisualStyleBackColor = true;
+            this.DeatinBTN.Click += new System.EventHandler(this.DeatinBTN_Click);
             // 
             // ShowLicenseHistory
             // 
@@ -123,6 +126,7 @@
             this.ShowLicenseHistory.TabIndex = 16;
             this.ShowLicenseHistory.TabStop = true;
             this.ShowLicenseHistory.Text = "Show License History";
+            this.ShowLicenseHistory.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.ShowLicenseHistory_LinkClicked);
             // 
             // CloseBTN
             // 
@@ -133,13 +137,7 @@
             this.CloseBTN.TabIndex = 15;
             this.CloseBTN.Text = "Close";
             this.CloseBTN.UseVisualStyleBackColor = true;
-            // 
-            // ctrlDriverLicenseInfo1
-            // 
-            this.ctrlDriverLicenseInfo1.Location = new System.Drawing.Point(12, 57);
-            this.ctrlDriverLicenseInfo1.Name = "ctrlDriverLicenseInfo1";
-            this.ctrlDriverLicenseInfo1.Size = new System.Drawing.Size(782, 317);
-            this.ctrlDriverLicenseInfo1.TabIndex = 11;
+            this.CloseBTN.Click += new System.EventHandler(this.CloseBTN_Click);
             // 
             // ctrlDetainInfo1
             // 
@@ -147,6 +145,13 @@
             this.ctrlDetainInfo1.Name = "ctrlDetainInfo1";
             this.ctrlDetainInfo1.Size = new System.Drawing.Size(791, 149);
             this.ctrlDetainInfo1.TabIndex = 19;
+            // 
+            // ctrlDriverLicenseInfo1
+            // 
+            this.ctrlDriverLicenseInfo1.Location = new System.Drawing.Point(12, 57);
+            this.ctrlDriverLicenseInfo1.Name = "ctrlDriverLicenseInfo1";
+            this.ctrlDriverLicenseInfo1.Size = new System.Drawing.Size(782, 317);
+            this.ctrlDriverLicenseInfo1.TabIndex = 11;
             // 
             // DetainLicenseForm
             // 
