@@ -107,6 +107,12 @@
     <Compile Include="ctrlPersonInfo.Designer.cs">
       <DependentUpon>ctrlPersonInfo.cs</DependentUpon>
     </Compile>
+    <Compile Include="ctrlReleaseLicenseInfo.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="ctrlReleaseLicenseInfo.Designer.cs">
+      <DependentUpon>ctrlReleaseLicenseInfo.cs</DependentUpon>
+    </Compile>
     <Compile Include="ctrlRenewLicenseApplication.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -193,6 +199,12 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="ReleaseDetainedLicenseForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ReleaseDetainedLicenseForm.Designer.cs">
+      <DependentUpon>ReleaseDetainedLicenseForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="RenewLocalLicenseForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -289,6 +301,9 @@
     <EmbeddedResource Include="ctrlPersonInfo.resx">
       <DependentUpon>ctrlPersonInfo.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="ctrlReleaseLicenseInfo.resx">
+      <DependentUpon>ctrlReleaseLicenseInfo.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="ctrlRenewLicenseApplication.resx">
       <DependentUpon>ctrlRenewLicenseApplication.cs</DependentUpon>
     </EmbeddedResource>
@@ -341,6 +356,9 @@
       <DependentUpon>Resources.resx</DependentUpon>
       <DesignTime>True</DesignTime>
     </Compile>
+    <EmbeddedResource Include="ReleaseDetainedLicenseForm.resx">
+      <DependentUpon>ReleaseDetainedLicenseForm.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="RenewLocalLicenseForm.resx">
       <DependentUpon>RenewLocalLicenseForm.cs</DependentUpon>
     </EmbeddedResource>
